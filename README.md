@@ -6,13 +6,11 @@
 - 📫 How to reach me: markjprice is also my Gmail account name.
 - ⚡ Michelle McNamara: "It’s chaos. Be kind."
 
-## Teacher.
+## What you should know about me
 
 An ex-Microsoft Certified Trainer (MCT) with more than 30 years’ experience in the IT industry, including two years working full-time for Microsoft’s Training and Certification group in Redmond, USA, I specialize in training that leads to developer certifications.
 
 I am eager to lead programming students, both experienced and new, into the challenging worlds of mobile and the cloud computing using a rare combination of thirty years’ education experience coupled with real world consulting and developing production systems for enterprises worldwide.
-
-### What you should know about me
 
 - I live in Wiltshire, England.
 - I'm experienced in the practical use of Microsoft developer tools and technologies.
@@ -21,13 +19,11 @@ I am eager to lead programming students, both experienced and new, into the chal
 - I'm adaptable and deal well with ambiguity in organizations of varying sizes and cultures.
 - I hold an Honours Bachelor’s Degree in Computer Science.
 
-## Writer.
-
-I have written a guided learning book about C# and .NET. The current edition is C# 10 and .NET 6 - Modern Cross-Platform Development. 
+I have written a guided learning book about C# and .NET. The latest is the sixth edition, C# 10 and .NET 6 - Modern Cross-Platform Development. 
 
 ## Education and Certification
 
-Highly qualified and experienced
+Highly qualified and experienced.
 
 ### Microsoft Certified Solutions Developer (MCSD)
 Web Applications, Universal Windows Platform, Windows Store Apps Using C#, SharePoint Developer

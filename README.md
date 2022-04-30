@@ -10,7 +10,7 @@
 
 An ex-Microsoft Certified Trainer (MCT) with more than 30 years’ experience in the IT industry, including two years working full-time for Microsoft’s Training and Certification group in Redmond, USA, I specialize in training that leads to developer certifications.
 
-I am eager to lead programming students, both experienced and new, into the challenging worlds of mobile and the cloud computing using a rare combination of thirty years’ education experience coupled with real world consulting and developing production systems for enterprises worldwide.
+I am eager to lead programming students, both experienced and new, into the challenging worlds of web, cloud, and mobile computing using a rare combination of thirty years’ education experience coupled with real world consulting and developing production systems for enterprises worldwide.
 
 - I live in Wiltshire, England.
 - I'm experienced in the practical use of Microsoft developer tools and technologies.

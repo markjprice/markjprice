@@ -8,6 +8,9 @@ using Visual Studio 2022 and Visual Studio Code.
 In this Q&A, you will learn about Mark’s career, discover his inspiration for writing the book and get a 
 taste of what’s included in the seventh edition and the all-new companion book, *Apps and Services with .NET 7*.
 
+You can find all of Mark's books either on [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/) or 
+[Packt's website](https://subscription.packtpub.com/search?query=mark+j.+price).
+
 ## Can you tell readers a bit about you and your career?
 
 I live in Wiltshire, United Kingdom, and after spending most of my career working for companies as either a 
@@ -65,15 +68,17 @@ five-to-ten years, or is still stuck on .NET Framework, the book is a fast, fun 
 knowledge and skills.
 
 Then, *Apps and Services with .NET 7* takes the reader on the rest of their learning journey. There is much more 
-to learn about more specialized libraries, for example, to localizt and app for multuple human languages, or to 
+to learn about more specialized libraries, for example, to localize an app for multiple human languages, or to 
 improve performance and scalability with multi-threading tasks. And we are awash with different technologies for 
 building services. For example, gRPC, GraphQL, OData, Minimal APIs, and Azure Functions. Which one do you choose? 
 They each have pros and cons and are the best solution in a particular scenario. By the end of that section, the 
 reader will have seen them all in action and will have learned the most important concepts to be able to select 
 between them.
 
-Similarly with apps. When should you use a traditional ASP.NET Core MVC website? When to use Blazor? What about 
-this new thing called .NET MAUI? Again, each have pros and cons depending on what your goals are.
+Similarly with apps and databases. When should you use a traditional ASP.NET Core MVC website? When to use Blazor? What about 
+this new thing called .NET MAUI? Should you store the data in SQL Server or a cloud data store like Cosmos DB, and should you 
+use the SQL API or the Gremlin graph API to model and query the data? Again, each have pros and cons depending on what your 
+goals are.
 
 Both books benefit from my long history in education.
 
@@ -83,45 +88,43 @@ show you a useful feature of the C# programming language or an API in the .NET c
 links to official documentation or interesting blog articles that can be used to take your learning further 
 without overwhelming you if you decide that feature isn’t relevant to you today.
 
-## What three words would best describe the book? 
+## What three words would best describe the books? 
 
-Comprehensive, timely and fun.
+Concise, timely and fun.
 
-It’s comprehensive with the qualifier of breadth rather than depth. In 822 pages, it would be impossible to cover 
-everything in depth. But my book covers topics that others leave out. This is the only C# book to cover new 
-technologies like Blazor WebAssembly and ML.NET for machine learning as well as the fundamentals of C# and the 
-.NET class libraries. Many other books on the topic were written decades ago and even though they’ve been updated, 
-they still spend hundreds of pages on old technology like Windows Presentation Foundation.
+Both books are comprehensive with the qualifier of breadth rather than depth. In 800+ and 600+ pages each, it would be impossible to cover 
+everything in depth. But my books cover all the topics that others leave out. Many other books on the topic were written decades 
+ago and even though they’ve been updated, they still spend hundreds of pages on old technology like Windows Presentation Foundation. 
+Instead of having to buy a dozen books to learn about all these .NET related technologies, you only need to buy two.
 
-## If a reader only took one thing from the book, what would you hope it was? 
+## If a reader only took one thing from the books, what would you hope it was? 
 
-Most folks understand that .NET Core is the way of the future. The future has arrived. If you have existing apps on .NET Framework, now is the time to 
-start migrating your .NET Framework code bases to .NET 5. It will take multiple months and then when .NET 6 is released in November 2021, you will be 
-able to target it and then have three years of support from Microsoft. .NET 6 will be a Long Term Support or LTS release. .NET 5 is a Current release.
+Most folks understand that Microsoft have achieved their goal with the unification of .NET. If you still have projects running on .NET Framework, 
+you really should migrate them to modern .NET. .NET 6 was released in November 2021, and it has three years of support from Microsoft. .NET 7 
+is a Short Term Support or STS release, so .NET 6 will actually be supported for six months longer than .NET 7! But .NET 7 has major improvements 
+in performance and is of the same high quality as .NET 6. And you can start planning today for the Long Term Support (LTS) release of .NET 8 in November 
+2023 that will not reach end-of-life until November 2026.
 
-At Optimizely, we listen to our customers and partners and we know how important it is for our platforms to keep up the pace of change led by Microsoft. 
-We have made announcements about our support for .NET Core in platforms like Optimizely Delivery Core, currently available as a Community Test Preview 
-(CTP). We have related headless functionality with our Optimizely Content Delivery API and Optimizely Content Management API. I am confident that we 
-will continue to make more announcements related to modern development in the near future. It is an exciting time to be an Optimizely developer! 
+## What has changed most with the new edition?
 
-## What has changed most with this new edition?
+The C# and .NET fundamentals book has definitely had time to evolve. The recent incremental improvements to the C# language are nice but it’s been 
+pretty mature since C# version 8.0 back in October 2019. That is reflected in the small changes in the book in the past few editions. The same 
+applies to the .NET class libraries. Microsoft has invested a lot of time in improving performance and scalability of the platform but developers 
+get those benefits without having to change the code they need to write. So, the biggest change with each new edition has been adding new app model features.
 
-The book has definitely had time to evolve. The recent incremental improvements to the C# language are nice but it’s been pretty mature since C# version 
-5.0 back in 2012 so that is reflected in small changes in the book. The same applies to the .NET class libraries. Microsoft has invested a lot of time in 
-improving performance and scalability of the platform but developers get those benefits without having to change the code they need to write.
+## What were the most challenging parts of writing the books? On the flip side of the coin, what were the most rewarding aspects?
 
-So, the biggest change with each new edition has been adding new chapters about new app model features. For example, Razor Pages in the third edition, 
-machine learning using ML.NET and .NET CMSs in the fourth edition, and now Blazor Server and Blazor WebAssembly in the fifth edition.
+The most challenging part about writing the books is working with preview releases. Lots of changes can happen between preview and 
+General Availability (GA), so that is always challenging. .NET 7 Preview 1 was released in February 2022, and Microsoft released 
+monthly previews between then and September. In September and October, Microsoft released two Release Candidates with Go Live licenses, 
+meaning the platform is stable and you can create production-level apps with it. That’s when I had six weeks to review all the code in 
+my book to make sure it’d work with the final version. Code that I wrote for Preview 1 then broke with Preview 2 and even fundamental 
+C# operators were removed halfway through the year. For example, the ?? operator added null checks for method parameters. The .NET libraries 
+saved 10,000 lines of code. But some developers complained about the syntax and in PReview 5 in June the compuler team removed the feature.
 
-## What were the most challenging parts of writing the book? On the flip side of the coin, what were the most rewarding aspects?
-
-The most challenging part about writing the book was working with preview releases. Lots of changes can happen between preview and live, so that was 
-challenging. .NET 5 Preview 1 was released in March 2020, and Microsoft released monthly previews between then and September. In September and October, 
-Microsoft released two Release Candidates with Go Live licenses, meaning the platform is stable and you can create production-level apps with it. That’s 
-when I had six weeks to review all the code in my book to make sure it’d work with the final version. Code that I wrote for Preview 1 then broke with 
-Preview 2 and even fundamental C# keywords changed halfway through the year. Also, the tools that a developer uses to write the code do not know about 
-the changes so your code editor will complain that code is wrong when it is actually correct and vice versa. It is all very frustrating… but worth it 
-when I am able to publish a book on the day Microsoft releases the General Availability version of .NET 5.
+Also, the tools that a developer uses to write the code do not know about the changes so your code editor will complain that code is 
+wrong when it is actually correct and vice versa. It is all very frustrating… but worth it when I am able to publish a book on the day 
+Microsoft releases the GA version of .NET.
 
 The most rewarding part of this process is learning what’s new with the technology and being able to share those learnings with others. I feel really 
 proud of the work I’ve done. With some projects, you dust off your hands and carry on. But this one is about continuous improvement. We’re on the fifth 
@@ -129,14 +132,13 @@ edition now and continue to iterate as .NET evolves.
 
 ## What are you working on next? Will there be more editions?
 
-I’ve started planning the sixth edition. Luckily, Microsoft is being very transparent about their plans for .NET and they promise to release a new major 
-version every November from now on. So I’ll continue updating the book. The sixth edition will have a new chapter about .NET Multi-platform App User 
-Interface, known as .NET MAUI. This will enable developers to create a single app project that can target iOS and Android mobile devices, as well as 
-Windows and Mac desktops.
+I’ve started planning the next editions of both books ready to publish in November 2023. So I’ll continue updating both books. 
 
-In addition, I’m writing articles about related topics that could not fit in the print book, for example, developing on a Raspberry Pi. Finally, I 
-would love to launch a YouTube channel and website. I work a four-day week for Optimizely, so Fridays I’m able to work on passion projects like these, 
-something I really value about working for this company.
+In addition, I’m writing articles about related topics that could not fit in the print book, for example, developing websites using Umbraco CMS and 
+implementing machine learning algorithms with ML.NET. 
+
+I would love to launch a YouTube channel to support readers with the trickier topics that would bebenfit from seeing it in a video rather than just
+reading a description perhaps with a few screenshots. 
 
 You can find all of Mark's books either on [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/) or 
 [Packt's website](https://subscription.packtpub.com/search?query=mark+j.+price).

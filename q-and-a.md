@@ -1,66 +1,97 @@
 # Q&A with Mark J. Price, author of *C# 11 and .NET 7 - Modern Cross-Platform Development Fundamentals, 7th Edition* and *Apps and Services with .NET 7, 1st Edition*
 
-On Tuesday, November 8, 2022, Mark J Price, will publish the seventh edition of his book, *C# 11 and .NET 7 – Modern Cross-Platform Development Fundamentals*. 
-The book is a comprehensive guide for beginners to learn the key concepts, real-world applications and latest features of C# 11 and .NET 7 with hands-on exercises 
-using Visual Studio 2022 and Visual Studio Code. In this Q&A, you will learn about Mark’s career, discover his inspiration for writing the book and get a taste of 
-what’s included in the seventh edition and the all-new companion book, *Apps and Services with .NET 7*.
+On Tuesday, November 8, 2022, Mark J Price, will publish the seventh edition of his book, *C# 11 and .NET 7 – 
+Modern Cross-Platform Development Fundamentals*. The book is a comprehensive guide for beginners to learn 
+the key concepts, real-world applications and latest features of C# 11 and .NET 7 with hands-on exercises 
+using Visual Studio 2022 and Visual Studio Code. 
+
+In this Q&A, you will learn about Mark’s career, discover his inspiration for writing the book and get a 
+taste of what’s included in the seventh edition and the all-new companion book, *Apps and Services with .NET 7*.
 
 ## Can you tell readers a bit about you and your career?
 
-I live in Cirencester, United Kingdom, and I am currently the Digital Learning Product Manager at Optimizely, responsible for all Optimizely’s learning products 
-and developer training. I joined Optimizely in 2016 as a Technical Trainer producing training for our partners and customers.
+I live in Wiltshire, United Kingdom, and after spending most of my career working for companies as either a 
+programmer or trainer of programmers, I am now a fulltime freelance author. 
 
-I love making the complex simple. I love to learn about technology that no one has used before, then share my learning with others in a way that’s easy to 
-understand. I am an expert educator with a passion for technology like Microsoft developer platforms including C# and .NET.
+I love the challenge of making the complex simple. I love to learn about new technology and then share my learning 
+with others in a way that’s easy to understand. I am an expert educator with a passion for technology like 
+Microsoft developer platforms including C# and .NET.
 
-I come from a family of educators. When I was a teenager back in the late 80s, I would earn pocket money by teaching local business owners how to use their 
-computers. I studied computer science at University. I taught myself Visual Basic 1.0 and was a self-employed trainer in the UK for some time. In the late 90s, 
-I moved to San Francisco to participate in the Dot Com Boom. Later, I joined Microsoft to help them educate their millions-strong developer community about the 
-brand new C# programming language and the .NET Framework.
+I come from a family of educators. When I was a teenager back in the late 80s, I would earn pocket money by teaching 
+local business owners how to use their computers. I studied computer science at University. I taught myself Visual 
+Basic 1.0 and was a self-employed trainer in the UK for some time. In the late 90s, I moved to San Francisco to 
+participate in the Dot Com Boom. Later, I joined Microsoft to help them educate their millions-strong developer 
+community about the brand new C# programming language and the .NET Framework.
 
-Some of the highlights from my 30 years of experience include: working for Microsoft’s Training and Certification team, mentoring young people on apprenticeship 
-programs and running boot camps to get programmers quickly certified on Microsoft and Optimizely developer platforms. I even took a few diversions including a 
-year-long sabbatical studying screenwriting in Canada and some time teaching mathematics in London schools.
+Some of the highlights from my 30 years of experience include: 
+
+- Working for Microsoft’s Training and Certification team from 2001 to 2003 when .NET first released.
+- Mentoring young people on apprenticeship programs.
+- Running boot camps to get programmers quickly certified on Microsoft and Optimizely developer platforms. 
+- Taking a year-long sabbatical to study screenwriting in Vancouver, Canada in 2005.
+- Teaching mathematics in two London secondary schools (ages 11 to 19) in 2010-11.
 
 ## What originally inspired you to write this book?
 
-I embrace the philosophy of saying yes when new opportunities are given to you. In the summer of 2015, my publisher, Packt approached me with the opportunity 
-to write a book about C# 6. I had never authored a book before and had very little idea about the process, but I had the relevant experience to write about 
+I embrace the philosophy of saying yes when new opportunities are given to you. In the summer of 2015, 
+my publisher, Packt approached me with the opportunity to write a book about C# 6. I had never authored 
+a book before and had very little idea about the process, but I had the relevant experience to write about 
 the topic. So, I embraced the opportunity and said yes.
 
-At the time, .NET Core wasn’t even released yet, but we decided to write it with the idea that it would be the future of Microsoft development. There’s an 
-aphorism from ice hockey: Don’t skate to where the puck is, skate to where it’s going to be. That’s what I did with the book.
+At the time, .NET Core wasn’t even released yet, but we decided to write it with the idea that it would be 
+the future of Microsoft development. There’s an aphorism from ice hockey: Don’t skate to where the puck is, 
+skate to where it’s going to be. That’s what I did with the book.
 
-That’s my approach with training in a general sense too. It’s important to understand the current situation, while also thinking about the future. Since 
-I’ve joined Optimizely, we’ve massively grown. Our employee base has tripled and our product portfolio has expanded. I love being able to provide training 
-courses for what may seem like a complex portfolio of products. Given the acceleration of digital caused by the global pandemic, it’s more important than 
-ever to get people trained on tools like these. I’m proud of the work we are doing at Optimizely to help businesses thrive with digital well into the future.
+That’s my approach with training in a general sense too. It’s important to understand the current situation, 
+while also thinking about the future. Since I’ve joined Optimizely, we’ve massively grown. Our employee base 
+has tripled and our product portfolio has expanded. I love being able to provide training courses for what 
+may seem like a complex portfolio of products. Given the acceleration to digital in the modern world, it’s 
+more important than ever to get people trained on tools like these. I’m proud of the books we are writing 
+at Packt to help our readers thrive with digital well into the future.
 
 ## What are your elevator pitchs for the books?
 
-The Microsoft Docs site provides comprehensive information about C# and .NET, but it can be overwhelming to find the information you need. This book will 
-get you started quickly and headed in the right direction.
+The Microsoft Docs site provides comprehensive information about C# and .NET, but it can be overwhelming to 
+find the information you need. My books will get you started quickly and headed in the right direction.
 
-For someone new to C# and .NET, the book is like training wheels when learning to ride a bike. It provides guided step-by-step coding examples to show what 
-is possible. It covers everything from object-oriented programming with the C# language, to .NET class libraries, to building websites, services, and mobile 
-apps. By the end of the book, the reader sees what is possible because they write the code themselves throughout.
+For someone new to C# and .NET, the *C# 11 and .NET 7 - Modern Cross-Platform Development Fundamentals* book is 
+like training wheels when learning to ride a bike. It provides guided step-by-step coding examples to show what 
+is possible. It covers everything from object-oriented programming with the C# language, to .NET class libraries, 
+to building websites and services. By the end of the book, the reader sees what is possible because they write 
+the code themselves throughout.
 
-For someone who has used C# in the past, but has missed out on the great new features added in the past five to ten years, or is still stuck on .NET Framework, 
-the book is a fast, fun way to modernize their knowledge and skills.
+For someone who has used C# in the past, but has missed out on the great new features added in the past 
+five-to-ten years, or is still stuck on .NET Framework, the book is a fast, fun way to modernize their 
+knowledge and skills.
 
-I have to thank my days in screenwriting for the concept of show don’t tell. If you’re reading my book, here’s what that looks like for you: after briefly 
-explaining what you’re about to do, I offer step-by-step tasks that show you a useful feature of the C# programming language or an API in the .NET class 
-libraries. Then I provide links to official documentation or interesting blog articles that can be used to take your learning further without overwhelming 
-you if you decide that feature isn’t relevant to you today.
+Then, *Apps and Services with .NET 7* takes the reader on the rest of their learning journey. There is much more 
+to learn about more specialized libraries, for example, to localizt and app for multuple human languages, or to 
+improve performance and scalability with multi-threading tasks. And we are awash with different technologies for 
+building services. For example, gRPC, GraphQL, OData, Minimal APIs, and Azure Functions. Which one do you choose? 
+They each have pros and cons and are the best solution in a particular scenario. By the end of that section, the 
+reader will have seen them all in action and will have learned the most important concepts to be able to select 
+between them.
+
+Similarly with apps. When should you use a traditional ASP.NET Core MVC website? When to use Blazor? What about 
+this new thing called .NET MAUI? Again, each have pros and cons depending on what your goals are.
+
+Both books benefit from my long history in education.
+
+I have to thank my days in screenwriting for the concept of show don’t tell. If you’re reading my book, here’s 
+what that looks like for you: after briefly explaining what you’re about to do, I offer step-by-step tasks that 
+show you a useful feature of the C# programming language or an API in the .NET class libraries. Then I provide 
+links to official documentation or interesting blog articles that can be used to take your learning further 
+without overwhelming you if you decide that feature isn’t relevant to you today.
 
 ## What three words would best describe the book? 
 
 Comprehensive, timely and fun.
 
-It’s comprehensive with the qualifier of breadth rather than depth. In 822 pages, it would be impossible to cover everything in depth. But my book covers 
-topics that others leave out. This is the only C# book to cover new technologies like Blazor WebAssembly and ML.NET for machine learning as well as the 
-fundamentals of C# and the .NET class libraries. Many other books on the topic were written decades ago and even though they’ve been updated, they still 
-spend hundreds of pages on old technology like Windows Presentation Foundation.
+It’s comprehensive with the qualifier of breadth rather than depth. In 822 pages, it would be impossible to cover 
+everything in depth. But my book covers topics that others leave out. This is the only C# book to cover new 
+technologies like Blazor WebAssembly and ML.NET for machine learning as well as the fundamentals of C# and the 
+.NET class libraries. Many other books on the topic were written decades ago and even though they’ve been updated, 
+they still spend hundreds of pages on old technology like Windows Presentation Foundation.
 
 ## If a reader only took one thing from the book, what would you hope it was? 
 

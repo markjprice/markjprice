@@ -1,6 +1,6 @@
-### Hi there 👋, I am Mark Price. Teacher. Programmer. Writer.
+### Hi there 👋, I am Mark J. Price. Author. Programmer. Teacher.
 
-- 🤔 I’m currently working on the 7th edition of my book, *C# 11 and .NET 7 - Modern Cross-Platform Development Fundamentals*, planned to publish on November 8, 2022.
+- 🤔 I’m currently working on the 7th edition of my best selling book, *C# 11 and .NET 7 - Modern Cross-Platform Development Fundamentals*, scheduled to publish on November 8, 2022.
 - 🌱 You can read a [Q&A](q-and-a.md) with me.
 - 💬 Ask me about any issues that you might be having with the code in my books.
 - 📫 How to reach me: markjprice is also my Gmail account name.
@@ -19,7 +19,10 @@ I am eager to lead programming students, both experienced and new, into the chal
 - I'm adaptable and deal well with ambiguity in organizations of varying sizes and cultures.
 - I hold an Honours Bachelor’s Degree in Computer Science.
 
-I have written a guided learning book about C# and .NET. The latest is the sixth edition, C# 10 and .NET 6 - Modern Cross-Platform Development. 
+I have written a guided learning book about C# and .NET. The latest is the seventh edition, *C# 11 and .NET 7 - Modern Cross-Platform Development Fundamentals*, now available to pre-order on [Amazon](https://www.amazon.com/11-NET-Cross-Platform-Development-Fundamentals-dp-1803237805/dp/1803237805/) or [Packt's website](https://www.packtpub.com/product/c-11-and-net-7-modern-cross-platform-development-fundamentals/9781803237800).
+
+See all my books on [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/) or 
+[Packt's website](https://subscription.packtpub.com/search?query=mark+j.+price).
 
 ## Education and Certification
 

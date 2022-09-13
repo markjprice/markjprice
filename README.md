@@ -1,7 +1,7 @@
 ### Hi there 👋, I am Mark Price. Teacher. Programmer. Writer.
 
-- 🤔 I’m currently working on the 7th edition of my book, C# 11 and .NET 7 - Modern Cross-Platform Development, planned to publish in November 2022.
-- 🌱 I’m currently learning Cosmos DB to use a cloud-based data store.
+- 🤔 I’m currently working on the 7th edition of my book, *C# 11 and .NET 7 - Modern Cross-Platform Development Fundamentals*, planned to publish on November 8, 2022.
+- 🌱 You can read a [Q&A](q-and-a.md) with me.
 - 💬 Ask me about any issues that you might be having with the code in my books.
 - 📫 How to reach me: markjprice is also my Gmail account name.
 - ⚡ Michelle McNamara: "It’s chaos. Be kind."

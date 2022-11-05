@@ -5,6 +5,7 @@
 - 💬 Ask me about any issues that you might be having with the code in my books.
 - 📫 How to reach me: markjprice is also my Gmail account name.
 - ⚡ Michelle McNamara: "It’s chaos. Be kind."
+- 🦣 I am on <a rel="me" href="https://tech.lgbt/@markjprice">Mastodon</a>.
 
 ## What you should know about me
 
@@ -45,4 +46,3 @@ Since January 2016
 
 ### Google App Engine Qualified Developer
 One of less than one hundred worldwide.
-

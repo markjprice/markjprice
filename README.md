@@ -1,6 +1,7 @@
 ### Hi there 👋, I am Mark J. Price. Author. Programmer. Teacher.
 
-- 🤔 I’m currently working on the 7th edition of my best selling book, *C# 11 and .NET 7 - Modern Cross-Platform Development Fundamentals*, scheduled to publish on November 8, 2022.
+- 📖 You can get my books from [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/) or my publisher [Packt](https://subscription.packtpub.com/search?query=mark+j.+price) or any good book store.
+- 🤔 I’m currently working on the 8th edition of my best selling book, *C# 12 and .NET 8 - Modern Cross-Platform Development Fundamentals*, scheduled to publish on November 7, 2023, and the 2nd edition of my book, *Apps and Services with .NET 8*, scheduled to publish on November 14, 2023.
 - 🌱 You can read a [Q&A](q-and-a.md) with me.
 - 💬 Ask me about any issues that you might be having with the code in my books.
 - 📫 How to reach me: markjprice is also my Gmail account name.

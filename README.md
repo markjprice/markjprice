@@ -1,16 +1,16 @@
-### Hi there 👋, I am Mark J. Price. Author. Programmer. Teacher.
+## Hi there 👋, I am Mark J. Price. Author. Programmer. Teacher.
 
 - 📖 You can get my books from [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/) or my publisher [Packt](https://subscription.packtpub.com/search?query=mark+j.+price) or any good book store.
-- 🤔 I’m currently working on the 8th edition of my best selling book, *C# 12 and .NET 8 - Modern Cross-Platform Development Fundamentals*, scheduled to publish on November 7, 2023, and the 2nd edition of my book, *Apps and Services with .NET 8*, scheduled to publish on November 14, 2023.
+- 🤔 I’m currently working on the 8th edition of my best selling book, [C# 12 and .NET 8 - Modern Cross-Platform Development Fundamentals](https://github.com/markjprice/cs12dotnet8/blob/main/README.md), scheduled to publish on November 14, 2023, and the 2nd edition of my book, [Apps and Services with .NET 8](https://github.com/markjprice/apps-services-net8/blob/main/README.md), scheduled to publish on December 12, 2023.
 - 🌱 You can read a [Q&A](q-and-a.md) with me.
 - 💬 Ask me about any issues that you might be having with the code in my books.
-- 📫 How to reach me: markjprice is also my Gmail account name.
+- 📫 How to reach me: `markjprice` is also my Gmail account name.
 - ⚡ Michelle McNamara: "It’s chaos. Be kind."
 - 🦣 I am on <a rel="me" href="https://tech.lgbt/@markjprice">Mastodon</a>.
 
-## What you should know about me
+# What you should know about me
 
-An ex-Microsoft Certified Trainer (MCT) with more than 30 years’ experience in the IT industry, including two years working full-time for Microsoft’s Training and Certification group in Redmond, USA, I specialize in training that leads to developer certifications.
+An ex-**Microsoft Certified Trainer (MCT)** with more than 30 years’ experience in the IT industry, including two years working full-time for Microsoft’s Training and Certification group in Redmond, USA, I specialize in training that leads to developer certifications.
 
 I am eager to lead programming students, both experienced and new, into the challenging worlds of web, cloud, and mobile computing using a rare combination of thirty years’ education experience coupled with real world consulting and developing production systems for enterprises worldwide.
 
@@ -26,24 +26,24 @@ I have written a guided learning book about C# and .NET. The latest is the seven
 See all my books on [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/) or 
 [Packt's website](https://subscription.packtpub.com/search?query=mark+j.+price).
 
-## Education and Certification
+# Education and Certification
 
 Highly qualified and experienced.
 
-### Microsoft Certified Solutions Developer (MCSD)
+## Microsoft Certified Solutions Developer (MCSD)
 Web Applications, Universal Windows Platform, Windows Store Apps Using C#, SharePoint Developer
 
-### Microsoft Specialist
+## Microsoft Specialist
 Programming in C#, Programming in HTML5 with JavaScript & CSS3, Developing Microsoft Azure Solutions, Architecting Microsoft Azure Solutions
 
-### Microsoft Certified Trainer (MCT)
+## Microsoft Certified Trainer (MCT)
 1993 - 2017
 
-### Computer Science (BSc. Hons.)
+## Computer Science (BSc. Hons.)
 University of Bristol, June 1993
 
-### Professional Scrum Master I
+## Professional Scrum Master I
 Since January 2016
 
-### Google App Engine Qualified Developer
+## Google App Engine Qualified Developer
 One of less than one hundred worldwide.

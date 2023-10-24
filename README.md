@@ -1,7 +1,7 @@
 ## Hi there 👋, I am Mark J. Price. Author. Programmer. Teacher.
 
 - 📖 You can get my books from [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/) or my publisher [Packt](https://subscription.packtpub.com/search?query=mark+j.+price) or any good book store.
-- 🤔 I’m currently working on the 8th edition of my best selling book, [C# 12 and .NET 8 - Modern Cross-Platform Development Fundamentals](https://github.com/markjprice/cs12dotnet8/blob/main/README.md), scheduled to publish on November 14, 2023, and the 2nd edition of my book, [Apps and Services with .NET 8](https://github.com/markjprice/apps-services-net8/blob/main/README.md), scheduled to publish on December 12, 2023.
+- 🤔 I’m currently working on the .NET 8 editions of my best selling books, [C# 12 and .NET 8 - Modern Cross-Platform Development Fundamentals](https://github.com/markjprice/cs12dotnet8/blob/main/README.md), scheduled to publish on November 14, 2023, the 2nd edition of my book, [Apps and Services with .NET 8](https://github.com/markjprice/apps-services-net8/blob/main/README.md), scheduled to publish on December 12, 2023, and *Tools and Skills for .NET 8 Pros*, coming in 2024.
 - 🌱 You can read a [Q&A](q-and-a.md) with me.
 - 💬 Ask me about any issues that you might be having with the code in my books.
 - 📫 How to reach me: `markjprice` is also my Gmail account name.
@@ -21,7 +21,10 @@ I am eager to lead programming students, both experienced and new, into the chal
 - I'm adaptable and deal well with ambiguity in organizations of varying sizes and cultures.
 - I hold an Honours Bachelor’s Degree in Computer Science.
 
-I have written a guided learning book about C# and .NET. The latest is the seventh edition, *C# 11 and .NET 7 - Modern Cross-Platform Development Fundamentals*, now available to pre-order on [Amazon](https://www.amazon.com/11-NET-Cross-Platform-Development-Fundamentals-dp-1803237805/dp/1803237805/) or [Packt's website](https://www.packtpub.com/product/c-11-and-net-7-modern-cross-platform-development-fundamentals/9781803237800).
+I have written a trilogy of guided learning books about C# and .NET:
+- [C# 12 and .NET 8 - Modern Cross-Platform Development Fundamentals](https://github.com/markjprice/cs12dotnet8/blob/main/README.md)
+- [Apps and Services with .NET 8](https://github.com/markjprice/apps-services-net8/blob/main/README.md)
+- Tools and Skills for .NET 8 Pros (coming in 2024)
 
 See all my books on [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/) or 
 [Packt's website](https://subscription.packtpub.com/search?query=mark+j.+price).

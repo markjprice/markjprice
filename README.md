@@ -52,3 +52,8 @@ Highly qualified and experienced.
 
 ## Computer Science (BSc. Hons.)
 University of Bristol, June 1993
+
+# Useful links
+
+- [Top .NET Videos & Live Streams of 2024](https://devblogs.microsoft.com/dotnet/top-dotnet-videos-live-streams-of-2024/)
+- [Top .NET Blogs Posts of 2024](https://devblogs.microsoft.com/dotnet/top-dotnet-blogs-posts-of-2024/)

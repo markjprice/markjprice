@@ -3,6 +3,7 @@
 - [What are my .NET books?](#what-are-my-net-books)
 - [Read the C# and .NET fundamentals first](#read-the-c-and-net-fundamentals-first)
 - [What are your goals?](#what-are-your-goals)
+- [Table of topics in my .NET 10 and other Packt books](#table-of-topics-in-my-net-10-and-other-packt-books)
 - [Summary](#summary)
 
 > **TLDR**; If you are new to .NET then read *C# 13 and .NET 9 - Modern Cross-Platform Development Fundamentals* first. Aftet that, you can read any of the other books in any order.
@@ -44,10 +45,10 @@ Which book should you read next? It depends on your goals:
   - [.NET MAUI Cross-Platform Application Development](https://www.amazon.com/NET-MAUI-Cross-Platform-Application-Development/dp/1835080596/)
   - [The MVVM Pattern in .NET MAUI](https://www.amazon.com/dp/1805125001/)
 
+# Table of topics in my .NET 10 and other Packt books
+
+![Table of topics](assets/topic-table.png)
+
 # Summary
 
-Title|C# 12 and .NET 8|Tools and Skills for .NET 8|Apps and Services with .NET 8
----|---|---|---
-Topics|C# language, .NET libraries, modern web development|Git, documentation, cryptography, dynamic programming, LLMs, Docker, .NET Aspire, design patterns and practices, solution and software architecture|SQL Server, Cosmos DB, Web API, GraphQL, gRPC, SignalR, .NET MAUI, Blazor, ASP.NET Core MVC, globalization and localization, third-party libraries like FluentValidation
-Audience|Students, Professionals, Hobbyists|Students, Professionals|Students, Professionals
-Level|Beginner-to-intermediate|Beginner-to-intermediate|Beginner-to-intermediate
+![Read my books in this order](assets/book-order.png)

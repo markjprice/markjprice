@@ -38,7 +38,7 @@ Which book should you read next? It depends on your goals:
 - If your goal is to learn to build websites and services using mature and proven .NET technologies used by enterprises and consultancies in the real world, then read *Real-World Web Development with .NET 9* next.
 - If your goal is to learn more technologies to build modern .NET projects, or you mostly work on solo projects, then read *Apps and Services with .NET 8* next.
 - If your goal is to become a professional .NET developer as quickly as possible, or you mostly work on team projects, then read *Tools and Skills for .NET 8* next.
-- If your goal is to learn more details about architecting .NET projects, then you might be better off getting a book from another author like:
+- If your goal is to learn more details about architecting .NET projects, or implementing design patterns with ASP.NET Core, then you might be better off getting a book from another author like:
   - [Software Architecture with C# 12 and .NET 8](https://www.amazon.com/dp/1805127659/)
   - [Architecting ASP.NET Core Applications](https://www.amazon.com/Architecting-ASP-NET-Core-Applications-atypical/dp/1805123386/)
 - If your goal is to build apps for your own use because you are a hobbyist or retiree, then you might be better off getting a book from another author like:

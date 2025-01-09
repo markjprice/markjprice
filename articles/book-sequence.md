@@ -6,7 +6,7 @@
 - [Table of topics in my .NET 10 and other Packt books](#table-of-topics-in-my-net-10-and-other-packt-books)
 - [Summary](#summary)
 
-> **TLDR**; If you are new to .NET then read *C# 13 and .NET 9 - Modern Cross-Platform Development Fundamentals* first. Aftet that, you can read any of the other books in any order.
+> **TLDR**; If you are new to .NET then read *C# 13 and .NET 9 - Modern Cross-Platform Development Fundamentals* first. After that, you can read any of the other books in any order.
 
 # What are my .NET books?
 

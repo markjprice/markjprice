@@ -4,6 +4,7 @@
   - [Is there a roadmap that shows what order to learn .NET technologies?](#is-there-a-roadmap-that-shows-what-order-to-learn-net-technologies)
   - [What order should I read your books?](#what-order-should-i-read-your-books)
   - [Will there be .NET 9 editions of your other books? What about future versions of .NET?](#will-there-be-net-9-editions-of-your-other-books-what-about-future-versions-of-net)
+  - [Are there slide decks for your books for educational use?](#are-there-slide-decks-for-your-books-for-educational-use)
 - [Questions about book distribution and pricing](#questions-about-book-distribution-and-pricing)
   - [How to get a Packt book you have purchased as a PDF](#how-to-get-a-packt-book-you-have-purchased-as-a-pdf)
   - [Where can I buy your books in my country? When will a book be published in my country?](#where-can-i-buy-your-books-in-my-country-when-will-a-book-be-published-in-my-country)
@@ -36,6 +37,10 @@ Starting in November 2025, my plan* is that all four .NET books will be updated 
 ![Quartet of .NET 10 books](assets/quartet-net10.png)
 
 *Plan not guaranteed!
+
+## Are there slide decks for your books for educational use?
+
+No, I have not created slide decks to match the content of my books. I have had only three requests for slide decks from teachers over the past ten years so that they can more easily use my books in their courses so there isn't enough demand to make it worthwhile. But if any teachers want to contact me to discuss what a slide deck would need to look like to be useful to them, then please contact me (markjprice@gmail.com) and we can arrange a video call to discuss details and perhaps I will do something for the .NET 10 edition.
 
 # Questions about book distribution and pricing
 

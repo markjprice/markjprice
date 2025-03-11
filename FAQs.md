@@ -7,6 +7,7 @@
   - [Are there slide decks for your books for educational use?](#are-there-slide-decks-for-your-books-for-educational-use)
 - [Questions about book distribution and pricing](#questions-about-book-distribution-and-pricing)
   - [How to get a Packt book you have purchased as a PDF](#how-to-get-a-packt-book-you-have-purchased-as-a-pdf)
+  - [Will I be able to download a newer copy or will I have to pay anything for the newer edition?](#will-i-be-able-to-download-a-newer-copy-or-will-i-have-to-pay-anything-for-the-newer-edition)
   - [Where can I buy your books in my country? When will a book be published in my country?](#where-can-i-buy-your-books-in-my-country-when-will-a-book-be-published-in-my-country)
   - [Can you give me a free copy of your book? Can you give me permission to read an illegal copy of your book?](#can-you-give-me-a-free-copy-of-your-book-can-you-give-me-permission-to-read-an-illegal-copy-of-your-book)
 
@@ -66,6 +67,10 @@ My .NET 8 books on Packt's website:
 - [C# 12 and .NET 8 – Modern Cross-Platform Development Fundamentals](https://www.packtpub.com/en-us/product/c-12-and-net-8-modern-cross-platform-development-fundamentals-9781837635870)
 - [Apps and Services with .NET 8](https://www.packtpub.com/en-us/product/apps-and-services-with-net-8-9781837637133)
 - [Tools and Skills for .NET 8](https://www.packtpub.com/en-us/product/tools-and-skills-for-net-8-9781837635207)
+
+## Will I be able to download a newer copy or will I have to pay anything for the newer edition?
+
+Readers must pay for individual new editions. Some publishers offer subscription services to get access to new editions. For example, Packt Subscription: https://www.packtpub.com/subscribe
 
 ## Where can I buy your books in my country? When will a book be published in my country?
 

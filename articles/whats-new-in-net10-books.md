@@ -1,22 +1,36 @@
 **What's New in your .NET 10 books?**
 
-The .NET 10 editions of my quartet of .NET books cover the following new features in C# 14 and .NET 10.
+The .NET 10 editions of my quartet of .NET books cover the following new features in C# 14 and .NET 10, including ASP.NET Core 10 and EF Core 10.
 
 - [C# 14 and .NET 10 - Modern Cross-Platform Development Fundamentals](#c-14-and-net-10---modern-cross-platform-development-fundamentals)
   - [Chapter 1 - Hello, C#! Welcome, .NET!](#chapter-1---hello-c-welcome-net)
     - [Solution Evolution - `.sln`, `.slnx`, and `.slnf`](#solution-evolution---sln-slnx-and-slnf)
       - [XML Solution Files `.slnx`](#xml-solution-files-slnx)
       - [Solution Filter Files `.slnf`](#solution-filter-files-slnf)
+  - [Chapter 2 - Speaking C#](#chapter-2---speaking-c)
+    - [Unbound generic support for `nameof`](#unbound-generic-support-for-nameof)
   - [Chapter 5 - Building Your Own Types with Object-Oriented Programming](#chapter-5---building-your-own-types-with-object-oriented-programming)
-    - [Union Types](#union-types)
     - [Partial Members](#partial-members)
+    - [Union Types](#union-types)
   - [Chapter 7 - Packaging and Distributing .NET Types](#chapter-7---packaging-and-distributing-net-types)
     - [New Noun-First Alias for `dotnet` CLI commmands](#new-noun-first-alias-for-dotnet-cli-commmands)
+  - [Chapter 8 - Working with Common .NET Types](#chapter-8---working-with-common-net-types)
+    - [Numeric Ordering for String Comparison](#numeric-ordering-for-string-comparison)
+    - [Additional `TryAdd` and `TryGetValue` overloads for `OrderedDictionary<TKey, TValue>`](#additional-tryadd-and-trygetvalue-overloads-for-ordereddictionarytkey-tvalue)
   - [Chapter 11 - Querying and Manipulating Data Using LINQ](#chapter-11---querying-and-manipulating-data-using-linq)
     - [LeftJoin and RightJoin LINQ methods](#leftjoin-and-rightjoin-linq-methods)
+  - [Chapter 14 - Building Interactive Web Components Using Blazor](#chapter-14---building-interactive-web-components-using-blazor)
+    - [QuickGrid RowClass parameter](#quickgrid-rowclass-parameter)
   - [Chapter 15 - Building and Consuming Web Services](#chapter-15---building-and-consuming-web-services)
+    - [OpenAPI 3.1 support](#openapi-31-support)
+    - [Generate OpenAPI documents in YAML format](#generate-openapi-documents-in-yaml-format)
+    - [Response description on `ProducesResponseType`](#response-description-on-producesresponsetype)
     - [Populate XML doc comments into OpenAPI document](#populate-xml-doc-comments-into-openapi-document)
+    - [Detect if URL is local using RedirectHttpResult.IsLocalUrl](#detect-if-url-is-local-using-redirecthttpresultislocalurl)
 - [Real-World Web Development with .NET 10](#real-world-web-development-with-net-10)
+  - [Chapter 9 - Building Web Services Using ASP.NET Core Web API](#chapter-9---building-web-services-using-aspnet-core-web-api)
+  - [Chapter 10 - Integration Testing and Building Clients for Web Services](#chapter-10---integration-testing-and-building-clients-for-web-services)
+    - [Improvements to integration testing of apps with top-level statements](#improvements-to-integration-testing-of-apps-with-top-level-statements)
 - [Apps and Services with .NET 10](#apps-and-services-with-net-10)
 - [Tools and Skills for .NET 10](#tools-and-skills-for-net-10)
 
@@ -131,11 +145,13 @@ Learn more about solution filters at the following links:
 - [Solution filters in MSBuild](https://learn.microsoft.com/en-us/visualstudio/msbuild/solution-filters)
 - [JetBrains Rider - Work with solution filters](https://www.jetbrains.com/help/rider/Solution_filters.html)
 
+## Chapter 2 - Speaking C#
+
+### Unbound generic support for `nameof`
+
+The argument to a `nameof` expression can be an unbound generic type, like `List<>`. The result of the expression is `"List"`. Previously, you'd need to supply a type argument for each type parameter.
+
 ## Chapter 5 - Building Your Own Types with Object-Oriented Programming
-
-### Union Types
-
-
 
 ### Partial Members
 
@@ -162,7 +178,7 @@ Partial Methods|C# 3|2007
 Partial Properties|C# 13|2024
 Partial Events, Instance Contructors, `field` keyword|C# 14|2025
 
-> **Note**: The `field` keyword was a preview feature in C# 13. You must target .NET 9 and set the `<LangVersion>` element to `preview` in your project file in order to use the `field` contextual keyword. In C# 14 and later, the `field` keyword is available as standard.
+> **Note**: The `field` keyword was a preview feature in C# 13. You must target .NET 9 and set the `<LangVersion>` element to `preview` in your project file in order to use the `field` contextual keyword. In C# 14 and later, the `field` keyword is available as standard. Learn more at the following link: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/field.
 
 > **Warning!** Partial properties, indexers, and events can't use auto-implemented syntax for the implementing declaration because the defining declaration uses the same syntax.
 
@@ -175,6 +191,10 @@ Learn more from the Microsoft Learn documentation:
 - [15.6.9 Partial methods](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/classes#1569-partial-methods)
 - [Partial properties](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-13.0/partial-properties)
 - [Partial Events and Constructors](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/partial-events-and-constructors)
+
+### Union Types
+
+> **Note**: Union Types will not be officially supported in C# 14 and .NET 10, but they might be available in preview, and they are likely to be supported in future versions, so I plan to add an online-only section about them and related third-party libraries that provide similar features today.
 
 ## Chapter 7 - Packaging and Distributing .NET Types
 
@@ -193,6 +213,59 @@ These commands exist in the current versions of the dotnet CLI, but only in verb
 Noun-first forms have become a general standard for CLI applications, so this change will make the `dotnet` CLI more consistent with other CLI tools. The verb-first forms will continue to work in .NET 10, but Microsoft recommends that you use the noun-first forms to make your scripts and documentation more readable and easier to understand. In the .NET 10 editions of all my books I will switch to the noun-first forms.
 
 > The `dotnet add project` command is first introduced in *Chapter 4* when referencing a class library project in the *Creating a class library that needs testing* section. The `dotnet add package` command is first introduced at the end of *Chapter 4* in an optional online section about logging, [Adding packages to a project in VS Code](https://github.com/markjprice/cs13net9/blob/main/docs/ch04-logging.md#adding-packages-to-a-project-in-vs-code). I will switch to using the noun-first forms in those tasks.
+
+## Chapter 8 - Working with Common .NET Types
+
+### Numeric Ordering for String Comparison
+
+Numerical string comparison is a highly requested feature for comparing strings numerically instead of lexicographically. For example, `2` is less than `10`, so `"2"` should appear before `"10"` when ordered numerically. Similarly, `"2"` and `"02"` are equal numerically. With the new `CompareOptions.NumericOrdering` option, it is now possible to do these types of comparisons, as shown in the following code:
+```cs
+StringComparer numericStringComparer = StringComparer.Create(CultureInfo.CurrentCulture, CompareOptions.NumericOrdering);
+
+Console.WriteLine(numericStringComparer.Equals("02", "2"));
+// Output: True
+
+foreach (string os in new[] { "Windows 10", "Windows 8", "Windows 11" }.Order(numericStringComparer))
+{
+  Console.WriteLine(os);
+}
+
+// Output:
+// Windows 8
+// Windows 10
+// Windows 11
+
+HashSet<string> set = new(numericStringComparer) { "007" };
+Console.WriteLine(set.Contains("7"));
+// Output: True
+```
+
+### Additional `TryAdd` and `TryGetValue` overloads for `OrderedDictionary<TKey, TValue>`
+
+`OrderedDictionary<TKey, TValue>` provides `TryAdd` and `TryGetValue` for addition and retrieval. There are scenarios where you might want to perform additional operations, so new overloads have been added which return an index to the entry, as shown in the following code:
+```cs
+public class OrderedDictionary<TKey, TValue>
+{
+  // New overloads
+  public bool TryAdd(TKey key, TValue value, out int index);
+  public bool TryGetValue(TKey key, out TValue value, out int index);
+}
+```
+This index can then be used with `GetAt`/`SetAt` for fast access to the entry. An example usage of the new `TryAdd` overload is to add or update a key/value pair in the ordered dictionary, as shown in the following code:
+```cs
+public static void IncrementValue(OrderedDictionary<string, int> orderedDictionary, string key)
+{
+  // Try to add a new key with value 1.
+  if (!orderedDictionary.TryAdd(key, 1, out int index))
+  {
+    // Key was present, so increment the existing value instead.
+    int value = orderedDictionary.GetAt(index).Value;
+    orderedDictionary.SetAt(index, value + 1);
+  }
+}
+```
+
+This new API is now being used in `JsonObject` to improve the performance of updating properties by 10-20%.
 
 ## Chapter 11 - Querying and Manipulating Data Using LINQ
 
@@ -235,7 +308,65 @@ var query = students
 
 > **More Information**: Support the new .NET 10 LeftJoin operators: https://github.com/dotnet/efcore/issues/12793.
 
+## Chapter 14 - Building Interactive Web Components Using Blazor
+
+### QuickGrid RowClass parameter
+
+Apply a stylesheet class to a row of the grid based on the row item using the new `RowClass` parameter. In the following example, the `ApplyRowStyle` method is called on each row to conditionally apply a stylesheet class based on the row item:
+```xml
+<QuickGrid ... RowClass="ApplyRowStyle">
+    ...
+</QuickGrid>
+```
+```cs
+@code {
+    private string ApplyRowStyle({TYPE} rowItem) =>
+        rowItem.{PROPERTY} == {VALUE} ? "{CSS STYLE CLASS}" : null;
+}
+```
+
 ## Chapter 15 - Building and Consuming Web Services
+
+### OpenAPI 3.1 support
+
+ASP.NET Core has added support for generating OpenAPI version 3.1 documents in .NET 10. The default OpenAPI version for generated documents will be 3.1, but you can change this by setting the `OpenApiVersion` property of the `OpenApiOptions` in the delegate parameter of `AddOpenApi`, as shown in the following code:
+```cs
+builder.Services.AddOpenApi(options =>
+{
+    // Specify the OpenAPI version to use.
+    options.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi3_0;
+});
+```
+
+### Generate OpenAPI documents in YAML format
+
+ASP.NET now supports serving the generated OpenAPI document in YAML format. YAML can be more concise than JSON, eliminating curly braces and quotation marks when these can be inferred. YAML also supports multi-line strings, which can be useful for long descriptions.
+
+To configure your application to serve the generated OpenAPI document in YAML format, specify the endpoint in the MapOpenApi call with a ".yaml" or ".yml" suffix, as shown in the following code:
+```cs
+app.MapOpenApi("/openapi/{documentName}.yaml");
+```
+
+### Response description on `ProducesResponseType`
+
+`ProducesAttribute`, `ProducesResponseTypeAttribute`, and `ProducesDefaultResponseType` now accept an optional `string` parameter, `Description`, that will set the description of the response in the generated OpenAPI document.
+```cs
+[HttpGet(Name = "GetWeatherForecast")]
+[ProducesResponseType<IEnumerable<WeatherForecast>>(StatusCodes.Status200OK, Description = "The weather forecast for the next 5 days.")]
+public IEnumerable<WeatherForecast> Get()
+{
+  ...
+}
+```
+Generated OpenAPI response:
+```json
+"responses": {
+  "200": {
+    "description": "The weather forecast for the next 5 days.",
+    "content": { ... }
+  }
+}
+```
 
 ### Populate XML doc comments into OpenAPI document
 
@@ -279,10 +410,69 @@ static partial class Program
 }
 ```
 
+### Detect if URL is local using RedirectHttpResult.IsLocalUrl
+
+Use the new `RedirectHttpResult.IsLocalUrl(url)` helper method to detect if a URL is local. A URL is considered local if it does not have the host or authority part and it has an absolute path. This method is useful for validating URLs before redirecting to them to prevent open redirection attacks, as shown in the following code:
+```cs
+if (RedirectHttpResult.IsLocalUrl(url))
+{
+    return Results.LocalRedirect(url);
+}
+```
+
 # Real-World Web Development with .NET 10
 
+I will be slightly rebalancing chapters in this edition:
+
+1. Introducing Real-World Web Development with .NET
+2. Building Websites Using ASP.NET Core MVC
+3. Model Binding, Validation, and Data Using EF Core
+4. Building and Localizing Web User Interfaces
+5. Authentication and Authorization
+6. Performance Optimization Using Caching
+7. Web User Interface Testing Using Playwright
+8. Configuring and Containerizing ASP.NET Core Projects
+9. Building Web Services Using ASP.NET Core Web API
+10. Integration Testing and Building Clients for Web Services
+11. Building Web Services Using ASP.NET Core OData
+12. Building Web Services Using FastEndpoints
+13. Web Content Management Using Umbraco CMS
+14. Customizing and Extending Umbraco CMS
+
+## Chapter 9 - Building Web Services Using ASP.NET Core Web API
+
+
+
+## Chapter 10 - Integration Testing and Building Clients for Web Services
+
+### Improvements to integration testing of apps with top-level statements
+
+.NET 10 now has better support for testing apps that use top-level statements. In the 1st edition, I had to manually add `public partial class Program` to the `Program.cs` file so that the test project could reference the `Program` class. This is because the top-level statement feature generates a `Program` class that is declared as `internal`.
+
+Explicitly declaring the `Program` class to be `public` to use it in an integration test project:
+https://github.com/markjprice/web-dev-net9/blob/main/code/MatureWeb/Northwind.WebApi/Program.cs#L8
+
+In .NET 10, a source generator is used to generate the `public partial class Program` declaration if the developer did not declare it explicitly. In addition, an analyzer was added to detect when `public partial class Program` is declared explicitly and advise the developer to remove it.
+
+In the .NET 10 edition, I will explain this improvement so readers who need to continue to use older versions of .NET will still be able to write integration tests.
 
 # Apps and Services with .NET 10
+
+I will be slightly reorganizing chapters in this edition. This includes moving the "Apps" chapters to the beginnning of the book, adding Avalonia for desktop apps, and removing all dependencies on Azure cloud features:
+1. Introducing Apps and Services with .NET
+2. Building Mobile Apps Using .NET MAUI
+3. Building Desktop Apps Using Avalonia
+4. Building Web Apps Using Blazor
+5. Implementing Popular Third-Party Libraries
+6. Handling Dates, Times, and Internationalization
+7. Managing Relational Data Using SQL
+8. Building Entity Models Using EF Core
+9. Building a Custom LLM-based Service
+10. Building and Securing Minimal API Web Services
+11. Caching, Queuing, and Resilient Background Services
+12. Broadcasting Real-Time Communication Using SignalR
+13. Combining Data Sources Using GraphQL Services
+14. Building Efficient Microservices Using gRPC
 
 
 # Tools and Skills for .NET 10

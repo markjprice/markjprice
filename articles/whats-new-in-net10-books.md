@@ -118,7 +118,7 @@ The team is working on providing support for the `.slnx` format across various t
 
 To improve performance when opening large solutions, Visual Studio 2019 introduced solution filtering. Solution filtering lets you open a solution with only selective projects loaded. Loading a subset of projects in a solution decreases solution load, build, and test run time, and enables more focused review.
 
-> **Note**: Although solution filtering is not a new feature, I have note covered it in previous editions of my books. I plan to cover it in all my .NET 10 editions. 
+> **Note**: Although solution filtering is not a new feature, I have not covered it in previous editions of my books. I plan to cover it in all my .NET 10 editions, in more depth in the *Fundamentals* book, and briefly in the other books with a reference to an online article about it for more details. 
 
 Solution filter files are JSON files with the extension `.slnf` that indicate which projects to build or load from all the projects in a solution. Starting with MSBuild 16.7, you can invoke MSBuild on the solution filter file to build the solution with filtering enabled.
 

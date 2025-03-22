@@ -1,6 +1,8 @@
 **What's New in your .NET 10 books?**
 
-The .NET 10 editions of my quartet of .NET books cover the following new features in C# 14 and .NET 10, including ASP.NET Core 10 and EF Core 10.
+In the .NET 10 editions of my books I plan to cover the following new features expected in C# 14, .NET 10, ASP.NET Core 10, and EF Core 10.
+
+> **Note**: This document is based on .NET 10 Preview 1 and 2. Microsoft might remove any of these features before the final version of .NET 10 that is expected in November 2025.
 
 - [C# 14 and .NET 10 - Modern Cross-Platform Development Fundamentals](#c-14-and-net-10---modern-cross-platform-development-fundamentals)
   - [Chapter 1 - Hello, C#! Welcome, .NET!](#chapter-1---hello-c-welcome-net)
@@ -42,7 +44,7 @@ The .NET 10 editions of my quartet of .NET books cover the following new feature
 ### Solution Evolution - `.sln`, `.slnx`, and `.slnf`
 
 Visual Studio allows multiple projects to be grouped and opened together using a solution file `.sln`. The format of this file is a custom plain text file. In *Chapter 1*, the reader creates a solution file that references two projects. If the reader opens the solution file, it would look like the following:
-```yaml
+```
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.35906.104
@@ -123,7 +125,8 @@ For example, in *Chapter 3*, the reader creates six projects during the tasks in
       "SelectionStatements\\SelectionStatements.csproj"
     ]
   }
-}```
+}
+```
 
 `Chapter03-Exercises.slnf` looks like the following JSON:
 ```json
@@ -306,7 +309,7 @@ var query = students
 
 .NET 10 Preview 2 added support for the `RightJoin` operator which keeps all the data from the second collection and only the matching data from the first collection. EF Core 10 translates this to `RIGHT JOIN` operation in the database.
 
-> **More Information**: Support the new .NET 10 LeftJoin operators: https://github.com/dotnet/efcore/issues/12793.
+> **More Information**: Support the new .NET 10 `LeftJoin` operators: https://github.com/dotnet/efcore/issues/12793.
 
 ## Chapter 14 - Building Interactive Web Components Using Blazor
 

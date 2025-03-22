@@ -3,6 +3,7 @@
 - [Questions about book content](#questions-about-book-content)
   - [Is there a roadmap that shows what order to learn .NET technologies?](#is-there-a-roadmap-that-shows-what-order-to-learn-net-technologies)
   - [What order should I read your books?](#what-order-should-i-read-your-books)
+  - [What's New in your .NET 10 books?](#whats-new-in-your-net-10-books)
   - [Will there be editions of your books for future versions of .NET?](#will-there-be-editions-of-your-books-for-future-versions-of-net)
   - [Are there slide decks for your books for educational use?](#are-there-slide-decks-for-your-books-for-educational-use)
 - [Questions about book distribution and pricing](#questions-about-book-distribution-and-pricing)
@@ -25,6 +26,10 @@ Some decent .NET road maps include:
 ## What order should I read your books?
 
 I have written an article about this here: [What order should I read your books?](articles/book-sequence.md).
+
+## What's New in your .NET 10 books?
+
+I have written an article about this here: [What's New in your .NET 10 books?](articles/whats-new-in-net10-books.md).
 
 ## Will there be editions of your books for future versions of .NET?
 

@@ -8,6 +8,8 @@ In the .NET 10 editions of my books I plan to cover the following new features e
   - [Chapter 1 - Hello, C#! Welcome, .NET!](#chapter-1---hello-c-welcome-net)
     - [Solution Evolution - `.sln`, `.slnx`, and `.slnf`](#solution-evolution---sln-slnx-and-slnf)
       - [XML Solution Files `.slnx`](#xml-solution-files-slnx)
+      - [Visual Studio support for XML Solution Files](#visual-studio-support-for-xml-solution-files)
+      - [Other tool support for XML Solution Files](#other-tool-support-for-xml-solution-files)
       - [Solution Filter Files `.slnf`](#solution-filter-files-slnf)
   - [Chapter 2 - Speaking C#](#chapter-2---speaking-c)
     - [Unbound generic support for `nameof`](#unbound-generic-support-for-nameof)
@@ -89,11 +91,24 @@ A replacement syntax is currently in preview, uses XML, and has the `.slnx` file
 </Solution>
 ```
 
+This is much easier to work with!
+
+> **More Information**: Learn more at the following link: https://devblogs.microsoft.com/visualstudio/new-simpler-solution-file-format/.
+
+#### Visual Studio support for XML Solution Files
+
 To use the new format in Visual Studio, enable the feature in **Options**, as shown in the following screenshot:
 ![Enabling .slnx format in Visual Studio | Options](assets/slnx-options.png)
 
 Then open a solution and save it as the new format, as shown in the following screenshot:
 ![Saving a solution using the .slnx format](assets/slnx-save-as.png)
+
+#### Other tool support for XML Solution Files
+
+The team is working on providing support for the `.slnx` format across various tools and environments:
+- **MSBuild**: MSBuild now fully supports the `.slnx` format, enabling seamless integration with the .NET and C++ build systems.
+- **.NET CLI**: The `dotnet` CLI has been updated to handle `.slnx` files, providing consistent experience for managing solutions directly from the command line.
+- **C# Dev Kit for VS Code**: This now fully supports the `.slnx` format, making it easier to work with solution files within the VS Code environment.
 
 > **Warning!** Although you can have both solution file formats in the same directory, it is recommended to only use one or the other to avoid cofusing the build tools and other humans.
 
@@ -142,6 +157,8 @@ For example, in *Chapter 3*, the reader creates six projects during the tasks in
   }
 }
 ```
+
+> **Warning!** Solution filter files are tied to a specific solution file. If you migrate your solution from `.sln` to `.slnx` then you’ll need to update the filter file to reference the new `.slnx` file, otherwise it will still try to open the old `.sln` file.
 
 Learn more about solution filters at the following links:
 - [Filtered solutions in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/ide/filtered-solutions)

@@ -126,7 +126,7 @@ Solution filter files are JSON files with the extension `.slnf` that indicate wh
 
 For example, in *Chapter 3*, the reader creates six projects during the tasks in that chapter, and optionally four exercises at the end of the chapter. The solution file references all ten projects. I also include two solution filters, one for tasks and one for exercises. 
 
-`Chapter03-Tasks.slnf` looks like the following JSON:
+[`Chapter03-Tasks.slnf`](https://github.com/markjprice/cs14net10/blob/main/code/Chapter03/Chapter03-Tasks.slnf) looks like the following JSON:
 ```json
 {
   "solution": {
@@ -143,7 +143,7 @@ For example, in *Chapter 3*, the reader creates six projects during the tasks in
 }
 ```
 
-`Chapter03-Exercises.slnf` looks like the following JSON:
+[`Chapter03-Exercises.slnf`](https://github.com/markjprice/cs14net10/blob/main/code/Chapter03/Chapter03-Exercises.slnf) looks like the following JSON:
 ```json
 {
   "solution": {

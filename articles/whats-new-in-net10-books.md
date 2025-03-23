@@ -105,14 +105,15 @@ Then open a solution and save it as the new format, as shown in the following sc
 
 #### Other tool support for XML Solution Files
 
-The team is working on providing support for the `.slnx` format across various tools and environments:
-- **MSBuild**: MSBuild now fully supports the `.slnx` format, enabling seamless integration with the .NET and C++ build systems.
-- **.NET CLI**: The `dotnet` CLI has been updated to handle `.slnx` files, providing consistent experience for managing solutions directly from the command line.
-- **C# Dev Kit for VS Code**: This now fully supports the `.slnx` format, making it easier to work with solution files within the VS Code environment.
+The team is working on providing support for the `.slnx` format across various tools and environments. Currently, the following tools support the `.slnx` format:
+- MSBuild
+- `dotnet` CLI
+- C# Dev Kit for VS Code
+- JetBrains Rider
 
-> **Warning!** Although you can have both solution file formats in the same directory, it is recommended to only use one or the other to avoid cofusing the build tools and other humans.
+> **Warning!** Although you can have both solution file formats in the same directory, it is recommended to only use one or the other to avoid confusing the build tools and other humans.
 
-> **Note**: This new **XML Solution File** format is still in preview at the time of writing in March 2025. Most code editors now support it, including Visual Studio, VS Code, and Rider. I think it is likely to officially leave preview and reach general availability status in May 2025 or November 2025.
+> **Note**: This new **XML Solution File** format is still in preview at the time of writing in March 2025. It is likely to officially leave preview and reach general availability status in May 2025 or November 2025.
 
 #### Solution Filter Files `.slnf`
 

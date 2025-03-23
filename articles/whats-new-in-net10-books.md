@@ -97,10 +97,12 @@ This is much easier to work with!
 
 #### Visual Studio support for XML Solution Files
 
-To use the new format in Visual Studio, enable the feature in **Options**, as shown in the following screenshot:
+To use the new XML solution format in Visual Studio, enable the feature in **Options**, as shown in the following screenshot:
+
 ![Enabling .slnx format in Visual Studio | Options](assets/slnx-options.png)
 
-Then open a solution and save it as the new format, as shown in the following screenshot:
+Then open an existing `.sln` solution file and save it as the new XML format, as shown in the following screenshot:
+
 ![Saving a solution using the .slnx format](assets/slnx-save-as.png)
 
 #### Other tool support for XML Solution Files
@@ -183,21 +185,25 @@ The `partial` keyword can decorate the following members:
 - Properties
 - Indexers
 - Events
-- Instance constructors
+- Instance Constructors
 
 But with C# 14 and earlier the `partial` keyword *cannot* decorate the following members:
-- Static constructors
+- Static Constructors
 - Finalizers
-- Overloaded operators
+- Overloaded Operators
 - Delegates
 - Enums
+
+A summary of what C# version and the year that these `partial` features where added to the language is shown in *Table 1*:
 
 Feature|Version|Year
 ---|---|---
 Partial Types|C# 2|2005
 Partial Methods|C# 3|2007
 Partial Properties|C# 13|2024
-Partial Events, Instance Contructors, `field` keyword|C# 14|2025
+Partial Events, Instance Constructors, `field` keyword|C# 14|2025
+
+*Table 1: `partial` feature, version, and year*
 
 > **Note**: The `field` keyword was a preview feature in C# 13. You must target .NET 9 and set the `<LangVersion>` element to `preview` in your project file in order to use the `field` contextual keyword. In C# 14 and later, the `field` keyword is available as standard. Learn more at the following link: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/field.
 

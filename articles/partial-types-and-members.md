@@ -2,7 +2,7 @@
 
 - [Introducing Partial Classes and Partial Members](#introducing-partial-classes-and-partial-members)
   - [Historical Timeline of Partial Features](#historical-timeline-of-partial-features)
-  - [Partial Classes – One Class, Multiple Files (C# 2)](#partial-classes--one-class-multiple-files-c-2)
+- [Partial Classes – One Class, Multiple Files (C# 2)](#partial-classes--one-class-multiple-files-c-2)
   - [Under the hood](#under-the-hood)
 - [Partial Methods – Extensibility Hooks in Generated Code (C# 3)](#partial-methods--extensibility-hooks-in-generated-code-c-3)
   - [Original restrictions](#original-restrictions)
@@ -54,7 +54,7 @@ As the table shows, partial **classes** were the first to arrive (back in C# 2),
 
 Next, let's dive into each of these in detail, see how they work, and look at examples from a (fictional) Lumon Industries codebase.
 
-## Partial Classes – One Class, Multiple Files (C# 2)
+# Partial Classes – One Class, Multiple Files (C# 2)
 
 A *partial class* is a class whose definition is split into two or more files. Each file has a `partial class ClassName` with some of the class's members, and together they form the complete class. 
 

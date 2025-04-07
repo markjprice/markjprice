@@ -266,7 +266,7 @@ A real-world scenario is implementing `INotifyPropertyChanged`: a source generat
 
 - The `field` keyword is only usable within the accessor of a **field-backed** property (which is the case here). It’s essentially a shortcut so you don’t have to declare a separate private field to store the value. You can use `field` in either or both of the accessors as needed. 
 
-> **Warning!** With C# 13 and .NET 9, to use the `field` contextual keyword you must set `<LangVersion>preview</LangVersion>` in your project file. The plan for C# 14 and .NET 10 is that `field` keyword will be officially available.
+> **Warning!** With C# 13 and .NET 9, to use the `field` contextual keyword you must set `<LangVersion>preview</LangVersion>` in your project file. The plan for C# 14 and .NET 10 is that `field` keyword will be officially available without opting into preview language features.
 
 - If you have a property with only a getter (readonly property), you could still make it partial, but then the implementing part would provide that getter’s body (perhaps computing something on the fly or retrieving from elsewhere).
 - You cannot create a partial auto-property that is fully implemented by the compiler alone – at least one part must supply logic. In our example, the “defining” part’s `{ get; set; }` is not actually implementing anything; it's more like a placeholder indicating the property has both `get` and `set`. The second part had to do the work.

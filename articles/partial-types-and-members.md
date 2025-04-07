@@ -1,5 +1,25 @@
 **Breaking Apart and Reassembling C# Classes**
 
+- [Introducing Partial Classes and Partial Members](#introducing-partial-classes-and-partial-members)
+  - [Historical Timeline of Partial Features](#historical-timeline-of-partial-features)
+  - [Partial Classes – One Class, Multiple Files (C# 2)](#partial-classes--one-class-multiple-files-c-2)
+  - [Under the hood](#under-the-hood)
+- [Partial Methods – Extensibility Hooks in Generated Code (C# 3)](#partial-methods--extensibility-hooks-in-generated-code-c-3)
+  - [Original restrictions](#original-restrictions)
+  - [C# 9 update](#c-9-update)
+  - [Example – Optional Notification Hook](#example--optional-notification-hook)
+- [Partial Properties (and Indexers) – Split Properties with Backing Fields (C# 13)](#partial-properties-and-indexers--split-properties-with-backing-fields-c-13)
+  - [Example – Department property with validation](#example--department-property-with-validation)
+  - [Important notes for partial properties](#important-notes-for-partial-properties)
+- [Partial Events – Customizing Event Behavior (Planned for C# 14)](#partial-events--customizing-event-behavior-planned-for-c-14)
+  - [Example – Partial event for data completion](#example--partial-event-for-data-completion)
+  - [Caveats and requirements](#caveats-and-requirements)
+- [Partial Instance Constructors – Building Objects in Pieces (Planned for C# 14)](#partial-instance-constructors--building-objects-in-pieces-planned-for-c-14)
+  - [Why would you want a partial constructor?](#why-would-you-want-a-partial-constructor)
+  - [Example – Conditional setup in Employee constructor](#example--conditional-setup-in-employee-constructor)
+- [Conclusion](#conclusion)
+
+
 # Introducing Partial Classes and Partial Members
 
 When building projects in C#, you may encounter scenarios where you want to split the definition of a class and its members across multiple files. This is exactly what **partial classes** and **partial members** allow you to do. 
@@ -11,10 +31,6 @@ This feature is especially helpful for keeping **automatically generated code** 
 We'll explore each type of partial feature in C# – from partial classes and partial methods that where introduced early in C#'s life, to properties, events, and constructors that are new in C# 13 and C# 14. 
 
 And just for fun (and clarity), the code examples will borrow characters and concepts from the TV series *Severance*. Think of a partial class like a *Lumon Industries* employee with a split personality: the “innie” part (at work) and the “outie” part (outside work) live in separate worlds but together make one person. Similarly, partial classes let different pieces of a class live in different files but unite as one class when compiled, or in Severage terms, reintegrated.
-
-> **More details in the official documentation**: 
-> - [Partial Classes and Members - C# | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods)
-> - [Partial type - C# reference | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/partial-type)
 
 ## Historical Timeline of Partial Features
 
@@ -455,7 +471,7 @@ It’s worth noting that while partial features are extremely useful in certain 
 
 By understanding partial classes and members, you can better navigate large C# projects (where designers or generators have been at work) and even create cleaner APIs yourself. Just like the employees in *Severance* eventually discover, sometimes having a clear separation can be extremely useful – as long as you remember that in the end, it all comes together to form a single whole!
 
-The official docs provide more examples and rules for using the `partial` keyword in types and members.
+The official documentation provides more examples and rules for using the `partial` keyword in types and members.
 - [Microsoft Learn – **Partial Classes and Methods**](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods)
 - [Microsoft Learn - **Partial type (C# Reference)**](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/partial-type)
 

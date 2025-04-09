@@ -1,4 +1,4 @@
-**Discriminated Union Types in C# (2025): Patterns, Libraries, and Performance**
+**Discriminated Union Types in C#**
 
 - [What Are Discriminated Unions (and Why We Need Them)](#what-are-discriminated-unions-and-why-we-need-them)
   - [Why are union types needed?](#why-are-union-types-needed)
@@ -8,12 +8,30 @@
   - [Using Tuples or Structs as Discriminated Containers](#using-tuples-or-structs-as-discriminated-containers)
 - [Union Types via Libraries: ErrorOr, OneOf, FluentResults, LanguageExt](#union-types-via-libraries-erroror-oneof-fluentresults-languageext)
   - [OneOf: General-Purpose Union Types](#oneof-general-purpose-union-types)
-  - [**ErrorOr: Result/Error Union with Functional Flavor**](#erroror-resulterror-union-with-functional-flavor)
-    - [**FluentResults: A Comprehensive Result Type**](#fluentresults-a-comprehensive-result-type)
-    - [**LanguageExt: Discriminated Unions via Code Generation and Functional APIs**](#languageext-discriminated-unions-via-code-generation-and-functional-apis)
+    - [Code Example](#code-example)
+    - [Pros](#pros)
+    - [Cons](#cons)
+    - [Summary](#summary)
+  - [ErrorOr: Result/Error Union with Functional Flavor](#erroror-resulterror-union-with-functional-flavor)
+    - [Code Example](#code-example-1)
+    - [Pros](#pros-1)
+    - [Cons](#cons-1)
+    - [Summary](#summary-1)
+  - [FluentResults: A Comprehensive Result Type](#fluentresults-a-comprehensive-result-type)
+    - [Code Example](#code-example-2)
+    - [Pros](#pros-2)
+    - [Cons](#cons-2)
+    - [Summary](#summary-2)
+  - [LanguageExt: Discriminated Unions via Code Generation and Functional APIs](#languageext-discriminated-unions-via-code-generation-and-functional-apis)
+    - [Code Example (Either and Option)](#code-example-either-and-option)
+    - [Code Example (Custom Unions via \[Union\])](#code-example-custom-unions-via-union)
+    - [Pros](#pros-3)
+    - [Cons](#cons-3)
+    - [Summary](#summary-3)
+- [Comparison](#comparison)
   - [Performance and Memory Summary](#performance-and-memory-summary)
   - [Choosing an Approach: Union Types vs Tuples (and Beyond)](#choosing-an-approach-union-types-vs-tuples-and-beyond)
-  - [Conclusion](#conclusion)
+- [Conclusion](#conclusion)
 
 
 # What Are Discriminated Unions (and Why We Need Them)
@@ -80,36 +98,36 @@ How can we simulate discriminated unions in C# today? There are a few approaches
 ## Classic Approach – Class Hierarchies + Pattern Matching
 
 One straightforward way is to use an abstract base class (or interface) and a fixed set of subclasses to represent each union case​. For example, to model a simple `Result<T>` that can be either a success or an error, as shown in the following code:
-```csharp
+```cs
 public abstract class Result<T> { }
 
 public sealed class Success<T> : Result<T> 
 { 
-    public T Value { get; }
-    public Success(T value) => Value = value;
+  public T Value { get; }
+  public Success(T value) => Value = value;
 }
 
 public sealed class Error<T> : Result<T> 
 {
-    public string Message { get; }
-    public Error(string msg) => Message = msg;
+  public string Message { get; }
+  public Error(string msg) => Message = msg;
 }
 ```
 
 Now `Result<T>` has two known subtypes: `Success<T>` and `Error<T>`. You can create a `Result<int>` as `new Success<int>(42)` or `new Error<int>("Fail")`. Consuming code would typically use pattern matching to act on the result, as shown in the following code:
-```csharp
+```cs
 Result<int> result = ComputeSomething();
 switch(result)
 {
-    case Success<int> s:
-        Console.WriteLine($"Got value: {s.Value}");
-        break;
-    case Error<int> e:
-        Console.WriteLine($"Something went wrong: {e.Message}");
-        break;
-    // default not strictly needed if we *know* all cases, but C# requires it.
-    default:
-        throw new InvalidOperationException("Unexpected result type");
+  case Success<int> s:
+    Console.WriteLine($"Got value: {s.Value}");
+    break;
+  case Error<int> e:
+    Console.WriteLine($"Something went wrong: {e.Message}");
+    break;
+  // default not strictly needed if we *know* all cases, but C# requires it.
+  default:
+    throw new InvalidOperationException("Unexpected result type");
 }
 ```
 
@@ -118,27 +136,27 @@ This works, but has some drawbacks. The C# compiler **cannot enforce exhaustiven
 So, unlike F# or TypeScript, C# won’t warn you if you forget to handle a case. We have to rely on our own discipline or throw an exception in the default to catch unhandled cases at runtime​. Another issue is that making a closed hierarchy in C# is clunky – there’s no direct way to tell the compiler “these are all the subclasses of Result.” (The proposal for discriminated unions includes the idea of [closed hierarchies to address this](https://github.com/dotnet/csharplang/blob/main/proposals/TypeUnions.md#:~:text=You%20might%20imagine%20that%20the,implementing%20unions%20as%20class%20hierarchies)​.) 
 
 On the positive side, this approach uses pure C# with no extra libraries. Modern C# pattern matching makes consuming such hierarchies fairly nice. You can even use C# 9+ record types for brevity:
-```csharp
+```cs
 public abstract record Shape;
 public record Circle(double Radius) : Shape;
 public record Rectangle(double Width, double Height) : Shape;
 ```
 
 Pattern matching on records works similarly, and you can add methods like `Match` manually if desired. For example, we could add a method to `Shape` that does a type switch internally:
-```csharp
+```cs
 public abstract record Shape
 {
-    public T Match<T>(
-        Func<Circle, T> onCircle, 
-        Func<Rectangle, T> onRectangle)
+  public T Match<T>(
+    Func<Circle, T> onCircle, 
+    Func<Rectangle, T> onRectangle)
+  {
+    return this switch
     {
-        return this switch
-        {
-            Circle c    => onCircle(c),
-            Rectangle r => onRectangle(r),
-            _           => throw new NotSupportedException("Unknown shape")
-        };
-    }
+      Circle c    => onCircle(c),
+      Rectangle r => onRectangle(r),
+      _           => throw new NotSupportedException("Unknown shape")
+    };
+  }
 }
 ```
 
@@ -151,40 +169,40 @@ Overall, using a small class hierarchy is a decent stop-gap for single-case unio
 ## Using Tuples or Structs as Discriminated Containers
 
 Another simplistic approach is to use tuples (or structs) to bundle a value with a tag. For example, one could represent `Result<T>` as a tuple `(bool isSuccess, T value, string errorMessage)`. By convention, `isSuccess` tells you which of the other two fields is valid. A quick example:
-```csharp
+```cs
 // Using a ValueTuple to simulate a union of T or error string
 (string Name, int? Age)? person = GetPerson(); 
 // (just an example, here using a nullable tuple to indicate an optional result)
 ```
 
 A more explicit pattern might be:
-```csharp
+```cs
 // Representing an operation result via tuple
 (bool isSuccess, int result, string error) outcome = (true, 42, null);
 
 // Usage
 if (outcome.isSuccess)
 {
-    Console.WriteLine($"Got result: {outcome.result}");
+  Console.WriteLine($"Got result: {outcome.result}");
 }
 else
 {
-    Console.WriteLine($"Failed: {outcome.error}");
+  Console.WriteLine($"Failed: {outcome.error}");
 }
 ```
 
 This works, but notice that nothing stops us from accidentally setting both `result` and `error`, or neither. We rely on the convention that “if `isSuccess` is `true`, `error` is `null`; if false, `result` is ignored.” The compiler won’t enforce that. We could use nullability to help (like making `result` nullable and expecting it to be null on failure, and    `error` null on success), but again, that’s convention. In effect, we’re manually doing what a discriminated union would do – keeping a tag and a payload – but without any language or compiler support to ensure correctness. This is error-prone in larger codebases, as one might forget to check the flag or accidentally use the wrong field.
 
 For more than two cases, you might use an `enum` as the tag and a struct with multiple fields, or even store an `object` for the payload. For example:
-```csharp
+```cs
 enum ShapeKind { Circle, Rectangle }
 
 struct ShapeUnion
 {
-    public ShapeKind Kind;
-    public double Radius;
-    public double Width;
-    public double Height;
+  public ShapeKind Kind;
+  public double Radius;
+  public double Width;
+  public double Height;
 }
 ```
 
@@ -201,51 +219,57 @@ In summary, until C# supports discriminated unions natively, you can either simu
 # Union Types via Libraries: ErrorOr, OneOf, FluentResults, LanguageExt
 
 Over the years, the community has created numerous libraries to fill the union types gap in C#. We’ll look at four popular ones: 
-- ErrorOr
-- OneOf
-- FluentResults
-- LanguageExt
+- **ErrorOr**
+- **OneOf**
+- **FluentResults**
+- **LanguageExt**
 
 ...and examine how each implements union types, with code examples, pros/cons, and performance notes for each.
 
 ## OneOf: General-Purpose Union Types
 
-[OneOf](https://github.com/mcintyre321/OneOf#:~:text=This%20library%20provides%20F,in%20its%20generic%20argument%20list) (available as the NuGet package `OneOf`) is a lightweight library by Harry McIntyre that provides F#-style discriminated unions in C#. It introduces a generic struct `OneOf<T0, T1, ... Tn>` that can hold exactly one of the specified types at a time​. 
+[OneOf](https://github.com/mcintyre321/OneOf) (available as the [NuGet package `OneOf`](https://www.nuget.org/packages/OneOf)) is a lightweight library by Harry McIntyre that provides F#-style discriminated unions in C#. It introduces a generic struct `OneOf<T0, T1, ... Tn>` that can hold exactly one of the specified types at a time​. 
 
 For example, `OneOf<int, string>` can hold either an `int` or a `string`. If you assign an int to it, it becomes that int; if you assign a string, it becomes that string. Critically, OneOf provides methods to safely extract or pattern-match the value in a way that forces you to consider all types.
 
-Code Example: Suppose we want a function that can return UserCreated or two kinds of errors: InvalidName or NameTaken. Using OneOf, we can define the method as:
-```csharp
+### Code Example
+
+Suppose we want a function that can return `UserCreated` or two kinds of errors: `InvalidName` or `NameTaken`. Using OneOf, we can define the method as:
+```cs
 using OneOf;
 using OneOf.Types; // (contains some predefined marker types like None, etc.)
 
 OneOf<User, InvalidName, NameTaken> CreateUser(string username)
 {
-    if (!IsValid(username)) 
-        return new InvalidName();
-    var existing = _repo.FindByUsername(username);
-    if (existing != null) 
-        return new NameTaken();
-    var user = new User(username);
-    _repo.Save(user);
-    return user; // implicitly wraps in OneOf as the User case
+  if (!IsValid(username)) 
+    return new InvalidName();
+
+  var existing = _repo.FindByUsername(username);
+
+  if (existing != null) 
+    return new NameTaken();
+
+  var user = new User(username);
+  _repo.Save(user);
+  return user; // implicitly wraps in OneOf as the User case
 }
 ```
 Here, `CreateUser` returns a `OneOf<User, InvalidName, NameTaken>`. We can return a `User` instance, or `new InvalidName()` (perhaps an empty class or record type just signaling that case), or `new NameTaken()`. OneOf uses implicit conversion operators so that returning a `User` directly is fine – it will be wrapped as the User case of the OneOf. 
 
 On the consuming side, you *must* handle all three possibilities. The idiomatic way is to use the `Match` extension method:
-```csharp
+```cs
 OneOf<User, InvalidName, NameTaken> result = CreateUser(name);
+
 IActionResult response = result.Match(
-    user => Redirect("/home"),               // Case 1: got a User
-    invalid => { 
-        ModelState.AddModelError("Name", "Invalid username.");
-        return BadRequest(ModelState);
-    },
-    taken => {
-        ModelState.AddModelError("Name", "Username already taken.");
-        return Conflict(ModelState);
-    }
+  user => Redirect("/home"),               // Case 1: got a User
+  invalid => { 
+    ModelState.AddModelError("Name", "Invalid username.");
+    return BadRequest(ModelState);
+  },
+  taken => {
+    ModelState.AddModelError("Name", "Username already taken.");
+    return Conflict(ModelState);
+  }
 );
 ```
 
@@ -259,42 +283,54 @@ OneOf also provides convenience properties like `IsT0`, `AsT1`, and so on, and e
 
 When you assign a `User`, OneOf sets `_index = 0` and stores the user in `_value0`. The other fields are left default. Because it’s a struct, the OneOf itself incurs no additional heap allocation – it lives wherever it’s used (stack or embedded in another object). The only allocations in our `CreateUser` example are the ones we explicitly made (`new InvalidName()`, and so on, which are class instances for the error cases, and the `User` itself). Pattern matching via `Match` is implemented by simply checking `_index` and invoking the corresponding delegate. The library uses generics and some source generator trickery to avoid writing a lot of boilerplate; but conceptually it’s doing a switch on an integer tag, just like a classic union.
 
-**Pros**: OneOf’s primary advantage is that it’s simple and type-safe. It lets you turn a design like “a result can be X or Y (or Z…)” into actual type signatures that the compiler and IntelliSense understand. It forces consumers to deal with all possibilities, which leads to more robust code (no more forgetting an error case). It also avoids using exceptions for control flow (which, aside from being hard to follow, are very slow)​. Instead of throwing an exception for an expected scenario (like “user name is taken”), you return a typed result that must be handled. This often makes code more readable – you see the flow of success vs. error in the code rather than hidden in try/catch – and as a side benefit can greatly improve performance. One benchmark, for example, compared using OneOf results vs throwing exceptions in a web API scenario: handling a request via OneOf was over 20× faster and allocated far less memory than using exceptions​. The difference was on the order of 35 µs vs 700 µs per operation, and ~13 KB vs 38 KB of allocations, in favor of OneOf​. This is because exceptions in .NET are exceptionally slow when thrown frequently; a union type is just normal control flow.
+### Pros
+
+OneOf’s primary advantage is that it’s simple and type-safe. It lets you turn a design like “a result can be X or Y (or Z…)” into actual type signatures that the compiler and IntelliSense understand. It forces consumers to deal with all possibilities, which leads to more robust code (no more forgetting an error case). It also avoids using exceptions for control flow (which, aside from being hard to follow, are very slow)​. Instead of throwing an exception for an expected scenario (like “user name is taken”), you return a typed result that must be handled. This often makes code more readable – you see the flow of success vs. error in the code rather than hidden in try/catch – and as a side benefit can greatly improve performance. One benchmark, for example, compared using OneOf results vs throwing exceptions in a web API scenario: handling a request via OneOf was over 20× faster and allocated far less memory than using exceptions​. The difference was on the order of 35 µs vs 700 µs per operation, and ~13 KB vs 38 KB of allocations, in favor of OneOf​. This is because exceptions in .NET are exceptionally slow when thrown frequently; a union type is just normal control flow.
 
 From a performance standpoint, OneOf is pretty optimal:
-- **Memory**: The OneOf struct has as many fields as union cases (plus the tag int). That means it might be a bit larger in memory than a pointer – e.g. a OneOf<int,string> contains an int _value0 and a string _value1 reference, about 8+8+4 bytes on 64-bit for the fields (plus padding). But this is often negligible. And because it’s a value type, no separate object is created for it.
+- **Memory**: The `OneOf` struct has as many fields as union cases (plus the tag int). That means it might be a bit larger in memory than a pointer – e.g. a `OneOf<int,string>` contains an `int _value0` and a `string _value1` reference, about 8+8+4 bytes on 64-bit for the fields (plus padding). But this is often negligible. And because it’s a value type, no separate object is created for it.
 - **Speed**: Pattern matching is an O(1) type-index check. There’s no reflection, no dictionary of handlers – just a straight branch. In fact, OneOf’s generated code uses a switch expression under the covers for Match. JIT can inline a lot of this, so it becomes as direct as writing it by hand.
 - **JIT/code size**: OneOf uses generics, so each unique combination of types produces a specialized struct. If you use many different OneOf combinations, the JIT will generate code for each. However, the library is careful to generate most of the boilerplate via source generation to keep each instantiation small. And typically, you don’t have an explosion of different unions in one program – you might have a dozen at most, which is fine.
 
-**Cons**: OneOf’s focus on exhaustiveness and minimalism means it doesn’t provide fancy extras. For instance, it doesn’t carry metadata like a list of errors or additional context (you have to encode that in your case types if needed). Also, while `Match` is great for forcing handling, it can be slightly verbose for simple flows. Some developers prefer more fluent chaining (like `.Map` or `.Bind` functions seen in functional languages) – OneOf doesn’t directly provide those, though you can achieve similar results by writing extension methods or using LINQ expressions with OneOf. Another consideration: because OneOf relies on lambdas for `Match`, if those lambdas capture variables from outside, they will allocate closure objects. In practice, you can usually avoid or mitigate this (often the lambdas are simple and static). If allocation-free matching is needed, you could use manual `if`/`is` checks which one might argue loses exhaustiveness checking – though you could still call `result.IsT0`, `result.IsT1`, and so on to drive logic. OneOf does include some predefined case marker types (like `OneOf.Types.None`, `True`, `False`, and so on) to help represent common cases (maybe/option types, booleans in a union)​. 
+### Cons
 
-Another minor downside: if you need to serialize a OneOf (say to JSON), it’s not immediately obvious how to represent it. The library itself doesn’t dictate a serialization format, so you might need to write a custom converter (there have been community contributions in this area). But for in-memory usage and application logic, OneOf is an excellent, low-overhead solution that many consider a go-to for adding union semantics in C#​. Its design is essentially “like a compile-time checked switch statement” – which succinctly captures how it brings the benefits of discriminated unions into C#.
+OneOf’s focus on exhaustiveness and minimalism means it doesn’t provide fancy extras. For instance, it doesn’t carry metadata like a list of errors or additional context (you have to encode that in your case types if needed). Also, while `Match` is great for forcing handling, it can be slightly verbose for simple flows. Some developers prefer more fluent chaining (like `.Map` or `.Bind` functions seen in functional languages) – OneOf doesn’t directly provide those, though you can achieve similar results by writing extension methods or using LINQ expressions with OneOf. 
 
-## **ErrorOr: Result/Error Union with Functional Flavor**
+Another consideration: because OneOf relies on lambdas for `Match`, if those lambdas capture variables from outside, they will allocate closure objects. In practice, you can usually avoid or mitigate this (often the lambdas are simple and static). If allocation-free matching is needed, you could use manual `if`/`is` checks which one might argue loses exhaustiveness checking – though you could still call `result.IsT0`, `result.IsT1`, and so on to drive logic. OneOf does include some predefined case marker types (like `OneOf.Types.None`, `True`, `False`, and so on) to help represent common cases (maybe/option types, booleans in a union)​. 
 
-ErrorOr (NuGet package `ErrorOr`) is a library that specifically models the outcome of operations that can **either succeed with a result or fail with error(s)**. It can be seen as a specialized two-case discriminated union (`T` or error), but it’s enriched with features to make error-handling more fluent. The type `ErrorOr<T>` represents either a successful result of type T, or one or more `Error` objects describing what went wrong. This is essentially the *Result pattern* implemented as a union type – similar to how you might use `Either<Error, T>` in other languages.
+Another minor downside: if you need to serialize a OneOf (say to JSON), it’s not immediately obvious how to represent it. The library itself doesn’t dictate a serialization format, so you might need to write a custom converter (there have been community contributions in this area). But for in-memory usage and application logic, 
 
-**Code Example:** Using ErrorOr looks like this in practice:
+### Summary 
 
-```csharp
+OneOf is an excellent, low-overhead solution that many consider a go-to for adding union semantics in C#​. Its design is essentially “like a compile-time checked switch statement” – which succinctly captures how it brings the benefits of discriminated unions into C#.
+
+## ErrorOr: Result/Error Union with Functional Flavor
+
+ErrorOr (NuGet package `ErrorOr`) is a library that specifically models the outcome of operations that can **either succeed with a result or fail with error(s)**. It can be seen as a specialized two-case discriminated union (`T` or error), but it’s enriched with features to make error-handling more fluent. The type `ErrorOr<T>` represents either a successful result of type `T`, or one or more `Error` objects describing what went wrong. This is essentially the *Result pattern* implemented as a union type – similar to how you might use `Either<Error, T>` in other languages.
+
+### Code Example
+
+Using ErrorOr looks like this in practice:
+
+```cs
 using ErrorOr;
 
 ErrorOr<double> Divide(double a, double b)
 {
-    if (b == 0)
-        return Error.Unexpected(description: "Cannot divide by zero");
-    return a / b;
+  if (b == 0)
+    return Error.Unexpected(description: "Cannot divide by zero");
+  return a / b;
 }
 
 // Consuming the result:
 var result = Divide(4, 2);
 if (result.IsError)
 {
-    Console.WriteLine(result.FirstError.Description);
+  Console.WriteLine(result.FirstError.Description);
 }
 else
 {
-    Console.WriteLine($"Answer: {result.Value}");
+  Console.WriteLine($"Answer: {result.Value}");
 }
 ```
 
@@ -302,22 +338,24 @@ In this snippet, `Divide` returns an `ErrorOr<double>`. On error, we return an `
 
 ErrorOr also offers a fluent API so you can chain operations without deep nesting. For example:
 
-```csharp
+```cs
 ErrorOr<User> maybeUser = await _repo.GetByIdAsync(id);
 return maybeUser
-    .Then(user => user.WithIncrementedAge())              // transforms the User, or propagates error
-    .Then(user => _repo.UpdateAsync(user))                // perhaps update in DB
-    .Match(
-        user => Results.Ok(user),                         // success case -> HTTP 200
-        errors => Results.BadRequest(errors.ToProblemDetails())
-    );
+  .Then(user => user.WithIncrementedAge())    // transforms the User, or propagates error
+  .Then(user => _repo.UpdateAsync(user))      // perhaps update in DB
+  .Match(
+    user => Results.Ok(user),                 // success case -> HTTP 200
+    errors => Results.BadRequest(errors.ToProblemDetails())
+  );
 ```
 
 This hypothetical example uses `.Then(...)` which applies a function if the current state is a value (and carries the error state through if not). Eventually, `.Match()` (similar to OneOf’s Match) is used with two lambdas: one for the success (`user => ...`) and one for the failure (`errors => ...`). The library provides many such methods: `Then`, `Map`, `Bind` (or the equivalent via LINQ), `Else` to handle errors, `Switch` for side effects, etc., making it convenient to work with `ErrorOr<T>` in a pipelined way ([GitHub - amantinband/error-or: A simple, fluent discriminated union of an error or a result.](https://github.com/amantinband/error-or#:~:text=Or%2C%20using%20Then%2FElse%20and%20Switch%2FMatch%2C,you%20can%20do%20this)) ([GitHub - amantinband/error-or: A simple, fluent discriminated union of an error or a result.](https://github.com/amantinband/error-or#:~:text=return%20await%20_userRepository.GetByIdAsync%28id%29%20.Then%28user%20%3D,NoContent)). 
 
 Internally, `ErrorOr<T>` typically contains either a **value** of type T or a **list of Error** objects ([GitHub - amantinband/error-or: A simple, fluent discriminated union of an error or a result.](https://github.com/amantinband/error-or#:~:text=Support%20For%20Multiple%20Errors)) ([GitHub - amantinband/error-or: A simple, fluent discriminated union of an error or a result.](https://github.com/amantinband/error-or#:~:text=if%20%28errors.Count%20,return%20errors%3B)). The `Error` type is a class that might include an error code, description, perhaps a cause, and it’s designed so that multiple errors can accumulate (e.g., validation might produce several errors at once). The `ErrorOr` is likely implemented as a struct that has, say, a `List<Error>` field and a T field, plus maybe a flag. The library makes heavy use of **implicit conversions**: you can return a T where `ErrorOr<T>` is expected (it wraps it as success), or return a single `Error` or a `List<Error>` (it wraps it as failure) ([GitHub - amantinband/error-or: A simple, fluent discriminated union of an error or a result.](https://github.com/amantinband/error-or#:~:text=public%20class%20User%28string%20_name%29%20,Error%3E%20errors%20%3D)) ([GitHub - amantinband/error-or: A simple, fluent discriminated union of an error or a result.](https://github.com/amantinband/error-or#:~:text=if%20%28errors.Count%20,return%20errors%3B)). This makes the syntax very natural – just `return new User(...)` for success or `return Error.Validation("...")` for error, and it all meshes.
 
-**Pros:** ErrorOr is great when your use case is specifically the *success-or-failure* scenario (which is extremely common in business apps and APIs). It’s basically a disciplined way to avoid using exceptions for flow control and to make error states explicit in the type system. Compared to OneOf, ErrorOr is less about arbitrary types and more about *standardizing error handling*. For example, it comes with some predefined error factories like `Error.Validation(...)`, `Error.NotFound(...)`, etc., that produce Error objects with common categories (it likely even integrates with HTTP status codes or Problem Details for APIs). The ability to carry multiple errors is a plus for scenarios like input validation where you might want to report all problems, not just the first. 
+### Pros
+
+ErrorOr is great when your use case is specifically the *success-or-failure* scenario (which is extremely common in business apps and APIs). It’s basically a disciplined way to avoid using exceptions for flow control and to make error states explicit in the type system. Compared to OneOf, ErrorOr is less about arbitrary types and more about *standardizing error handling*. For example, it comes with some predefined error factories like `Error.Validation(...)`, `Error.NotFound(...)`, etc., that produce Error objects with common categories (it likely even integrates with HTTP status codes or Problem Details for APIs). The ability to carry multiple errors is a plus for scenarios like input validation where you might want to report all problems, not just the first. 
 
 The fluent chaining API can lead to very readable code. Instead of nested if-checks or switch, you can write a linear sequence of transformations that short-circuits on error. This is effectively monadic binding (`Then` is like `Bind` in functional terms). It allows you to, for instance, parse an input, then transform it, then call another function, all the while propagating any error without having to check after each step manually. In the end, you handle the outcome in one place. This style is reminiscent of using `Task` or LINQ, but here it’s for the union type.
 
@@ -325,48 +363,56 @@ Performance of ErrorOr is generally good. It’s often implemented as a struct (
 
 A noteworthy performance aspect: *comparative to exceptions, `ErrorOr` will save a ton of time and memory when errors occur frequently.* We saw earlier how a OneOf vs exception benchmark yielded huge gains; `ErrorOr` would show similar benefits because it’s the same principle – using normal control flow instead of exceptions. It’s not unusual to see web projects using `ErrorOr<T>` or similar result types to handle validation and domain errors, reserving exceptions for truly unexpected issues. This can increase throughput significantly under load ([Matthew Regis - Discriminated Unions With OneOf](https://matthewregis.dev/posts/discriminated-unions-with-one-of#:~:text=Method%20Mean%20Error%20StdDev%20Min,14%20KB)).
 
-**Cons:** Because ErrorOr is centered on the success/error pattern, it’s not as general as OneOf. You wouldn’t use ErrorOr to represent three unrelated data types, for example – it always has the notion of “errors” versus “a value”. If your scenario doesn’t involve an error concept (say, a union of shapes), OneOf or a custom union is more appropriate. Also, the exhaustive handling guarantee is a bit weaker here. With OneOf, if you don’t handle a case, you can’t compile. With ErrorOr, typically you check `IsError` or call `.Match(valueFunc, errorFunc)`. It’s still up to you to handle the two cases. That said, using `.Match` will force you to handle both success and failure paths (and it’s likely implemented such that you *must* provide both an `onValue` and `onError` delegate) – so you get exhaustiveness in practice when using the provided APIs. Just be aware you could also access `.Value` directly; if you do so when `IsError` is true, the library will throw an exception to alert you (similar to how `Nullable<T>.Value` throws if null). In fact, `result.Value` in ErrorOr might throw an `InvalidOperationException` if used incorrectly, which is a little ironic (we’re avoiding exceptions, but misuse leads to one) – however, this is by design to catch logical bugs. The library provides safer alternatives like `ValueOrDefault` or the need to check `IsError` first, so it encourages the right usage.
+### Cons
+
+Because ErrorOr is centered on the success/error pattern, it’s not as general as OneOf. You wouldn’t use ErrorOr to represent three unrelated data types, for example – it always has the notion of “errors” versus “a value”. If your scenario doesn’t involve an error concept (say, a union of shapes), OneOf or a custom union is more appropriate. Also, the exhaustive handling guarantee is a bit weaker here. With OneOf, if you don’t handle a case, you can’t compile. With ErrorOr, typically you check `IsError` or call `.Match(valueFunc, errorFunc)`. It’s still up to you to handle the two cases. That said, using `.Match` will force you to handle both success and failure paths (and it’s likely implemented such that you *must* provide both an `onValue` and `onError` delegate) – so you get exhaustiveness in practice when using the provided APIs. Just be aware you could also access `.Value` directly; if you do so when `IsError` is true, the library will throw an exception to alert you (similar to how `Nullable<T>.Value` throws if null). In fact, `result.Value` in ErrorOr might throw an `InvalidOperationException` if used incorrectly, which is a little ironic (we’re avoiding exceptions, but misuse leads to one) – however, this is by design to catch logical bugs. The library provides safer alternatives like `ValueOrDefault` or the need to check `IsError` first, so it encourages the right usage.
 
 Another con is that ErrorOr introduces its own `Error` type, which you should map to your domain or perhaps HTTP responses. Some might find it a bit heavy if all they need is a simple “string error message”. However, you can still just use `ErrorOr<T>` with simple errors (just supply messages or use the default error types). Over time, you might appreciate the consistency it brings (e.g., always having an `Error.Code` and `Description` can standardize error handling in a large system).
 
+### Summary 
+
 Overall, **ErrorOr is a great choice** if you are specifically implementing the *Result pattern* (also known as *Railway Oriented Programming* in some circles). It strikes a balance between **clarity** (the method signature shows `ErrorOr<Something>` so you know it can fail), **safety** (you can’t easily ignore the possibility of error), and **ergonomics** (fluent APIs to work with results). It’s a newer library compared to some others but has gained popularity especially in the .NET web dev community for modeling API outcomes.
 
-### **FluentResults: A Comprehensive Result Type** 
+## FluentResults: A Comprehensive Result Type
 
 [FluentResults](https://github.com/altmann/FluentResults) is another library that approaches the union type from the perspective of **result handling**, with a design influenced by functional programming and fluent APIs. It provides a `Result` type (and `Result<T>`) that can indicate success or failure, similar to ErrorOr, but with an API that emphasizes *collecting messages (errors or successes)* and *method chaining*. FluentResults predates some of the newer libraries and is quite feature-rich, including integrations for ASP.NET.
 
-**Code Example:** Using FluentResults typically looks like:
+### Code Example
 
-```csharp
+Using FluentResults typically looks like:
+
+```cs
 using FluentResults;
 
 // Producing a Result
 Result<User> GetUserByEmail(string email)
 {
-    var user = _repo.FindByEmail(email);
-    if (user == null)
-        return Result.Fail<User>("No user found with that email.");
-    return Result.Ok(user);
+  User? user = _repo.FindByEmail(email);
+  if (user == null)
+    return Result.Fail<User>("No user found with that email.");
+  return Result.Ok(user);
 }
 
 // Consuming a Result
 Result<User> result = GetUserByEmail("alice@example.com");
 if (result.IsFailed)
 {
-    // gather error messages
-    foreach(var err in result.Errors)
-        Console.WriteLine($"Error: {err.Message}");
+  // gather error messages
+  foreach(var err in result.Errors)
+  {
+    Console.WriteLine($"Error: {err.Message}");
+  }
 }
 else 
 {
-    User user = result.Value;  // safe because we checked IsFailed
-    Console.WriteLine($"Hello, {user.Name}");
+  User user = result.Value;  // safe because we checked IsFailed
+  Console.WriteLine($"Hello, {user.Name}");
 }
 ```
 
 Here, `Result<User>` can be in a *Success* state or *Failed* state. You create successes with `Result.Ok(value)` and failures with `Result.Fail<T>(message or ErrorObject)`. Notably, `Result.Fail` can take either a simple string or a rich `Error` object. FluentResults encourages using its `Error` class (and similarly a `Success` class for success messages) to encapsulate information. You can even have multiple error messages in one result. For example:
 
-```csharp
+```cs
 var result = Result.Fail("Invalid input")
                    .WithError("Name cannot be empty")
                    .WithError("Age must be positive");
@@ -376,7 +422,9 @@ This produces a `Result` that is failed and contains three error reasons. The de
 
 FluentResults also supports chaining: you can do `result = result.Bind(...).Bind(...)` to chain computations (the methods might be called `Tap` or `Map` or similar, depending on version). If an error occurs at any step, the chain short-circuits, and the error is carried through. It’s similar in spirit to ErrorOr’s chaining, though the naming might differ (e.g., older versions of FluentResults used `Then`/`OnSuccess` etc., recent versions might have updated names). They even provide extension methods to integrate with ASP.NET Core, so you could directly return a `Result` from a controller and have a filter convert it to an HTTP response (via an extension package) ([GitHub - altmann/FluentResults: A generalised Result object implementation for .NET/C#](https://github.com/altmann/FluentResults#:~:text=Key%20Features)) ([GitHub - altmann/FluentResults: A generalised Result object implementation for .NET/C#](https://github.com/altmann/FluentResults#:~:text=in%20an%20elegant%20way%20,NET%20Controller)).
 
-**Pros:** FluentResults is **very expressive**. It’s not just a binary union of success/failure but a whole framework to attach information to outcomes. This can be useful in complex domains. For instance, an operation might succeed but with warnings – FluentResults can model that (a success result with both `IsSuccess` true and some `Successes` messages). Or an operation might fail for multiple reasons – it can carry all of them. The library pushes you to use *object-oriented error descriptions* (by subclassing `Error` or adding metadata to it) instead of plain strings ([FluentResults/README.md at master · altmann/FluentResults · GitHub](https://github.com/altmann/FluentResults/blob/master/README.md#:~:text=Designing%20errors%20and%20success%20messages)) ([FluentResults/README.md at master · altmann/FluentResults · GitHub](https://github.com/altmann/FluentResults/blob/master/README.md#:~:text=)). This means your error handling can be richer – e.g., error objects might have error codes, references to causing exceptions, etc., enabling programmatic decisions based on error type. 
+### Pros
+
+FluentResults is **very expressive**. It’s not just a binary union of success/failure but a whole framework to attach information to outcomes. This can be useful in complex domains. For instance, an operation might succeed but with warnings – FluentResults can model that (a success result with both `IsSuccess` true and some `Successes` messages). Or an operation might fail for multiple reasons – it can carry all of them. The library pushes you to use *object-oriented error descriptions* (by subclassing `Error` or adding metadata to it) instead of plain strings ([FluentResults/README.md at master · altmann/FluentResults · GitHub](https://github.com/altmann/FluentResults/blob/master/README.md#:~:text=Designing%20errors%20and%20success%20messages)) ([FluentResults/README.md at master · altmann/FluentResults · GitHub](https://github.com/altmann/FluentResults/blob/master/README.md#:~:text=)). This means your error handling can be richer – e.g., error objects might have error codes, references to causing exceptions, etc., enabling programmatic decisions based on error type. 
 
 Another strength is its **fluent API**. You can create and enrich results in a single expression, which can make the code for building responses very neat. The presence of `.WithError` and `.WithSuccess` encourages accumulating context as the result bubbles up, rather than replacing it. And if you need to assert in tests that a result contains a certain error, the library even has integration with FluentAssertions to make that easy.
 
@@ -384,30 +432,36 @@ In terms of performance and usage, FluentResults is implemented as classes inter
 
 One could think of FluentResults as trading a bit of performance for **maximum flexibility and clarity in error reporting**. If your app needs to log a chain of events about why something failed, the ability to keep a chain of errors (with causes) in a single Result object is very handy. It even supports linking results (an `Error` can have an `InnerReason` to form a hierarchy, akin to exception cause chains) ([GitHub - altmann/FluentResults: A generalised Result object implementation for .NET/C#](https://github.com/altmann/FluentResults#:~:text=,details)) ([FluentResults/README.md at master · altmann/FluentResults · GitHub](https://github.com/altmann/FluentResults/blob/master/README.md#:~:text=,Error)).
 
-**Cons:** The flip side of its richness is **complexity and overhead**. If you don’t need multiple errors or warnings, FluentResults might feel too heavy. For example, if a method can only really fail in one way, having a `Result<T>` with a list of errors (of length 1) is somewhat more than necessary – a simpler union or exception might do. Some critics argue that FluentResults ends up being a bit verbose (you have to check `IsFailed` and then get `.Errors`, etc., versus a simple if or exception). It also doesn’t enforce handling as strictly at compile time. It’s easy enough to ignore a `Result` (just not check `IsFailed` and proceed – then `.Value` will throw at runtime if it was an error). So you still need discipline or patterns to ensure consumers deal with results. In practice, teams establish guidelines: e.g., always check `IsSuccess` or always return up the result to a higher layer that knows how to handle it.
+### Cons
+
+The flip side of its richness is **complexity and overhead**. If you don’t need multiple errors or warnings, FluentResults might feel too heavy. For example, if a method can only really fail in one way, having a `Result<T>` with a list of errors (of length 1) is somewhat more than necessary – a simpler union or exception might do. Some critics argue that FluentResults ends up being a bit verbose (you have to check `IsFailed` and then get `.Errors`, etc., versus a simple if or exception). It also doesn’t enforce handling as strictly at compile time. It’s easy enough to ignore a `Result` (just not check `IsFailed` and proceed – then `.Value` will throw at runtime if it was an error). So you still need discipline or patterns to ensure consumers deal with results. In practice, teams establish guidelines: e.g., always check `IsSuccess` or always return up the result to a higher layer that knows how to handle it.
 
 From a performance perspective, each `Result` is an object and contains at least a list (even if empty). The library likely reuses empty static lists for success cases (to avoid creating new empty lists each time) – that’s a common optimization. But any error means allocating an `Error` (or several). This is still far cheaper than throwing exceptions for errors (no stack trace, and you can reuse Error definitions). And because `Result` is a class, passing it around is just passing a reference (no copying of big structs). So performance is nuanced: small struct (like OneOf) vs small class (like Result) – small struct might be faster in some cases, but small class might avoid copying costs if used in many places. The JIT will treat `Result<T>` like any reference type. Also, generics: `Result<T>` will instantiate per value type T (just like others) but one nice thing is if you often use plain `Result` (non-generic) for void methods, that’s a single type reused everywhere.
 
 Another con is that FluentResults, due to its object-oriented nature, doesn’t play as nicely with pattern matching or some newer expression-based code. It expects you to use its APIs to inspect the result. You can of course pattern match: `if (result is SuccessResult<T> suc) ...` because under the hood there are classes (perhaps `SuccessResult<T>` and `FailedResult<T>`), but that’s not documented usage and could break encapsulation. Instead, you stick to `IsFailed`, `IsSuccess`, and the provided properties.
 
+### Summary 
+
 In summary, **FluentResults** is a powerful toolkit for those who want a comprehensive solution to handle success/failure and log or propagate reasons. It shines in applications where understanding *why* something failed (with multiple causes) is important, or when you want to attach additional info even on success. It’s slightly less about being a pure “union type” and more about implementing a pattern (result monad) in an ergonomic way. If you only need the union aspect (one of two states) and care about absolute minimal overhead, OneOf or ErrorOr might be preferable. But if you value the richer semantics and don’t mind a bit of overhead, FluentResults is a mature solution.
 
-### **LanguageExt: Discriminated Unions via Code Generation and Functional APIs**
+## LanguageExt: Discriminated Unions via Code Generation and Functional APIs
 
 [LanguageExt](https://github.com/louthy/language-ext) is a full-featured functional programming library for C#. It provides immutable data types, monads (Option, Either, Try, etc.), and more. Among its offerings are discriminated unions, tackled in a couple of ways. First, LanguageExt has **built-in types** that cover common union scenarios: e.g., `Option<T>` (some or none), `Either<L,R>` (left or right), `Aff<Err, Ok>` (for async effects), etc. These are analogous to union types of two cases. Second, for defining your own multi-case unions, LanguageExt offers a **code generation** approach with a `[Union]` attribute.
 
-**Code Example (Either and Option):** If you just need an *either type*, LanguageExt’s `Either<L,R>` is ready to use. For example:
+### Code Example (Either and Option)
 
-```csharp
+If you just need an *either type*, LanguageExt’s `Either<L,R>` is ready to use. For example:
+
+```cs
 using LanguageExt;
 using static LanguageExt.Prelude;  // for Right()/Left() helpers
 
 Either<string, User> result = GetUserByName(name)
-    .ToEither("User not found");
+  .ToEither("User not found");
 
 User user = result.Match(
-    Right: u  => u,
-    Left:  errMsg => new User("guest")  // default user if not found
+  Right: u  => u,
+  Left:  errMsg => new User("guest")  // default user if not found
 );
 ```
 
@@ -415,31 +469,34 @@ Here, `Either<L,R>` is essentially a union of `L` (often used for an error or le
 
 Likewise, `Option<T>` represents a T or nothing. You use `Option<T>` as an alternative to `T?` that forces explicit handling of the None case. For example:
 
-```csharp
+```cs
 Option<Order> maybeOrder = FindOrder(id);
 maybeOrder.Match(
-    Some: order => Process(order),
-    None: () => Console.WriteLine("Order not found")
+  Some: order => Process(order),
+  None: () => Console.WriteLine("Order not found")
 );
 ```
 
 LanguageExt’s `Option` and `Either` are analogous to what union types in F# or other languages provide for optional values and error-handling respectively. They come with a suite of extension methods for mapping, binding, filtering, etc., which makes them very convenient for functional-style programming. Performance-wise, these are tuned to avoid allocations (e.g., `Option<T>` is a struct with a boolean and a value, so no heap unless T itself is reference; `Either<L,R>` can be a struct with two fields and a tag, similar to OneOf as we discussed).
 
-**Code Example (Custom Unions via [Union]):** LanguageExt allows you to define your own discriminated union types with any number of cases using an attribute and interface. For instance, from the LanguageExt documentation, you can do:
+### Code Example (Custom Unions via [Union])
 
-```csharp
+LanguageExt allows you to define your own discriminated union types with any number of cases using an attribute and interface. For instance, from the LanguageExt documentation, you can do:
+
+```cs
 [Union]
 public interface Maybe<A>
 {
-    Maybe<A> Just(A value);
-    Maybe<A> Nothing();
+  Maybe<A> Just(A value);
+  Maybe<A> Nothing();
 }
 ```
 
 This single interface with two methods defines a union of two cases: one carrying an `A` (the `Just` case) and one carrying nothing (`Nothing` case) ([What are Discriminated Unions? · louthy/language-ext Wiki · GitHub](https://github.com/louthy/language-ext/wiki/What-are-Discriminated-Unions%3F#:~:text=This%20is%20obviously%20less%20convenient,CodeGen)). The LanguageExt code generation will produce the implementation for you: it will create classes (or records) that implement `Maybe<A>` for each case, including a `Just<A>` class with an `A` property, and a `Nothing<A>` class (probably a singleton or stateless class). It will also generate a `Match` function on the interface that takes two delegates (for `Just` and `Nothing`) and ensures you handle both ([What are Discriminated Unions? · louthy/language-ext Wiki · GitHub](https://github.com/louthy/language-ext/wiki/What-are-Discriminated-Unions%3F#:~:text=public%20abstract%20record%20Maybe,)). So, after the codegen (triggered at compile time via a Source Generator or the older CodeGen tool), you can use `Maybe<int>` as a type:
 
-```csharp
+```cs
 Maybe<int> maybeNumber = new Just<int>(10);    // or Maybe<int>.Just(10) via the interface static maybe
+
 int result = maybeNumber.Match(
     just => just.Value * 2,
     nothing => 0
@@ -448,17 +505,25 @@ int result = maybeNumber.Match(
 
 This pattern scales to more cases; if you had 3 or 4 cases, you’d put them as methods in the interface and the generator would output corresponding classes and a comprehensive `Match`. The benefit here is you get a *nominal discriminated union type* in C# with relative ease – you write an interface that *declares the shape* of the union, and let the generator fill in the boilerplate. LanguageExt’s generator uses either records or classes for the cases (likely records in newer versions, to get equality, `ToString`, etc., out of the box). It does **not** use a single struct for all cases, because with arbitrarily different payloads that can be tricky; instead, it goes the sealed class route, which is perfectly fine given the generator ensures no outsider can add cases (since the interface is internal and implemented only by generated code). The generated `Match` method or extension will enforce completeness by requiring all case handlers (similar to OneOf’s approach) ([What are Discriminated Unions? · louthy/language-ext Wiki · GitHub](https://github.com/louthy/language-ext/wiki/What-are-Discriminated-Unions%3F#:~:text=This%20is%20also%20nice%20and,function)) ([What are Discriminated Unions? · louthy/language-ext Wiki · GitHub](https://github.com/louthy/language-ext/wiki/What-are-Discriminated-Unions%3F#:~:text=So%2C%20what%20are%20they%20useful,in%20is%20a%20good%20thing)).
 
-**Pros:** LanguageExt provides *both* low-level and high-level tools for unions. If you already use LanguageExt for its other features (immutable collections, etc.), using its `Either` or `Option` means one less dependency and a consistent API. These types are well-tested and integrate with the rest of the library (e.g., you can convert an `Option` to an `Either`, or use `Try<T>` which is like an `Either<Exception,T>` for capturing exceptions). The codegen `[Union]` approach is powerful for more complex unions – you get a nicely named type with named cases without writing much code. Additionally, LanguageExt often provides additional methods like `MatchUnsafe` (for scenarios where you *assert* you know the case, to avoid delegate overhead) and a rich LINQ integration to chain computations in a query comprehension style. It’s a comprehensive FP library, so union types don’t exist in isolation – you have things like `Validation` (which is like an applicative that can collect errors), `TryOption` (combining exceptions and option), etc. This can be very powerful if you are building a large system with functional patterns.
+### Pros
+
+LanguageExt provides *both* low-level and high-level tools for unions. If you already use LanguageExt for its other features (immutable collections, etc.), using its `Either` or `Option` means one less dependency and a consistent API. These types are well-tested and integrate with the rest of the library (e.g., you can convert an `Option` to an `Either`, or use `Try<T>` which is like an `Either<Exception,T>` for capturing exceptions). The codegen `[Union]` approach is powerful for more complex unions – you get a nicely named type with named cases without writing much code. Additionally, LanguageExt often provides additional methods like `MatchUnsafe` (for scenarios where you *assert* you know the case, to avoid delegate overhead) and a rich LINQ integration to chain computations in a query comprehension style. It’s a comprehensive FP library, so union types don’t exist in isolation – you have things like `Validation` (which is like an applicative that can collect errors), `TryOption` (combining exceptions and option), etc. This can be very powerful if you are building a large system with functional patterns.
 
 Performance in LanguageExt is generally a focus – the author (Paul Louth) has written about struct vs class trade-offs and often chooses structs for frequently used types to minimize allocations. For example, `Either<L,R>` in v5 is a struct that avoids allocation when holding a Right or Left (except whatever that L or R is), and pattern matching it is essentially a branch on an internal tag. The codegen unions, since they produce classes for cases, will have similar performance characteristics to the hand-rolled class hierarchy approach: each union value is an object of a specific case class. That means an allocation per value. However, those case classes could be records with value-based equality, which is a nice feature (OneOf and others rely on whatever the underlying types do for equality, whereas a record case would implement IEquatable at the union level).
 
-**Cons:** The main con of LanguageExt is that it’s a large library – pulling it in for just union types might be overkill. It shines if you embrace its paradigm, but if you only want a small union, writing a few classes yourself or using a tiny library like OneOf might be simpler. There’s also a learning curve: types like `Either` and `Option` come from FP tradition, so if you’re not used to them, it might take a bit of practice to use them idiomatically (e.g., understanding that `Right` is the success by convention and that you should use `Left` for error, etc.). The `[Union]` codegen is convenient, but it adds a layer of magic – you need to set up the source generator (in newer versions this is automatic if you include the LanguageExt.CodeGen package), and if something goes wrong, debugging generated code can be tricky. That said, once set up, it’s pretty seamless.
+### Cons
+
+The main con of LanguageExt is that it’s a large library – pulling it in for just union types might be overkill. It shines if you embrace its paradigm, but if you only want a small union, writing a few classes yourself or using a tiny library like OneOf might be simpler. There’s also a learning curve: types like `Either` and `Option` come from FP tradition, so if you’re not used to them, it might take a bit of practice to use them idiomatically (e.g., understanding that `Right` is the success by convention and that you should use `Left` for error, etc.). The `[Union]` codegen is convenient, but it adds a layer of magic – you need to set up the source generator (in newer versions this is automatic if you include the LanguageExt.CodeGen package), and if something goes wrong, debugging generated code can be tricky. That said, once set up, it’s pretty seamless.
 
 Another consideration: completeness checking in pattern matching. If you use C#’s native pattern matching (like a `switch` on the base interface or base record), the compiler won’t know it’s closed, so it will demand a default case. You are supposed to use the provided `Match` method from LanguageExt, which *does* enforce completeness by design ([What are Discriminated Unions? · louthy/language-ext Wiki · GitHub](https://github.com/louthy/language-ext/wiki/What-are-Discriminated-Unions%3F#:~:text=This%20is%20also%20nice%20and,function)). So, similar to OneOf, you rely on the library’s matching function rather than the raw `switch` to get the benefit. This is not a real drawback, just something to be aware of in how you use it.
 
 Performance-wise, if using the monadic style (LINQ or Bind calls), you have to consider the overhead of lambdas and maybe intermediate structs. But LanguageExt tries to minimize allocations (it often uses struct-based enumerators and such). If you go crazy with nested functional combinators, there could be some overhead, but typically it’s negligible for I/O bound or high-level logic compared to, say, network calls or database queries.
 
+### Summary 
+
 In summary, **LanguageExt** is ideal if you want a *full FP ecosystem* in C# – union types included. It provides the most **comprehensive set of patterns** (Option, Either, etc.) and even lets you define custom unions cleanly. The tradeoff is the added complexity and the need to align with its approach. If a project already uses LanguageExt, it’s a no-brainer to use its union capabilities instead of adding something else. If not, one might weigh the need: for a single simple union type, using LanguageExt might be like bringing a tank to a fistfight – powerful but maybe more than needed. However, many find that once they include it, they benefit from its other features as well, which can lead to more robust and declarative code overall.
+
+# Comparison
 
 ## Performance and Memory Summary 
 
@@ -505,7 +570,7 @@ To highlight limitations: tuple approaches fall apart if the number of possibili
 
 In the end, discriminated unions (in whatever form) bring an **intentional design** to your code: you are explicitly modeling that “X or Y can happen,” and that intent is encoded in the type system. This makes code more self-documenting and often cleaner, at the cost of introducing a new type abstraction. As C# continues to evolve, we may see native support that makes this even more seamless ([csharplang/proposals/TypeUnions.md at main · dotnet/csharplang · GitHub](https://github.com/dotnet/csharplang/blob/main/proposals/TypeUnions.md#:~:text=Many%20other%20languages%20already%20do,one%20or%20more%20limited%20forms)). But even now, with the tools above, C# developers can enjoy much of the same benefits. Each approach has pros and cons, but they all aim to make code more **robust, readable, and correct** by leveraging the type system instead of implicit conventions or exceptions.
 
-## Conclusion
+# Conclusion
 
 Discriminated unions fulfill a fundamental need in programming: the ability to represent a value that can be one of a few predefined forms, in a way that the compiler *knows* about all the forms. This leads to safer and often clearer code. In 2025, C# is on the path toward introducing union types natively, potentially in stages (union classes, union structs, etc.) ([Discriminated Unions in C# update : r/dotnet](https://www.reddit.com/r/dotnet/comments/1i2q3kx/discriminated_unions_in_c_update/#:~:text=Looks%20like%20DUs%20might%20be,team%20had%20the%20other%20day)) ([Discriminated Unions in C# design update (Jan 2025)](https://davecallan.com/discriminated-unions-csharp-update/#:~:text=Looks%20like%20progress%20anyhow%2C%20and,in%20one%20version%20of%20C)). Until then, the community solutions have you covered. 
 

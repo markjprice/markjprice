@@ -13,8 +13,11 @@ In the .NET 10 editions of my books I plan to cover the following new features e
       - [Solution Filter Files `.slnf`](#solution-filter-files-slnf)
   - [Chapter 2 - Speaking C#](#chapter-2---speaking-c)
     - [Unbound generic support for `nameof`](#unbound-generic-support-for-nameof)
+  - [Chapter 3 - Controlling Flow, Converting Types, and Handling Exceptions](#chapter-3---controlling-flow-converting-types-and-handling-exceptions)
+    - [Null-conditional assignment](#null-conditional-assignment)
   - [Chapter 5 - Building Your Own Types with Object-Oriented Programming](#chapter-5---building-your-own-types-with-object-oriented-programming)
     - [Partial Members](#partial-members)
+    - [Extension Members](#extension-members)
     - [Union Types](#union-types)
   - [Chapter 7 - Packaging and Distributing .NET Types](#chapter-7---packaging-and-distributing-net-types)
     - [New Noun-First Alias for `dotnet` CLI commmands](#new-noun-first-alias-for-dotnet-cli-commmands)
@@ -31,11 +34,13 @@ In the .NET 10 editions of my books I plan to cover the following new features e
     - [Response description on `ProducesResponseType`](#response-description-on-producesresponsetype)
     - [Populate XML doc comments into OpenAPI document](#populate-xml-doc-comments-into-openapi-document)
     - [Detect if URL is local using RedirectHttpResult.IsLocalUrl](#detect-if-url-is-local-using-redirecthttpresultislocalurl)
+    - [Validation support in Minimal API web services](#validation-support-in-minimal-api-web-services)
 - [Real-World Web Development with .NET 10](#real-world-web-development-with-net-10)
   - [Chapter 9 - Building Web Services Using ASP.NET Core Web API](#chapter-9---building-web-services-using-aspnet-core-web-api)
   - [Chapter 10 - Integration Testing and Building Clients for Web Services](#chapter-10---integration-testing-and-building-clients-for-web-services)
     - [Improvements to integration testing of apps with top-level statements](#improvements-to-integration-testing-of-apps-with-top-level-statements)
 - [Apps and Services with .NET 10](#apps-and-services-with-net-10)
+  - [Chapter 10 - Building and Securing Minimal API Web Services](#chapter-10---building-and-securing-minimal-api-web-services)
 - [Tools and Skills for .NET 10](#tools-and-skills-for-net-10)
 
 
@@ -174,6 +179,44 @@ Learn more about solution filters at the following links:
 
 The argument to a `nameof` expression can be an unbound generic type, like `List<>`. The result of the expression is `"List"`. Previously, you'd need to supply a type argument for each type parameter.
 
+## Chapter 3 - Controlling Flow, Converting Types, and Handling Exceptions
+
+### Null-conditional assignment
+
+After the *Assignment operator* and *Null-coalescing operators* sections, I will add a new section for *Null-conditional assignment*.
+
+Null-conditional assignment assigns a value to a property or field only if the containing instance exists. Imagine you have a code similar to:
+```cs
+public class Customer
+{
+  public string Name { get; set; }
+  public int Age { get; set; }
+}
+
+public class UpdateCustomer
+{
+  public static void UpdateAge(Customer? customer, int newAge)
+  {
+    if (customer is not null)
+    {
+      customer.Age = newAge;
+    }
+  }
+}
+```
+
+You can simplify the UpdateAge method:
+```cs
+public static void UpdateAge(Customer? customer, int newAge)
+{
+  customer?.Age = newAge;
+}
+```
+
+If the customer is not null, `Age` will be updated. If customer is null, nothing will happen.
+
+> **More Information**: https://github.com/dotnet/csharplang/discussions/8676
+
 ## Chapter 5 - Building Your Own Types with Object-Oriented Programming
 
 ### Partial Members
@@ -218,6 +261,56 @@ Learn more from the Microsoft Learn documentation:
 - [15.6.9 Partial methods](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/classes#1569-partial-methods)
 - [Partial properties](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-13.0/partial-properties)
 - [Partial Events and Constructors](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/partial-events-and-constructors)
+
+### Extension Members
+
+Extension methods were introduced in C# 3 in 2007. In C# 14, you can also define other types of extension member: static methods, instance properties, and static properties. 
+
+Expanding extensions to other member types has been a long-standing challenge, driven by two key questions: how to declare them effectively and how to resolve ambiguity when multiple matching signatures exist. Additionally, we aimed to seamlessly support the new syntax for instance members—ensuring that users of instance extension methods never have to worry about whether they were declared with the old or new syntax. 
+
+Extension methods in C# 3 and later require a static class with a static method with a parameter decorated with `this` to indicate what type the extension method will apply to, as shown in the following code:
+```cs
+public static class Extensions
+{
+  public static IEnumerable<int> WhereGreaterThan(this IEnumerable<int> source, int threshold) 
+    => source.Where(x => x > threshold);
+}
+```
+
+The **receiver** is the parameter prefaced by the `this` keyword - `source` in the preceding code example. Property declarations do not have a similar location to declare the receiver. Thus, C# 14 introduces **extension blocks**. These are blocks with a scope that exposes the receiver to its contained members. If we switch the `WhereGreaterThan` extension method to the new syntax and add an `IsEmpty` property the extension block would be:
+```cs
+public static class Extensions
+{
+  extension(IEnumerable<int> source) 
+  {
+    public IEnumerable<int> WhereGreaterThan(int threshold)
+      => source.Where(x => x > threshold);
+
+    public bool IsEmpty
+      => !source.Any();
+  }
+}
+```
+
+To use these extension members, you just call them:
+```cs
+List<int> list = [ 1, 2, 3, 4, 5 ];
+
+IEnumerable<int> large = list.WhereGreaterThan(3);
+
+if (large.IsEmpty)
+{
+  Console.WriteLine("No large numbers.");
+}
+else
+{
+  Console.WriteLine("Found large numbers.");
+}
+```
+
+Generics are supported and the resolution rules are the same as for extension methods. Extension blocks can seamlessly coexist with the extension methods you have today. There's no requirement to switch to the new syntax - both execute in exactly the same way. Just add extension blocks to the static classes that contain your existing extension methods. The choice is entirely yours. If you prefer to leave your existing extension methods untouched, you absolutely can. But if you’d rather update your code for a consistent look and take advantage of the new syntax, that option is available too. 
+
+> **More Information**: https://github.com/dotnet/csharplang/discussions/8696
 
 ### Union Types
 
@@ -422,18 +515,18 @@ Then define the `Hello` method with XML doc comments in any accessible class in 
 ```cs
 static partial class Program
 {
-    /// <summary>
-    /// Sends a greeting.
-    /// </summary>
-    /// <remarks>
-    /// Greeting a person by their name.
-    /// </remarks>
-    /// <param name="name">The name of the person to greet.</param>
-    /// <returns>A greeting.</returns>
-    public static string Hello(string name)
-    {
-        return $"Hello, {name}!";
-    }
+  /// <summary>
+  /// Sends a greeting.
+  /// </summary>
+  /// <remarks>
+  /// Greeting a person by their name.
+  /// </remarks>
+  /// <param name="name">The name of the person to greet.</param>
+  /// <returns>A greeting.</returns>
+  public static string Hello(string name)
+  {
+    return $"Hello, {name}!";
+  }
 }
 ```
 
@@ -443,8 +536,35 @@ Use the new `RedirectHttpResult.IsLocalUrl(url)` helper method to detect if a UR
 ```cs
 if (RedirectHttpResult.IsLocalUrl(url))
 {
-    return Results.LocalRedirect(url);
+  return Results.LocalRedirect(url);
 }
+```
+
+### Validation support in Minimal API web services
+
+Support for validation in minimal APIs is now available. This feature allows you to request validation of data sent to your API endpoints. When validation is enabled, the ASP.NET Core runtime performs any validations defined on query, header, and route parameters, as well as on the request body. Validations can be defined using attributes in the `System.ComponentModel.DataAnnotations` namespace. When validation fails, the runtime returns a `400 Bad Request` response with details of the validation errors.
+
+To enable built-in validation support for Minimal APIs, call the `AddValidation` extension method to register the required services into the service container for your application, as shown in the following code:
+```cs
+builder.Services.AddValidation();
+```
+
+You also need to set the `InterceptorsNamespaces` property in your project file as follows:
+```xml
+<PropertyGroup>
+  <!-- Enable the generation of interceptors for the validation attributes -->
+  <InterceptorsNamespaces>$(InterceptorsNamespaces);Microsoft.AspNetCore.Http.Validation.Generated</InterceptorsNamespaces>
+</PropertyGroup>
+```
+
+The implementation automatically discovers types that are defined in Minimal API handlers or as base types of types defined in Minimal API handlers. Validation is performed on these types by an endpoint filter added to each endpoint.
+
+Validation can be disabled for specific endpoints by using the `DisableValidation` extension method.
+```cs
+app.MapPost("/products",
+  ([EvenNumber(ErrorMessage = "Product ID must be even")] int productId, [Required] string name)
+    => TypedResults.Ok(productId))
+  .DisableValidation();
 ```
 
 # Real-World Web Development with .NET 10
@@ -468,7 +588,7 @@ I will be slightly rebalancing chapters in this edition:
 
 ## Chapter 9 - Building Web Services Using ASP.NET Core Web API
 
-
+Most of the improvements to OpenAPI documentation in [Chapter 15 - Building and Consuming Web Services](#chapter-15---building-and-consuming-web-services) apply to controller-based Web API services too.
 
 ## Chapter 10 - Integration Testing and Building Clients for Web Services
 
@@ -501,6 +621,33 @@ I will be slightly reorganizing chapters in this edition. This includes moving t
 13. Combining Data Sources Using GraphQL Services
 14. Building Efficient Microservices Using gRPC
 
+## Chapter 10 - Building and Securing Minimal API Web Services
+
+All of the improvements to OpenAPI documentation in [Chapter 15 - Building and Consuming Web Services](#chapter-15---building-and-consuming-web-services) apply to controller-based Web API services too.
+
 
 # Tools and Skills for .NET 10
 
+This second edition only needs a minimal update, mostly for the rapid improvements to .NET Aspire.
+1. Introducing Tools and Skills for .NET
+2. Making the Most of the Tools in your Code Editor
+3. Source Code Management Using Git
+4. Debugging and Memory Troubleshooting
+5. Logging, Tracing, and Metrics for Observability
+6. Documenting Code, APIs, and Services
+7. Observing and Modifying Code Execution Dynamically
+8. Protecting Data and Apps Using Cryptography
+9. Multitasking and Concurrency
+10. Dependency Injection, Containers, and Service Lifetime
+11. Unit Testing and Mocking
+12. Integration and Security Testing
+13. Benchmarking Performance, Load, and Stress Testing
+14. Functional and End-to-End Testing of Websites and Services
+15. Containerization Using Docker
+16. Cloud-Native Development Using .NET Aspire
+17. Design Patterns and Principles
+18. Software and Solution Architecture Foundations
+19. Your Career, Teamwork, and Interviews
+
+The **Multitasking and Concurrency** chapter has moved to this book from *Apps and Services with .NET 10*.
+The **Building a Custom LLM-based Service** has moved from this book to *Apps and Services with .NET 10*.

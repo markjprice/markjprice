@@ -2,6 +2,7 @@
 
 If you have suggestions for other common mistakes, then please [raise an issue in this repository](https://github.com/markjprice/cs13net9/issues) or email me at markjprice (at) gmail.com.
 
+- [Copying and pasting links from PDFs](#copying-and-pasting-links-from-pdfs)
 - [Missing property setter in entity model](#missing-property-setter-in-entity-model)
 - [MSB3026/MSB3027 Cannot rebuild/compile a project](#msb3026msb3027-cannot-rebuildcompile-a-project)
 - [Microsoft introduces a bug in a later version](#microsoft-introduces-a-bug-in-a-later-version)
@@ -12,6 +13,16 @@ If you have suggestions for other common mistakes, then please [raise an issue i
   - [CS0122 'Util.DoSomething()' is inaccessible due to its protection level](#cs0122-utildosomething-is-inaccessible-due-to-its-protection-level)
 - [Missing functions in the partial Program class](#missing-functions-in-the-partial-program-class)
   - [CS0103 The name 'DoSomethingElse' does not exist in the current context](#cs0103-the-name-dosomethingelse-does-not-exist-in-the-current-context)
+
+# Copying and pasting links from PDFs
+
+If you copy and paste a link from a PDF, be careful if the link wraps over multiple lines and includes hyphens or you might get `404` errors. 
+
+For example, the following screenshot shows a paragraph that ends in a link: 
+
+![PDF links](assets/pdf-links.png)
+
+This link has a hyphen between `code` and `editors`. If you were to click the link in a PDF file, it opens correctly. But if you were to copy this link to the clipboard, the PDF reader tries to be "smart", assumes the hyphen is due to automatic hyphenation rules, and removes the hyphen! If you then paste the link into a browser address bar, or another document, the link will give a `404 Missing Resource` error because of the missing hyphen.
 
 # Missing property setter in entity model
 

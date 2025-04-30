@@ -1,9 +1,10 @@
-**Common Mistakes and How to Fix Them** (7 items)
+**Common Mistakes and How to Fix Them**
 
-If you have suggestions for other common mistakes, then please [raise an issue in this repository](https://github.com/markjprice/cs13net9/issues) or email me at markjprice (at) gmail.com.
+If you have suggestions for other common mistakes, then please [raise an issue in this repository](https://github.com/markjprice/markjprice/issues) or email me at markjprice (at) gmail.com.
 
 - [Copying and pasting links from PDFs](#copying-and-pasting-links-from-pdfs)
 - [Missing property setter in entity model](#missing-property-setter-in-entity-model)
+- [InvalidOperationException: The service collection cannot be modified because it is read-only.](#invalidoperationexception-the-service-collection-cannot-be-modified-because-it-is-read-only)
 - [MSB3026/MSB3027 Cannot rebuild/compile a project](#msb3026msb3027-cannot-rebuildcompile-a-project)
 - [Microsoft introduces a bug in a later version](#microsoft-introduces-a-bug-in-a-later-version)
 - [Visual Studio removes a required file from the build process](#visual-studio-removes-a-required-file-from-the-build-process)
@@ -57,6 +58,34 @@ public virtual ICollection<Product> Products { get; }
 ```
 
 The side-affect of this mistake is that related entities will not be loaded or deserialized, as in this issue: https://github.com/markjprice/apps-services-net7/issues/30
+
+# InvalidOperationException: The service collection cannot be modified because it is read-only.
+
+The `InvalidOperationException: The service collection cannot be modified because it is read-only.` exception occurs if you try to register a depedency service after you have called `Build`. To fix it, move the service registration before you call `Build`.
+
+In ASP.NET Core projects, in the `Program.cs` file, the code can be divided into five steps:
+1. Create a web application builder with default configuration, as shown in the following code:
+    ```cs
+    var builder = WebApplication.CreateBuilder(args);
+    ```
+2. Configure the `builder`. This includes registering dependency services by calling `AddX` methods on the `Services` collection, as shown in the following code: 
+    ```cs
+    builder.Services.AddRazorComponents();
+    // Other service registrations and configuration.
+    ```
+3. At the end of the configuration section, call `Build` to make the web application object named `app` (this will make the `Services` collection read-only so you cannot add any more services), as shown in the following code:
+    ```cs
+    var app = builder.Build();
+    ```
+4. Register request and response handlers in the HTTP pipeline, as shown in the following code:
+    ```cs
+    app.UseHttpsRedirection();
+    // Other handler registrations and route mappings.
+    ```
+5. Run the host, as shown in the following code:
+    ```cs
+    app.Run();
+    ```
 
 # MSB3026/MSB3027 Cannot rebuild/compile a project
 

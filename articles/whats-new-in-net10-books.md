@@ -2,7 +2,7 @@
 
 In the .NET 10 editions of my books I plan to cover the following new features expected in C# 14, .NET 10, ASP.NET Core 10, and EF Core 10.
 
-> **Note**: This document is based on .NET 10 Previews 1 to 3. Microsoft might remove any of these features before the final version of .NET 10 that is expected in November 2025.
+> **Note**: This document is based on .NET 10 Previews 1 to 4. Microsoft might remove any of these features before the final version of .NET 10 that is expected in November 2025.
 
 - [C# 14 and .NET 10 - Modern Cross-Platform Development Fundamentals](#c-14-and-net-10---modern-cross-platform-development-fundamentals)
   - [Chapter 1 - Hello, C#! Welcome, .NET!](#chapter-1---hello-c-welcome-net)
@@ -24,6 +24,9 @@ In the .NET 10 editions of my books I plan to cover the following new features e
   - [Chapter 8 - Working with Common .NET Types](#chapter-8---working-with-common-net-types)
     - [Numeric Ordering for String Comparison](#numeric-ordering-for-string-comparison)
     - [Additional `TryAdd` and `TryGetValue` overloads for `OrderedDictionary<TKey, TValue>`](#additional-tryadd-and-trygetvalue-overloads-for-ordereddictionarytkey-tvalue)
+  - [Chapter 9 - Working with Files, Streams, and Serialization](#chapter-9---working-with-files-streams-and-serialization)
+    - [JSON Patch](#json-patch)
+    - [New async Zip APIs](#new-async-zip-apis)
   - [Chapter 11 - Querying and Manipulating Data Using LINQ](#chapter-11---querying-and-manipulating-data-using-linq)
     - [LeftJoin and RightJoin LINQ methods](#leftjoin-and-rightjoin-linq-methods)
   - [Chapter 14 - Building Interactive Web Components Using Blazor](#chapter-14---building-interactive-web-components-using-blazor)
@@ -39,7 +42,10 @@ In the .NET 10 editions of my books I plan to cover the following new features e
   - [Chapter 9 - Building Web Services Using ASP.NET Core Web API](#chapter-9---building-web-services-using-aspnet-core-web-api)
   - [Chapter 10 - Integration Testing and Building Clients for Web Services](#chapter-10---integration-testing-and-building-clients-for-web-services)
     - [Improvements to integration testing of apps with top-level statements](#improvements-to-integration-testing-of-apps-with-top-level-statements)
+    - [Use WebApplicationFactory with Kestrel for integration testing](#use-webapplicationfactory-with-kestrel-for-integration-testing)
 - [Apps and Services with .NET 10](#apps-and-services-with-net-10)
+  - [Chapter 2 - Building Mobile Apps Using .NET MAUI](#chapter-2---building-mobile-apps-using-net-maui)
+  - [Chapter 3 - Building Desktop Apps Using Avalonia](#chapter-3---building-desktop-apps-using-avalonia)
   - [Chapter 10 - Building and Securing Minimal API Web Services](#chapter-10---building-and-securing-minimal-api-web-services)
 - [Tools and Skills for .NET 10](#tools-and-skills-for-net-10)
 
@@ -310,7 +316,7 @@ else
 
 Generics are supported and the resolution rules are the same as for extension methods. Extension blocks can seamlessly coexist with the extension methods you have today. There's no requirement to switch to the new syntax - both execute in exactly the same way. Just add extension blocks to the static classes that contain your existing extension methods. The choice is entirely yours. If you prefer to leave your existing extension methods untouched, you absolutely can. But if you’d rather update your code for a consistent look and take advantage of the new syntax, that option is available too. 
 
-> **More Information**: https://github.com/dotnet/csharplang/discussions/8696
+> **More Information**: https://github.com/dotnet/csharplang/discussions/8696 and https://devblogs.microsoft.com/dotnet/csharp-exploring-extension-members/
 
 ### Union Types
 
@@ -386,6 +392,49 @@ public static void IncrementValue(OrderedDictionary<string, int> orderedDictiona
 ```
 
 This new API is now being used in `JsonObject` to improve the performance of updating properties by 10-20%.
+
+## Chapter 9 - Working with Files, Streams, and Serialization
+
+### JSON Patch
+
+JSON Patch is a standard format for describing changes to apply to a JSON document, defined in RFC 6902. It represents a sequence of operations (e.g., add, remove, replace, move, copy, test) that can be applied to modify a JSON document. In web applications, JSON Patch is commonly used in a PATCH operation to perform partial updates of a resource. Instead of sending the entire resource for an update, clients can send a JSON Patch document containing only the changes. This reduces payload size and improves efficiency.
+
+https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview4/aspnetcore.md#json-patch-with-systemtextjson
+
+### New async Zip APIs
+
+.NET 10 introduces new asynchronous APIs for working with ZIP archives, making it easier to perform non-blocking operations when reading from or writing to ZIP files. The new APIs, added to the System.IO.Compression and System.IO.Compression.ZipFile assemblies, provide async methods for extracting, creating, and updating ZIP archives. These methods enable developers to efficiently handle large files and improve application responsiveness, especially in scenarios involving I/O-bound operations.
+
+```cs
+// Extract a Zip archive
+await ZipFile.ExtractToDirectoryAsync("archive.zip", "destinationFolder", overwriteFiles: true);
+
+// Create a Zip archive
+await ZipFile.CreateFromDirectoryAsync("sourceFolder", "archive.zip", CompressionLevel.SmallestSize, includeBaseDirectory: true, entryNameEncoding: Encoding.UTF8);
+
+// Open an archive
+await using ZipArchive archive = ZipFile.OpenReadAsync("archive.zip");
+
+// Fine-grained manipulation
+using FileStream archiveStream = File.OpenRead("archive.zip");
+
+await using (ZipArchive archive = await ZipArchive.CreateAsync(archiveStream, ZipArchiveMode.Update, leaveOpen: false, entryNameEncoding: Encoding.UTF8))
+{
+  foreach (ZipArchiveEntry entry in archive.Entries)
+  {
+    // Extract an entry to the filesystem
+    await entry.ExtractToFileAsync(destinationFileName: "file.txt", overwrite: true);
+
+    // Open an entry's stream
+    await using Stream entryStream = await entry.OpenAsync();
+
+    // Create an entry from a filesystem object
+    ZipArchiveEntry createdEntry = await archive.CreateEntryFromFileAsync(sourceFileName "path/to/file.txt", entryName: "file.txt");
+  }
+}
+```
+
+https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview4/libraries.md#new-async-zip-apis
 
 ## Chapter 11 - Querying and Manipulating Data Using LINQ
 
@@ -567,6 +616,8 @@ app.MapPost("/products",
   .DisableValidation();
 ```
 
+Preview 4 added support for record type parameters.
+
 # Real-World Web Development with .NET 10
 
 I will be slightly rebalancing chapters in this edition:
@@ -590,6 +641,8 @@ I will be slightly rebalancing chapters in this edition:
 
 Most of the improvements to OpenAPI documentation in [Chapter 15 - Building and Consuming Web Services](#chapter-15---building-and-consuming-web-services) apply to controller-based Web API services too.
 
+Some more advanced features include: Generate OpenAPI schemas in transformers: https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview4/aspnetcore.md#generate-openapi-schemas-in-transformers
+
 ## Chapter 10 - Integration Testing and Building Clients for Web Services
 
 ### Improvements to integration testing of apps with top-level statements
@@ -602,6 +655,46 @@ https://github.com/markjprice/web-dev-net9/blob/main/code/MatureWeb/Northwind.We
 In .NET 10, a source generator is used to generate the `public partial class Program` declaration if the developer did not declare it explicitly. In addition, an analyzer was added to detect when `public partial class Program` is declared explicitly and advise the developer to remove it.
 
 In the .NET 10 edition, I will explain this improvement so readers who need to continue to use older versions of .NET will still be able to write integration tests.
+
+### Use WebApplicationFactory with Kestrel for integration testing
+
+You can now use `WebApplicationFactory` with Kestrel for integration testing instead of the in-memory TestServer. This allows you to run integration tests against a real Kestrel server, including automated browser testing. To use Kestrel with `WebApplicationFactory`, first call `UseKestrel` and then `StartServer()` to start the server. Use overloads of `UseKestrel` to optionally configure the port or other Kestrel options.
+
+The following example shows testing an web app using `WebApplicationFactory`, Kestrel, xUnit.net, and Playwright:
+```cs
+public class BlazorWebAppFactory : WebApplicationFactory<Program>
+{
+  protected override void ConfigureWebHost(IWebHostBuilder builder)
+  {
+    builder.ConfigureTestServices(svc =>
+    {
+        svc.AddTransient<IWeatherService, TestWeatherService>();
+    });
+  }
+}
+
+public class WeatherPageTests : PageTest
+{
+  [Fact]
+  public async Task Page_LoadsSuccessfully()
+  {
+    using var waf = new BlazorWebAppFactory();
+
+    waf.UseKestrel();
+    waf.StartServer();
+
+    await Task.Delay(30000);
+    var privacyPagePath = waf.ClientOptions.BaseAddress.ToString() + "weather";
+    var response = await Page.GotoAsync(privacyPagePath);
+    var content = await response!.TextAsync();
+
+    await Expect(Page).ToHaveTitleAsync("Weather");
+    Assert.Contains(TestWeatherService.TestWeatherSummary, content);
+  }
+}
+```
+
+https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview4/aspnetcore.md#use-webapplicationfactory-with-kestrel-for-integration-testing
 
 # Apps and Services with .NET 10
 
@@ -620,6 +713,18 @@ I will be slightly reorganizing chapters in this edition. This includes moving t
 12. Broadcasting Real-Time Communication Using SignalR
 13. Combining Data Sources Using GraphQL Services
 14. Building Efficient Microservices Using gRPC
+
+## Chapter 2 - Building Mobile Apps Using .NET MAUI
+
+The Android and iOS implementations of `MediaPicker` for taking and picking photos have been updated to use the latest platform APIs when available thus providing the latest user experience.
+https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview4/dotnetmaui.md#mediapicker-modernization
+
+Added nullable support to `DatePicker` for `Date`, `MinimumDate`, and `MaximumDate` properties, and to `TimerPicker` for the `Time` property.
+https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview4/dotnetmaui.md#nullable-pickers
+
+## Chapter 3 - Building Desktop Apps Using Avalonia
+
+This is a whole new chapter. I decided to cover Avalonia because Microsoft is shrinking the team that maintains MAUI. 
 
 ## Chapter 10 - Building and Securing Minimal API Web Services
 

@@ -19,6 +19,8 @@ In the .NET 10 editions of my books I plan to cover the following new features e
     - [Partial Members](#partial-members)
     - [Extension Members](#extension-members)
     - [Union Types](#union-types)
+  - [Chapter 6 - Implementing Interfaces and Inheriting Classes](#chapter-6---implementing-interfaces-and-inheriting-classes)
+    - [User defined compound assignment operators](#user-defined-compound-assignment-operators)
   - [Chapter 7 - Packaging and Distributing .NET Types](#chapter-7---packaging-and-distributing-net-types)
     - [New Noun-First Alias for `dotnet` CLI commmands](#new-noun-first-alias-for-dotnet-cli-commmands)
   - [Chapter 8 - Working with Common .NET Types](#chapter-8---working-with-common-net-types)
@@ -31,6 +33,7 @@ In the .NET 10 editions of my books I plan to cover the following new features e
     - [LeftJoin and RightJoin LINQ methods](#leftjoin-and-rightjoin-linq-methods)
   - [Chapter 14 - Building Interactive Web Components Using Blazor](#chapter-14---building-interactive-web-components-using-blazor)
     - [QuickGrid RowClass parameter](#quickgrid-rowclass-parameter)
+    - [Add a Not Found page using the Blazor Router](#add-a-not-found-page-using-the-blazor-router)
   - [Chapter 15 - Building and Consuming Web Services](#chapter-15---building-and-consuming-web-services)
     - [OpenAPI 3.1 support](#openapi-31-support)
     - [Generate OpenAPI documents in YAML format](#generate-openapi-documents-in-yaml-format)
@@ -322,6 +325,26 @@ Generics are supported and the resolution rules are the same as for extension me
 
 > **Note**: Union Types will not be officially supported in C# 14 and .NET 10, but they might be available in preview, and they are likely to be supported in future versions, so I plan to add an online-only section about them and related third-party libraries that provide similar features today.
 
+## Chapter 6 - Implementing Interfaces and Inheriting Classes
+
+### User defined compound assignment operators
+
+This feature enables type authors to implement compound assignment operators in a manner that modifies the target in place rather than create copies.
+
+For example, the `+=` operator was defined to perform the addition and then an assignment. In other words, the code:
+```cs
+a += b;
+```
+Was the same as the following code:
+```cs
+a = a + b;
+```
+If the type of `a` was a class, a typical implementation of operator `+` creates a new instance of that type. The compound assignment operator impacts memory usage. The original instance of a becomes garbage and a newly allocated instance takes its place. For larger types, this causes unnecessary memory churn. That churn, in turn, causes increased memory pressure and creates more work for the garbage collector.
+
+As more programs use `Tensor` types or other large data structures, this cost becomes more significant
+
+Library authors can now create user defined implementations for any of the compound assignment operators: +=, -=, *=, /=, %=, &=, |=, ^=, <<=, >>= and >>>=. In addition, the +=, -=, *= and /= operators can include both `checked` and `unchecked` variants.
+
 ## Chapter 7 - Packaging and Distributing .NET Types
 
 ### New Noun-First Alias for `dotnet` CLI commmands 
@@ -493,6 +516,20 @@ Apply a stylesheet class to a row of the grid based on the row item using the ne
         rowItem.{PROPERTY} == {VALUE} ? "{CSS STYLE CLASS}" : null;
 }
 ```
+
+### Add a Not Found page using the Blazor Router
+
+Blazor now provides an improved way to display a "Not Found" page when navigating to a non-existent page. You can specify a page to render when `NavigationManager.NotFound()` is called by passing a page type to the `Router` component using the `NotFoundPage` parameter. This approach is recommended over the previous `NotFound` fragment, as it supports routing, works across code re-execution middleware, and is compatible even with non-Blazor scenarios. 
+```html
+<Router AppAssembly="@typeof(Program).Assembly" NotFoundPage="typeof(Pages.NotFound)">
+  <Found Context="routeData">
+    <RouteView RouteData="@routeData" />
+    <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+  </Found>
+  <NotFound>This content will be ignored because we have NotFoundPage defined.</NotFound>
+</Router>
+```
+The Blazor project template now includes a `NotFound.razor` page by default. This page will automatically render whenever `NavigationManager.NotFound()` is called in your application, making it easier to handle missing routes with a consistent user experience.
 
 ## Chapter 15 - Building and Consuming Web Services
 

@@ -1,16 +1,26 @@
 **Common mistakes with EF Core CLI tool**
 
+- [No C# files created](#no-c-files-created)
+  - [Check for Output Directory and Namespace Parameters](#check-for-output-directory-and-namespace-parameters)
+  - [Are You Using a Database with No Tables?](#are-you-using-a-database-with-no-tables)
+  - [No Permissions / Wrong Connection String](#no-permissions--wrong-connection-string)
+  - [You Filtered Out All Tables](#you-filtered-out-all-tables)
+  - [Database Incompatibility or Unsupported Objects](#database-incompatibility-or-unsupported-objects)
+  - [EF Tools Installed Correctly?](#ef-tools-installed-correctly)
+  - [Final Recommendation](#final-recommendation)
+
+
 # No C# files created
 
 If `dotnet ef dbcontext scaffold` runs without errors but doesn't generate any C# class files, it's likely due to one of the following reasons. Here's a checklist to help you troubleshoot:
 
 ---
 
-## 🔍 1. **Check for Output Directory and Namespace Parameters**
+## Check for Output Directory and Namespace Parameters
 
 You may have run the command without specifying an output directory (`-o`) or the generated files may have gone to an unexpected location.
 
-### ✅ What to Check:
+What to Check:
 
 * Look in your current working directory and any subdirectories.
 * Try adding explicit output parameters:
@@ -21,13 +31,11 @@ dotnet ef dbcontext scaffold "your-connection-string" Microsoft.EntityFrameworkC
 
 This generates the files in a `Models` folder and overwrites existing ones (`-f` is optional but helpful during re-scaffolding).
 
----
-
-## 🏗️ 2. **Are You Using a Database with No Tables?**
+## Are You Using a Database with No Tables?
 
 If your database has no user tables, EF Core will silently succeed and generate nothing. This is surprisingly common with newly created databases.
 
-### ✅ How to Confirm:
+How to Confirm:
 
 Run this SQL against your database:
 
@@ -37,13 +45,11 @@ SELECT name FROM sys.tables WHERE is_ms_shipped = 0;
 
 If the result is empty, that's your issue.
 
----
-
-## 🚫 3. **No Permissions / Wrong Connection String**
+## No Permissions / Wrong Connection String
 
 You might be connecting to a valid database but not the one you think. If your connection string is wrong or pointing to a different server or database, you might be scaffolding from a database that has no schema.
 
-### ✅ What to Check:
+What to Check:
 
 * Verify the connection string carefully.
 * Add `-v` (verbose) to the command to see detailed output and check what database it connects to:
@@ -52,13 +58,11 @@ You might be connecting to a valid database but not the one you think. If your c
 dotnet ef dbcontext scaffold "your-connection-string" Microsoft.EntityFrameworkCore.SqlServer -v
 ```
 
----
-
-## 🗃️ 4. **You Filtered Out All Tables**
+## You Filtered Out All Tables
 
 If you used `--table` or `--schema` filters incorrectly, EF might exclude everything.
 
-### ✅ Example:
+Example:
 
 ```bash
 dotnet ef dbcontext scaffold "your-connection-string" Microsoft.EntityFrameworkCore.SqlServer --schema Sales
@@ -66,9 +70,7 @@ dotnet ef dbcontext scaffold "your-connection-string" Microsoft.EntityFrameworkC
 
 This only includes tables in the `Sales` schema. If that schema has no tables, you'll get nothing.
 
----
-
-## 🧱 5. **Database Incompatibility or Unsupported Objects**
+## Database Incompatibility or Unsupported Objects
 
 EF Core doesn’t scaffold:
 
@@ -79,13 +81,11 @@ EF Core doesn’t scaffold:
 
 So if your database has only those kinds of objects, again, no output is generated.
 
----
-
-## 🧩 6. **EF Tools Installed Correctly?**
+## EF Tools Installed Correctly?
 
 If you're using `dotnet-ef`, make sure you're using the same versions across your project and globally.
 
-### ✅ What to Run:
+What to Run:
 
 ```bash
 dotnet tool list -g
@@ -99,11 +99,9 @@ Also check the project has appropriate EF Core NuGet packages:
 <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="..." />
 ```
 
----
+## Final Recommendation
 
-## 🛠️ Final Recommendation
-
-Try running this simplified command:
+Try running this command:
 
 ```bash
 dotnet ef dbcontext scaffold "your-connection-string" Microsoft.EntityFrameworkCore.SqlServer -o Models -f -v

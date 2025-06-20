@@ -9,3 +9,6 @@
 # C# and .NET features
 - [Partial Types and Members](partial-types-and-members.md): From C# 2 in 2005 to C# 14 in 2025, the C# team has gradually added partial type and member support. 
 - [Discriminated Union Types in C#](union-types.md): Discriminated unions (also called *union types*, *tagged unions*, or *sum types*) let a variable or result be *one of a limited set of types*, with the compiler tracking which case is in use​.
+
+# Tools
+- [IDE and OS Usage Among .NET Developers (2023–2025)](ide.md)

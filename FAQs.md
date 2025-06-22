@@ -6,6 +6,9 @@
   - [What's New in your .NET 10 books?](#whats-new-in-your-net-10-books)
   - [Will there be editions of your books for future versions of .NET?](#will-there-be-editions-of-your-books-for-future-versions-of-net)
   - [Are there slide decks for your books for educational use?](#are-there-slide-decks-for-your-books-for-educational-use)
+  - [How can a .NET developer study AI?](#how-can-a-net-developer-study-ai)
+  - [Which IDE and OS are most popular for .NET developers?](#which-ide-and-os-are-most-popular-for-net-developers)
+  - [What do recent surveys about .NET tell us?](#what-do-recent-surveys-about-net-tell-us)
 - [Questions about book distribution and pricing](#questions-about-book-distribution-and-pricing)
   - [How to get a Packt book you have purchased as a PDF](#how-to-get-a-packt-book-you-have-purchased-as-a-pdf)
   - [Will I be able to download a newer copy or will I have to pay anything for the newer edition?](#will-i-be-able-to-download-a-newer-copy-or-will-i-have-to-pay-anything-for-the-newer-edition)
@@ -51,6 +54,20 @@ Starting in November 2025, my plan* is that all four .NET books will be updated 
 ## Are there slide decks for your books for educational use?
 
 No, I have not created slide decks to match the content of my books. I have had only three requests for slide decks from teachers over the past ten years so that they can more easily use my books in their courses so there isn't enough demand to make it worthwhile. But if any teachers want to contact me to discuss what a slide deck would need to look like to be useful to them, then please contact me (markjprice@gmail.com) and we can arrange a video call to discuss details and perhaps I will do something for the .NET 10 edition.
+
+## How can a .NET developer study AI?
+
+In the Discord channel for *Tools and Skills for .NET 8*, **CarlosBazanH** / `_carlosbazan` asked, "Hi Mark, could you recommend how a .Net developer can study AI? Where can we start? Tools, skills, etc., using .Net as the backbone."
+
+I have written an article about this here: [How can a .NET developer study AI?](articles/dotnet-and-ai.md).
+
+## Which IDE and OS are most popular for .NET developers?
+
+I have written an article about this here: [IDE and OS Usage Among .NET Developers (2023–2025)](articles/ide.md).
+
+## What do recent surveys about .NET tell us?
+
+I have written an article about this here: [What do recent surveys about .NET tell us?](articles/surveys.md).
 
 # Questions about book distribution and pricing
 

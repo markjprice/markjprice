@@ -96,3 +96,9 @@ This was the survey result that made me write *Real-World Web Development with .
 ![Testing frameworks](assets/testing-framework.png)
 
 I'm happy with my choice to use xUnit in my books.
+
+# .NET Developers community on LinkedIn
+
+The **.NET Developers** community on LinkedIn was surveyed in May 2025 and they confirm that Visual Studio is still the most used IDE:
+
+![Popularity of code editors and IDEs](assets/net-devs-linkedin-survey-ide.png)

@@ -273,11 +273,13 @@ Learn more from the Microsoft Learn documentation:
 
 ### Extension Members
 
-Extension methods were introduced in C# 3 in 2007. In C# 14, you can also define other types of extension member: static methods, instance properties, and static properties. 
+*Extension methods* were introduced in C# 3 in 2007. In C# 14, you can also define other types of *extension member*: static methods, instance properties, and static properties. 
+
+*Extension members* expand the concept of extension methods to allow more kinds of “adding stuff” onto existing types you don’t control. You can now define extension blocks, using a new `extension(...) { ... }` syntax, that group together a set of extension members targeting a receiver type. Inside those blocks you can define instance and static extension methods and properties. I think extension members are among the more useful incremental improvements in recent C#. 
 
 Expanding extensions to other member types has been a long-standing challenge, driven by two key questions: how to declare them effectively and how to resolve ambiguity when multiple matching signatures exist. Additionally, we aimed to seamlessly support the new syntax for instance members—ensuring that users of instance extension methods never have to worry about whether they were declared with the old or new syntax. 
 
-Extension methods in C# 3 and later require a static class with a static method with a parameter decorated with `this` to indicate what type the extension method will apply to, as shown in the following code:
+Extension methods in C# 3 and later require a `static` class with a `static` method with a parameter decorated with `this` to indicate what type the extension method will apply to, as shown in the following code:
 ```cs
 public static class Extensions
 {

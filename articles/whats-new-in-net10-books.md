@@ -2,8 +2,6 @@
 
 In the .NET 10 editions of my books I plan to cover the following new features expected in C# 14, .NET 10, ASP.NET Core 10, and EF Core 10.
 
-> **Note**: This document is based on .NET 10 Previews 1 to 4. Microsoft might remove any of these features before the final version of .NET 10 that is expected in November 2025.
-
 - [C# 14 and .NET 10 - Modern Cross-Platform Development Fundamentals](#c-14-and-net-10---modern-cross-platform-development-fundamentals)
   - [Chapter 1 - Hello, C#! Welcome, .NET!](#chapter-1---hello-c-welcome-net)
     - [Solution Evolution - `.sln`, `.slnx`, and `.slnf`](#solution-evolution---sln-slnx-and-slnf)

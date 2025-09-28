@@ -1,6 +1,6 @@
 **What order should I read your .NET 9 and .NET 8 books?**
 
-- [What are my .NET books?](#what-are-my-net-books)
+- [What are my .NET 8 and .NET 9 books?](#what-are-my-net-8-and-net-9-books)
 - [Read the C# and .NET fundamentals first](#read-the-c-and-net-fundamentals-first)
 - [What are your goals?](#what-are-your-goals)
 - [Table of topics in my .NET 10 and other Packt books](#table-of-topics-in-my-net-10-and-other-packt-books)
@@ -8,7 +8,7 @@
 
 > **TLDR**; If you are new to .NET then read *C# 13 and .NET 9 - Modern Cross-Platform Development Fundamentals* first. After that, you can read any of the other books in any order.
 
-# What are my .NET books?
+# What are my .NET 8 and .NET 9 books?
 
 I have published two books about .NET 9:
 

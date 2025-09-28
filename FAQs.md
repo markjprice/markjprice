@@ -29,7 +29,9 @@ Some decent .NET road maps include:
 
 ## What order should I read your books?
 
-I have written an article about this here: [What order should I read your books?](articles/book-sequence.md).
+I have written articles to answer this here: 
+- [What order should I read your .NET 10 books?](articles/book-sequence-net10.md)
+- [What order should I read your .NET 8 and .NET 9 books?](articles/book-sequence.md)
 
 ## What's New in your .NET 10 books?
 

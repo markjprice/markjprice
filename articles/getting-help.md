@@ -13,12 +13,10 @@
 - [Official .NET blog, standups, and news](#official-net-blog-standups-and-news)
 - [Watching Scott Hanselman’s videos](#watching-scott-hanselmans-videos)
 - [AI tools like ChatGPT and GitHub Copilot](#ai-tools-like-chatgpt-and-github-copilot)
-  - [Here is an example:](#here-is-an-example)
-  - [applyTo: '\*\*/\*.cs'](#applyto-cs)
-- [C# Development](#c-development)
-  - [C# Instructions](#c-instructions)
-  - [General Instructions](#general-instructions)
-  - [Naming Conventions](#naming-conventions)
+  - [ChatGPT example](#chatgpt-example)
+  - [GitHub Copilot for programmers](#github-copilot-for-programmers)
+- [Customizing Copilot responses](#customizing-copilot-responses)
+- [Disabling tools when they get in the way](#disabling-tools-when-they-get-in-the-way)
 
 
 This section is all about how to find quality information about programming on the web.
@@ -357,51 +355,88 @@ I recommend it to everyone working with computers.
 # AI tools like ChatGPT and GitHub Copilot
 
 One of the biggest changes in coding and development in the past few years is the emergence of generative artificial intelligence (AI) tools that can help with coding tasks, like completing a code statement, implementing an entire function, writing unit tests, and suggesting debugging fixes for existing code.
+
 You can read what developers say about AI tools in the 2025 Stack Overflow Developer Survey: “84% of respondents are using or plan to use AI tools in their development process” (https://survey.stackoverflow.co/2025/ai/#1-ai-tools-in-the-development-process/).
+
 ChatGPT currently has several models for individuals: 4o mini (free), 4o (free but limited), and 4o with 5x more requests and other benefits, like early access to new features and DALL·E image generation ($20 per month). It also has pricing for enterprises. You can check their pricing at the following link: https://openai.com/chatgpt/pricing/.
-ChatGPT example
+
+## ChatGPT example
+
 Let’s say you need to write a C# function to validate an email address. You might go to ChatGPT and enter the following prompt:
+```
 write a c# function to validate an email address
-It responds with a complete class with methods, as shown in Figure 1.20:
- 
-Figure 1.20: ChatGPT writes a function to validate an email address
+```
+It responds with a complete class with methods, as shown in *Figure 1.20*:
+
+![ChatGPT writes a function to validate an email address](assets/B31466_01_20.png) 
+*Figure 1.20: ChatGPT writes a function to validate an email address*
+
 It then provides an explanation of the code and examples of how to call the function, as shown in the following code:
+```cs
 bool isValid = EmailValidator.IsValidEmail("test@example.com");
 Console.WriteLine(isValid ? "Valid" : "Invalid");
+```
+
 But is a general-purpose generative AI like ChatGPT the best partner for a C# programmer?
-GitHub Copilot for programmers
-Microsoft has a service specifically for programmers, named GitHub Copilot, that can help autocomplete code directly in your code editor. It has plugins for code editors, including Visual Studio, VS Code, and JetBrains IntelliJ-based IDEs.
+
+## GitHub Copilot for programmers
+
+Microsoft has a service specifically for programmers, named **GitHub Copilot**, that can help autocomplete code directly in your code editor. It has plugins for code editors, including Visual Studio, VS Code, and JetBrains IntelliJ-based IDEs.
+
 Personally, I really like the Copilot branding. It makes it clear that you are the pilot. You are ultimately responsible for “flying the plane.” But for the easy or boring bits, you can hand it over to your copilot for a bit, while being actively ready to take back control if needed.
+
 For individuals, GitHub Copilot has a free plan, and then a paid Pro plan at $10 per month or $100 per year, and a Pro+ plan at $39 per month or $390 per year. You can find the latest pricing information at the following link: https://github.com/features/copilot/plans.
+
 As you can imagine, this is a fast-changing world, and some of what I might write in the book today will be out of date by the time you read it, so check the latest features at the following link: https://github.com/features/copilot.
+
 In June 2025, Visual Studio switched to GPT-4.1 as its default model and added support for many more to choose from:
-•	Claude Sonnet 4, Claude Opus 4, Claude Sonnet 3.5, Claude 3.7 (non-thinking and thinking)
-•	OpenAI o3 mini, o4 mini, o1, o3, GPT-4o, GPT-4.1, GPT-4.5
-•	Gemini 2.0 Flash, Gemini 2.5 Pro
+- Claude Sonnet 4, Claude Opus 4, Claude Sonnet 3.5, Claude 3.7 (non-thinking and thinking)
+- OpenAI o3 mini, o4 mini, o1, o3, GPT-4o, GPT-4.1, GPT-4.5
+- Gemini 2.0 Flash, Gemini 2.5 Pro
+
 They each have strengths, and you can learn how to choose the right model for your task at the following link:
 https://docs.github.com/en/copilot/reference/ai-models/model-comparison.
+
 For premium requests, you have a monthly quota. Use the Copilot Consumptions panel to help you monitor your usage. If you run out of premium requests, it will automatically switch to GPT-4.1 at no extra cost.
+
 JetBrains has its own GitHub Copilot equivalent, named AI Assistant, which you can read about at the following link: https://blog.jetbrains.com/idea/2023/06/ai-assistant-in-jetbrains-ides/.
+
 So what can GitHub Copilot do for you today?
-Imagine that you have just added a new class file named Product.cs. You click inside the Product class, press Enter to insert a blank line, and then pause for a second as you think about what you need to type… and then GitHub Copilot generates some sample code in gray, as shown in Figure 1.21:
- 
-Figure 1.21: GitHub Copilot suggesting how to define a Product class
-At this point, you can glance over the code and, if it is close to what you want, just press Tab to insert it all, or press Alt + . (dot) to toggle between other suggestions.
+
+Imagine that you have just added a new class file named `Product.cs`. You click inside the `Product` class, press *Enter* to insert a blank line, and then pause for a second as you think about what you need to type… and then GitHub Copilot generates some sample code in gray, as shown in *Figure 1.21*:
+
+![GitHub Copilot suggesting how to define a Product class](assets/B31466_01_21.png) 
+*Figure 1.21: GitHub Copilot suggesting how to define a Product class*
+
+At this point, you can glance over the code and, if it is close to what you want, just press *Tab* to insert it all, or press *Alt* + . (dot) to toggle between other suggestions.
+
 Sometimes, it is too far from what you need, and you’d be better off ignoring its suggestion completely and just writing it yourself. But usually, there’s something there that’s usable or reminds you of the syntax you need to use. And sometimes, it feels like magic, writing dozens of lines of exactly what you need.
+
 Microsoft feeds its AI tools with code from public GitHub repositories, including all the repositories I have created since 2016 for all the editions of this book. This means that it can suggest code completions for the readers of this book that are surprisingly accurate predictions, including my frequent use of pop culture references in my code. It’s like I, Mark J. Price, am the “ghost in the machine” guiding your coding.
+
 It’s easy to imagine a custom ChatGPT that has ingested all the official Microsoft .NET documentation, every public blog article written about .NET, and perhaps even hundreds of books about .NET, and then having a conversation with it to find a bug or suggest how to solve a programming problem.
+
 You can sign up for GitHub Copilot at the following link: https://github.com/github-copilot/signup/.
-Good practice: Learn more about how to use Copilot as your coding GPS at the following link: https://devblogs.microsoft.com/visualstudio/using-github-copilot-as-your-coding-gps/.
-Customizing Copilot responses
+
+> **Good practice**: Learn more about how to use Copilot as your coding GPS at the following link: https://devblogs.microsoft.com/visualstudio/using-github-copilot-as-your-coding-gps/.
+
+# Customizing Copilot responses
+
 To get the best out of AI, you must supply it with clear, detailed instructions. A prompt such as create a .NET project for a social media website gives the LLM plenty of scope for hallucinations. But giving all the necessary details in every prompt is a pain. What we need is a way to give standard instructions that would apply to all projects, and then we will only need to give specific instructions in the actual prompt.
+
 We can do this for Copilot using a special Markdown file:
+```
 <project_folder>\.github\copilot-instructions.md
+```
+
 Custom instructions define the following:
-•	How tasks should be performed
-•	Which technologies are preferred
-•	What project structure should be followed
-•	What to check for in a code review
+- How tasks should be performed
+- Which technologies are preferred
+- What project structure should be followed
+- What to check for in a code review
+
 Here is an example:
+```
 ---
 description: 'Guidelines for building C# applications'
 applyTo: '**/*.cs'
@@ -424,26 +459,36 @@ applyTo: '**/*.cs'
 - Follow PascalCase for component names, method names, and public members.
 - Use camelCase for private fields and local variables.
 - Prefix interface names with "I" (e.g., IUserService).
+```
+
 The full file is available at the following link: https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/csharp.instructions.md.
+
 These instructions are automatically incorporated with every chat request. You will see the file referenced in the AI chat window during a request.
+
 Here are some more links about using AI for coding:
-•	OpenAI’s guide, Text generation and prompting: https://platform.openai.com/docs/guides/prompt-engineering
-•	A Beginner’s Guide to Prompt Engineering with GitHub Copilot: https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp
-•	Awesome GitHub Copilot Customizations, A curated collection of prompts, instructions, and chat modes to supercharge your GitHub Copilot experience across different domains, languages, and use cases: https://github.com/github/awesome-copilot/
-•	The Register article about AI: https://www.theregister.com/2024/01/27/ai_coding_automatic/
-•	StackOverflow 2025 survey – AI in the development workflow: https://survey.stackoverflow.co/2025/ai/#2-ai-in-the-development-workflow
-Disabling tools when they get in the way
+- OpenAI’s guide, Text generation and prompting: https://platform.openai.com/docs/guides/prompt-engineering
+- A Beginner’s Guide to Prompt Engineering with GitHub Copilot: https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp
+- Awesome GitHub Copilot Customizations, A curated collection of prompts, instructions, and chat modes to supercharge your GitHub Copilot experience across different domains, languages, and use cases: https://github.com/github/awesome-copilot/
+- The Register article about AI: https://www.theregister.com/2024/01/27/ai_coding_automatic/
+- StackOverflow 2025 survey – AI in the development workflow: https://survey.stackoverflow.co/2025/ai/#2-ai-in-the-development-workflow
+
+# Disabling tools when they get in the way
+
 Although these tools can be helpful, they can also get in your way, especially when learning, because they sometimes do work for you without telling you. If you do not do that work for yourself at least a few times, you won’t learn fully.
+
 To configure IntelliSense for C# in Visual Studio, follow these steps:
-1.	Navigate to Tools | Options.
-2.	In the Options dialog box tree view, navigate to Text Editor | C# | IntelliSense.
-3.	Click the ? button in the caption bar to view the documentation.
+1.	Navigate to **Tools** | **Options**.
+2.	In the **Options** dialog box tree view, navigate to **Text Editor** | **C#** | **IntelliSense**.
+3.	Click the **?** button in the caption bar to view the documentation.
+
 To configure GitHub Copilot in Visual Studio, follow these steps:
-1.	Navigate to Tools | Options.
-2.	In the Options dialog box tree view, navigate to GitHub | Copilot.
-3.	Set Enable Globally to True or False, and then click OK.
+1.	Navigate to **Tools** | **Options**.
+2.	In the **Options** dialog box tree view, navigate to **GitHub** | **Copilot**.
+3.	Set **Enable Globally** to **True** or **False**, and then click **OK**.
+
 To disable GitHub Copilot in VS Code, follow these steps:
 1.	In the status bar, on the right, to the left of the notification icon, click the GitHub Copilot icon.
-2.	In the popup, click Disable Globally.
-3.	To enable it, click the GitHub Copilot icon again and then click Enable Globally.
+2.	In the popup, click **Disable Globally**.
+3.	To enable it, click the GitHub Copilot icon again and then click **Enable Globally**.
+
 For help with Rider IntelliSense, please see the following link: https://www.jetbrains.com/help/rider/Auto-Completing_Code.html.

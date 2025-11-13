@@ -29,12 +29,10 @@ I am eager to lead programming students, both experienced and new, into the chal
 - I hold an Honours Bachelor’s Degree in Computer Science.
 
 I have written a quartet of guided learning books about C# and .NET. Each has a GitHub repository with code solutions and extra materials:
-- [C# 13 and .NET 9 - Modern Cross-Platform Development Fundamentals](https://github.com/markjprice/cs13net9/blob/main/README.md)
-- [Real-World Web Development with .NET 9](https://github.com/markjprice/web-dev-net9/blob/main/README.md)
-- [Apps and Services with .NET 8](https://github.com/markjprice/apps-services-net8/blob/main/README.md)
-- [Tools and Skills for .NET 8](https://github.com/markjprice/tools-skills-net8/blob/main/README.md)
-
-All four books will be updated for .NET 10 starting in November 2025.
+- [C# 14 and .NET 10 - Modern Cross-Platform Development Fundamentals](https://github.com/markjprice/cs14net10/blob/main/README.md)
+- [Real-World Web Development with .NET 10](https://github.com/markjprice/web-dev-net10/blob/main/README.md)
+- [Apps and Services with .NET 10](https://github.com/markjprice/apps-services-net10/blob/main/README.md)
+- [Tools and Skills for .NET 10](https://github.com/markjprice/tools-skills-net10/blob/main/README.md)
 
 See all my books on [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/) or 
 [Packt's website](https://subscription.packtpub.com/search?query=mark+j.+price).

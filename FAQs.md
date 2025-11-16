@@ -113,8 +113,12 @@ The publisher, Packt, handles distribution deals around the world. I live in the
 
 ## Can you give me a free copy of your book? Can you give me permission to read an illegal copy of your book?
 
-Some readers think that because my name is on the front cover, that means the books are "mine". Inside the book cover you will see who owns the book: **Copyright &copy; 2023 Packt Publishing**, as shown in the figure below: 
+Other related questions:
+- I want to promote your book via an affiliate program.
+- I want to create a YouTube channel using your book as reference.
 
-![Copyright (C) 2023 Packt Publishing](assets/copyright.png)
+Some readers think that because my name is on the front cover, that means the books that I author are "mine". Inside each book cover you will see who owns the book. For example, for my tenth edition: **Copyright &copy; 2025 Packt Publishing**, as shown in the figure below: 
 
-Authors with publishers just write the content. Authors are not involved in pricing and distribution, and they certainly cannot give the books away for free, or give you permission to read the books without paying for them. 
+![Copyright (C) 2025 Packt Publishing](assets/copyright.png)
+
+Authors who work with publishers just write the content. Authors are not involved in pricing and distribution, and they certainly cannot give the books away for free, or give you permission to read the books without paying for them. Authors also cannot give you permission to create new works based on Packt's books (intellectual property) or join a revenue sharing scheme or affiliate program. 

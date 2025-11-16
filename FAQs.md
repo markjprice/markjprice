@@ -88,7 +88,15 @@ I am surprised when readers contact me about issues that I have no control over.
 
 ## How to get a Packt book you have purchased as a PDF
 
-You have two options to get a Packt book in PDF format:
+> **.NET 10 and later**: Newer editions can visit https://packtpub.com/unlock, then use the search bar to find this book by name. Double-check the edition shown to make sure you get the right one.
+
+My .NET 10 books on Packt's website:
+- [C# 14 and .NET 10 – Modern Cross-Platform Development Fundamentals](https://www.packtpub.com/en-us/product/c-14-and-net-10-modern-cross-platform-development-fundamentals-9781836206637)
+- [Real-World Web Development with .NET 10](https://www.packtpub.com/en-us/product/real-world-web-development-with-net-10-9781835888926)
+- [Apps and Services with .NET 10](https://www.packtpub.com/en-us/product/apps-and-services-with-net-10-9781835462201)
+- [Tools and Skills for .NET 10](https://www.packtpub.com/en-us/product/tools-and-skills-for-net-10-9781835882504)
+
+For older editions, you have two options to get a Packt book in PDF format:
 
 1. If you purchase any other format of the book from anywhere else then you can get the PDF edition by completing a form on Packt's website with proof of purchase: https://www.packtpub.com/page/free-ebook. For example, you might buy the paperback from your local independent bookstore, or you might buy the Kindle edition from Amazon.
 

@@ -109,15 +109,26 @@ Readers must pay for individual new editions. Some publishers offer subscription
 
 ## Where can I buy your books in my country? When will a book be published in my country?
 
+Similar questions:
+
+- Only the Kindle edition is available to purchase from Amazon in my country. When will the paperback be published?
+
 The publisher, Packt, handles distribution deals around the world. I live in the UK and I have no experience with buying books in your country but you probably do. Where have you bought books before in your country? Most bookstores will order a book for you if they do not have it in stock. If they cannot, then please ask the publisher, Packt, where you can buy Packt books in your country and when a book will be published there: customercare@packt.com. 
+
+When a book is published, it often takes several days or even weeks before it is available in all formats in all countries. Usually you can order a book in both Kindle and paperback on the date of publishing from Amazon USA. Other countries will typically allow Kindle orders on the same day, but paperback orders may take longer. Regardless, as the author I have no insight into specifics. Please contact the publisher Packt and ask them: customercare@packt.com. 
 
 ## Can you give me a free copy of your book? Can you give me permission to read an illegal copy of your book?
 
-Other related questions:
-- I want to promote your book via an affiliate program.
-- I want to create a YouTube channel using your book as reference.
+I often get questions from readers that are actually about the intellectual property ownership of the books that I author:
 
-Some readers think that because my name is on the front cover, that means the books that I author are "mine". Inside each book cover you will see who owns the book. For example, for my tenth edition: **Copyright &copy; 2025 Packt Publishing**, as shown in the figure below: 
+- Can you give me a free copy of your book? 
+- Can you give me permission to read an illegal copy of your book?
+- Can I promote your book via an affiliate program?
+- Can I create a YouTube channel using your book as reference?
+
+Some readers think that because my name is on the front cover, that means the books that I author are "mine". When an author uses a phrase like "my book", what they most commonly mean is "books that I author", not "books that I own the intellectual property for". 
+
+Inside each book cover you will see who actually owns the book. For example, for my tenth edition: **Copyright &copy; 2025 Packt Publishing**, as shown in the figure below: 
 
 ![Copyright (C) 2025 Packt Publishing](assets/copyright.png)
 

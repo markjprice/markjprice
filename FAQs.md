@@ -44,6 +44,10 @@ A reader asked, "Im linux user, but I want to learn about net development; but n
 
 Modern .NET including its SDK is cross-platform, running on Windows, Mac, and Linux. Although Visual Studio 2026 is Windows-only, either VS Code or JetBrains Rider run on Linux. All the content in my books specifically about Visual Studio 2026 obviously won't work on Linux. But all the content that is the actual coding exercises can be completed on Linux. You just won't see code editor screenshots or detailed steps for Linux in my book. Linux users tend to be more advanced than Windows users so that should not be a problem. 
 
+Install .NET on Linux: https://learn.microsoft.com/en-us/dotnet/core/install/linux
+
+The only parts of the .NET SDK that are Windows-only are Windows Forms and Windows Presentation Foundation (WPF), both used for Windows desktop apps. They are not in any of my books because they are not cross-platform.
+
 ## Will there be editions of your books for future versions of .NET?
 
 Starting in November 2025, all four .NET books will be updated for .NET 10, as shown in the following figure and described in the numbered bullets:

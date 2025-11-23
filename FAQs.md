@@ -5,6 +5,7 @@
   - [What order should I read your books?](#what-order-should-i-read-your-books)
   - [What's New in your .NET 10 books?](#whats-new-in-your-net-10-books)
   - [Do your books work with Linux?](#do-your-books-work-with-linux)
+  - [A link is broken in one of your books. What could be the cause?](#a-link-is-broken-in-one-of-your-books-what-could-be-the-cause)
   - [Will there be editions of your books for future versions of .NET?](#will-there-be-editions-of-your-books-for-future-versions-of-net)
   - [Are there slide decks for your books for educational use?](#are-there-slide-decks-for-your-books-for-educational-use)
   - [How can a .NET developer study AI?](#how-can-a-net-developer-study-ai)
@@ -47,6 +48,23 @@ Modern .NET including its SDK is cross-platform, running on Windows, Mac, and Li
 Install .NET on Linux: https://learn.microsoft.com/en-us/dotnet/core/install/linux
 
 The only parts of the .NET SDK that are Windows-only are Windows Forms and Windows Presentation Foundation (WPF), both used for Windows desktop apps. They are not in any of my books because they are not cross-platform.
+
+## A link is broken in one of your books. What could be the cause?
+
+Here are the main causes of broken links:
+1. The link is broken because of a typo that snuck past the editing process or the original website has changed. Please let me know the page number, section title, and link, and I will add an errata for it to the book's GitHub repository, and I will change it in the next edition.
+2. If you click the link and it fails, it could be that your PDF reader has a bug. For example, **SumatraPDF** is known to have issues with links that span multiple lines, as you can read about at the following issue: https://github.com/markjprice/cs13net9/issues/86. Please let me know the PDF reader that you used and I will add it to a list to avoid.
+3. You selected the link text and copied it to the clipboard, then pasted the link into your browser's address bar:
+  - It could be that you selected too little or too much. For example, the copyeditors for Packt like to add a period (full-stop) to the end of links. Although that character is not part of the link if you click it, when copying and pasting, you might select it, breaking the link.
+  - Most PDF readers try to be smart about copying and pasting links that contain hyphens. They assume that a hyphen at the end of a line that continues to the next line is a hyphen that should be removed when pasting. So the following link:
+```
+   https://www.microsoft.com/a-long-
+   link-with-hyphens
+```
+   - Would be pasted as: `https://www.microsoft.com/a-longlink-with-hyphens`. Note the hyphen between `long` and `link` has been automatically stripped by the PDF reader. Always check the link in the address bar after pasting if you get a 404. Look for missing hyphens (dashes) and extra dots at the end.
+
+PDF readers with known link issues:
+- **SumatraPDF**
 
 ## Will there be editions of your books for future versions of .NET?
 

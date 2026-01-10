@@ -159,8 +159,8 @@ I often get questions from readers that are actually about the intellectual prop
 
 Some readers think that because my name is on the front cover, that means the books that I author are "mine". When an author uses a phrase like "my book", what they most commonly mean is "books that I author", not "books that I own the intellectual property for". 
 
+Authors who work with publishers just write the content. Authors are not involved in pricing and distribution, and they certainly cannot give the books away for free, or give you permission to read the books without paying for them. Authors also cannot give you permission to create new works based on Packt's books (intellectual property) or join a revenue sharing scheme or affiliate program. 
+
 Inside each book cover you will see who actually owns the book. For example, for my tenth edition: **Copyright &copy; 2025 Packt Publishing**, as shown in the figure below: 
 
 ![Copyright (C) 2025 Packt Publishing](assets/copyright.png)
-
-Authors who work with publishers just write the content. Authors are not involved in pricing and distribution, and they certainly cannot give the books away for free, or give you permission to read the books without paying for them. Authors also cannot give you permission to create new works based on Packt's books (intellectual property) or join a revenue sharing scheme or affiliate program. 

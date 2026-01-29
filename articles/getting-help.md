@@ -1,5 +1,7 @@
 **Getting help**
 
+> This page is also available as a downloadable PDF: https://github.com/markjprice/cs14net10/blob/main/docs/B31466_Appendix%20C.pdf
+
 - [Microsoft Learn documentation](#microsoft-learn-documentation)
 - [Microsoft Learn documentation MCP server](#microsoft-learn-documentation-mcp-server)
 - [Documentation links in this book](#documentation-links-in-this-book)

@@ -4,16 +4,17 @@
 - [How to switch from .NET 10 to .NET 11](#how-to-switch-from-net-10-to-net-11)
   - [Upgrading the target framework for a project](#upgrading-the-target-framework-for-a-project)
   - [Upgrading packages for a project](#upgrading-packages-for-a-project)
+  - [Preview package version numbers](#preview-package-version-numbers)
 - [What's New in .NET 11 and where will I cover those new features?](#whats-new-in-net-11-and-where-will-i-cover-those-new-features)
 - [.NET 12 downloads and announcements](#net-12-downloads-and-announcements)
 
 # .NET 11 downloads and announcements
 
-Microsoft will release previews of .NET 11 regularly starting in February 2026 until the general availability (GA) version on Tuesday, November 12, 2026.
+Microsoft will release previews of .NET 11 regularly starting on Tuesday, February 10, 2026 until the general availability (GA) version on Tuesday, November 12, 2026.
 
 - [Download .NET 11.0 SDK](https://dotnet.microsoft.com/download/dotnet/11.0)
-- .NET 11 Release Index
-- February 2026: .NET 11 Preview 1
+- [.NET 11 Release Notes](https://github.com/dotnet/core/blob/main/release-notes/11.0/README.md)
+- [February 10, 2026: .NET 11 Preview 1](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview1/README.md)
 - March 2026: .NET 11 Preview 2
 - April 2026: .NET 11 Preview 3
 - May 2026: .NET 11 Preview 4
@@ -62,11 +63,13 @@ To use .NET 11 Preview 1 packages, search https://www.nuget.org for the package 
 <ItemGroup>
   <PackageReference
     Include="Microsoft.Extensions.Configuration.Binder"
-    Version="11.0.0-preview.1.14128.5" />
+    Version="11.0.0-preview.1.26104.118" />
 </ItemGroup>
 ```
 
-To always use latest .NET 11 preview, release candidate, or patch version package, use a version number wildcard, as shown in the following markup:
+> You can search for the correct NuGet package version numbers yourself at the following link: https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder#versions-body-tab.
+
+To always use latest .NET 11 preview, release candidate, or patch version package, use a version number wildcard (not supported if you are using CPM), as shown in the following markup:
 ```xml
 <ItemGroup>
   <PackageReference
@@ -75,7 +78,19 @@ To always use latest .NET 11 preview, release candidate, or patch version packag
 </ItemGroup>
 ```
 
-> You can search for the correct NuGet package version numbers yourself at the following link: https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder#versions-body-tab.
+## Preview package version numbers
+
+- .NET 11 Preview 1: `11.0.0-preview.1.26104.118`
+- .NET 11 Preview 2: `11.0.0-preview.2.x.x`
+- .NET 11 Preview 3: `11.0.0-preview.3.x.x`
+- .NET 11 Preview 4: `11.0.0-preview.4.x.x`
+- .NET 11 Preview 5: `11.0.0-preview.5.x.x`
+- .NET 11 Preview 6: `11.0.0-preview.6.x.x`
+- .NET 11 Preview 7: `11.0.0-preview.7.x.x`
+- .NET 11 Release Candidate 1: `11.0.0-rc.1.x.x`
+- .NET 11 Release Candidate 2: `11.0.0-rc.2.x.x`
+- .NET 11.0 GA (general availability): `11.0.0`
+
 
 # What's New in .NET 11 and where will I cover those new features?
 

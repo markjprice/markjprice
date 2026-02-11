@@ -4,6 +4,7 @@
 - [How to switch from .NET 10 to .NET 11](#how-to-switch-from-net-10-to-net-11)
   - [Upgrading the target framework for a project](#upgrading-the-target-framework-for-a-project)
   - [Upgrading packages for a project](#upgrading-packages-for-a-project)
+  - [Download CPM files for my .NET 10 books](#download-cpm-files-for-my-net-10-books)
   - [Preview package version numbers](#preview-package-version-numbers)
 - [What's New in .NET 11 and where will I cover those new features?](#whats-new-in-net-11-and-where-will-i-cover-those-new-features)
 - [.NET 12 downloads and announcements](#net-12-downloads-and-announcements)
@@ -77,6 +78,20 @@ To always use latest .NET 11 preview, release candidate, or patch version packag
     Version="11.0-*" />
 </ItemGroup>
 ```
+
+## Download CPM files for my .NET 10 books
+
+C# 14 and .NET 10 - Modern Cross-Platform Development Fundamentals
+https://github.com/markjprice/cs14net10/blob/main/code/ModernWeb/Directory.Packages.props
+
+Apps and Services with .NET 10
+https://github.com/markjprice/apps-services-net10/blob/main/code/Directory.Packages.props
+
+Real-World Web Development with .NET 10
+https://github.com/markjprice/web-dev-net10/blob/main/code/MatureWeb/Directory.Packages.props
+
+Tools and Skills for .NET 10
+https://github.com/markjprice/tools-skills-net10/blob/main/code/Directory.Packages.props
 
 ## Preview package version numbers
 

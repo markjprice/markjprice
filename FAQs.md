@@ -49,7 +49,7 @@ Modern .NET including its SDK is cross-platform, running on Windows, Mac, and Li
 
 Install .NET on Linux: https://learn.microsoft.com/en-us/dotnet/core/install/linux
 
-The only parts of the .NET SDK that are Windows-only are Windows Forms and Windows Presentation Foundation (WPF), both used for Windows desktop apps. They are not convered in any of my books because they are not cross-platform.
+The only parts of the .NET SDK that are Windows-only are Windows Forms and Windows Presentation Foundation (WPF), both used for Windows desktop apps. They are not covered in any of my books because they are not cross-platform.
 
 ## A link is broken in one of your books. What could be the cause?
 

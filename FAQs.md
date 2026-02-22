@@ -43,11 +43,13 @@ I have written an article about this here: [What's New in your .NET 10 books?](a
 
 A reader asked, "Im linux user, but I want to learn about net development; but need to confirm if this book all the content is possible working in linux. All exercises and practices."
 
-Modern .NET including its SDK is cross-platform, running on Windows, Mac, and Linux. Although Visual Studio 2026 is Windows-only, either VS Code or JetBrains Rider run on Linux. All the content in my books specifically about Visual Studio 2026 obviously won't work on Linux. But all the content that is the actual coding exercises can be completed on Linux. You just won't see code editor screenshots or detailed steps for Linux in my book. Linux users tend to be more advanced than Windows users so that should not be a problem. 
+Another reader asked, "Can you tell me what cross platform showa in the book? And which OSs are targeted?"
+
+Modern .NET including its SDK is cross-platform, running on Windows, Mac, and Linux. Although Visual Studio 2026 is Windows-only, either VS Code or JetBrains Rider run on Linux. All the content in my books specifically about Visual Studio 2026 obviously won't work on Linux. But all the content that is the actual coding exercises can be completed on Linux, Mac, or Windows. You just won't see code editor screenshots or detailed UI steps for Linux or Mac in my book. Linux users tend to be more advanced than Windows users so that should not be a problem. 
 
 Install .NET on Linux: https://learn.microsoft.com/en-us/dotnet/core/install/linux
 
-The only parts of the .NET SDK that are Windows-only are Windows Forms and Windows Presentation Foundation (WPF), both used for Windows desktop apps. They are not in any of my books because they are not cross-platform.
+The only parts of the .NET SDK that are Windows-only are Windows Forms and Windows Presentation Foundation (WPF), both used for Windows desktop apps. They are not convered in any of my books because they are not cross-platform.
 
 ## A link is broken in one of your books. What could be the cause?
 
@@ -68,7 +70,7 @@ PDF readers with known link issues:
 
 ## Will there be editions of your books for future versions of .NET?
 
-Starting in November 2025, all four .NET books will be updated for .NET 10, as shown in the following figure and described in the numbered bullets:
+Since February 17, 2026, all four .NET books have been updated for .NET 10, as shown in the following figure and described in the numbered bullets:
 
 ![Quartet of .NET 10 books](assets/quartet-net10.png)
 
@@ -76,6 +78,8 @@ Starting in November 2025, all four .NET books will be updated for .NET 10, as s
 2.	The second book covers mature and proven web development technologies like ASP.NET Core MVC and controller-based Web API web services, as well as OData, FastEndpoints, and Umbraco CMS for building real-world web projects on .NET 10. You will learn how to test your web services using xUnit and test the user interfaces of your websites using Playwright, and then how to containerize your projects ready for deployment.
 3.	The third book covers how to build graphical user interfaces for websites, desktop, and mobile apps with Blazor, Avalonia, and .NET MAUI respectively. Then you will learn more specialized library topics like internationalization and popular third-party packages including Serilog and NodaTime. You will learn how to build native AOT-compiled services with ASP.NET Core Minimal API and how to improve performance, scalability, and reliability using caching, queues, and background services. You will implement more services using GraphQL, gRPC, and SignalR, as well as learn how to integrate LLMs to add intelligence to your solutions. 
 4.	The fourth book covers important tools and skills for a professional .NET developer. These include design patterns and solution architecture, debugging, memory analysis, all the important types of testing whether unit, performance, or web and mobile, and then containerization for deployment topics like Docker and Aspire. Finally, the book looks at how to prepare for an interview to get the .NET developer career that you want.
+
+I plan to update the first book for .NET 11 but not the other three. So you can expect *C# 15 and .NET 11 – Modern Cross-Platform Development Fundamentals* to be published in November 2026. It's repository is here: https://github.com/markjprice/cs15net11
 
 ## Are there slide decks for your books for educational use?
 

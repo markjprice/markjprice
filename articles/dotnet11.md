@@ -16,12 +16,12 @@ Microsoft will release previews of .NET 11 regularly starting on Tuesday, Februa
 - [Download .NET 11.0 SDK](https://dotnet.microsoft.com/download/dotnet/11.0)
 - [.NET 11 Release Notes](https://github.com/dotnet/core/blob/main/release-notes/11.0/README.md)
 - [February 10, 2026: .NET 11 Preview 1](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview1/README.md)
-- March 2026: .NET 11 Preview 2
-- April 2026: .NET 11 Preview 3
-- May 2026: .NET 11 Preview 4
-- June 2026: .NET 11 Preview 5
-- July 2026: .NET 11 Preview 6
-- August 2026: .NET 11 Preview 7
+- [March 10, 2026: .NET 11 Preview 2](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview2/README.md)
+- [April 14, 2026: .NET 11 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview3/README.md)
+- [May 2026: .NET 11 Preview 4](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview4/README.md)
+- [June 2026: .NET 11 Preview 5](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview5/README.md)
+- [July 2026: .NET 11 Preview 6](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview6/README.md)
+- [August 2026: .NET 11 Preview 7](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview7/README.md)
 - September 2026: .NET 11 Release Candidate 1
 - October 2026: .NET 11 Release Candidate 2
 - November 2026: .NET 11.0 GA (general availability)
@@ -96,8 +96,8 @@ https://github.com/markjprice/tools-skills-net10/blob/main/code/Directory.Packag
 ## Preview package version numbers
 
 - .NET 11 Preview 1: `11.0.0-preview.1.26104.118`
-- .NET 11 Preview 2: `11.0.0-preview.2.x.x`
-- .NET 11 Preview 3: `11.0.0-preview.3.x.x`
+- .NET 11 Preview 2: `11.0.0-preview.2.26159.112`
+- .NET 11 Preview 3: `11.0.0-preview.3.26207.106`
 - .NET 11 Preview 4: `11.0.0-preview.4.x.x`
 - .NET 11 Preview 5: `11.0.0-preview.5.x.x`
 - .NET 11 Preview 6: `11.0.0-preview.6.x.x`

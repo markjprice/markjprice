@@ -26,23 +26,25 @@ I understand that copyeditors want to "show their work", but in some of my book 
 I feel like these types of change are more to make it look like lots of work has been done rather than adding value to the book.
 
 ## “like” versus “such as”
-
-Author: “...online resources, **like** videos, blogs, and forums.”
-Copyedit: “...online resources, **such as** videos, blogs, and forums”
+Example:
+- Author: “...online resources, **like** videos, blogs, and forums.”
+- Copyedit: “...online resources, **such as** videos, blogs, and forums”
 
 I used to use “such as” a lot myself, but previous copyeditors changed it to “like” so often that I now use “like” instead. It is shorter and my preference now.
 
 ## “if” versus “whether”
 
-Author: “It is not until you have written a decent amount of code with a tool that you can really judge **if** it fits your needs.”
-Copyedit: “It is not until you have written a decent amount of code with a tool that you can really judge **whether** it fits your needs.”
+Example:
+- Author: “It is not until you have written a decent amount of code with a tool that you can really judge **if** it fits your needs.”
+- Copyedit: “It is not until you have written a decent amount of code with a tool that you can really judge **whether** it fits your needs.”
 
 I accept that “whether” is the more formal and precise word in this context. But some grammar guides consider “if” acceptable as a substitute for “whether,” especially in modern English, but purists prefer to distinguish the two. So “if” is less formal, more conversational. I *want* my books to feel like a conversation with a friend or colleague, not a lecture. “whether” is also harder for non-native English speakers (and Americans 😉) to understand (and spell!).
 
 ## “is” versus “are”
 
-Author: “Any of the editions **are** suitable for this book.”
-Copyedit: “Any of the editions **is** suitable for this book.”
+Example:
+- Author: “Any of the editions **are** suitable for this book.”
+- Copyedit: “Any of the editions **is** suitable for this book.”
 
 I accept that the subject of the sentence is *any*, which is singular. Since *any* is technically singular, the verb should be *is*. That makes “Any of the editions is suitable for this book.” the strictly correct form.
 
@@ -52,19 +54,20 @@ I think the author’s voice should carry more weight than technically perfect g
 
 ## Em-dashes
 
-Author: “You must also mark the `.cs` file as executable in the filesystem. For example, at the command prompt or terminal: `./`”
-Copyedit: “You must also mark the `.cs` file as executable in the filesystem – for example, at the command prompt or terminal: `./`”
+Example:
+- Author: “You must also mark the `.cs` file as executable in the filesystem. For example, at the command prompt or terminal: `./`”
+- Copyedit: “You must also mark the `.cs` file as executable in the filesystem – for example, at the command prompt or terminal: `./`”
 
 LLMs use em-dashes a LOT and its become a huge red flag to most people because using them makes text look AI-generated. I think this was better the way I originally wrote it. I see no benefit and potential downside to this copyedit.
 
 ## Code blocks
 
-Author:
+Example:
+- Author:
 ```cs
 int index = valueAsString.IndexOf('@');
 ```
-
-Copyedit:
+- Copyedit:
 ```cs
 int index = valueAsString.IndexOf(‘@’);
 ```

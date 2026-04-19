@@ -8,12 +8,13 @@
   - [Code blocks](#code-blocks)
   - [Periods at the end of sentences](#periods-at-the-end-of-sentences)
   - [ASP.NET Core Minimal API](#aspnet-core-minimal-api)
-- [Quotation Marks, Bold, and Italics](#quotation-marks-bold-and-italics)
-  - [Quotation Marks (“ ”)](#quotation-marks--)
-  - [Bold](#bold)
-  - [Italics](#italics)
-  - [Key Distinction](#key-distinction)
-  - [Consistency Guidelines](#consistency-guidelines)
+- [Style guidelines](#style-guidelines)
+  - [Quotation Marks, Bold, and Italics](#quotation-marks-bold-and-italics)
+    - [Quotation Marks (“ ”)](#quotation-marks--)
+    - [Bold](#bold)
+    - [Italics](#italics)
+    - [Key Distinction](#key-distinction)
+    - [Consistency Guidelines](#consistency-guidelines)
 
 # Copyediting rules
 
@@ -92,11 +93,13 @@ If bullets are just fragments (not full sentences), don’t use periods. Example
 
 Safis changed all the “Minimal API” instances to “minimal API”. Please let them know that ASP.NET Core Minimal API (and ASP.NET Core Web API) are proper names and therefore should not be “minimal API” or “web API” so please do not change them in future. While copyediting *Apps and Services with .NET 7* someone even changed that on the book cover but luckily I spotted it before we went to print!
 
-# Quotation Marks, Bold, and Italics
+# Style guidelines
+
+## Quotation Marks, Bold, and Italics
 
 Mark's books use quotation marks and italics in distinct and consistent ways. Understanding the difference will help you interpret tone, emphasis, and meaning more accurately.
 
-## Quotation Marks (“ ”)
+### Quotation Marks (“ ”)
 
 Quotation marks are used in two situations:
 
@@ -116,7 +119,7 @@ In this case, “dumb” reflects how questions might be perceived, not their ac
 
 ---
 
-## Bold
+### Bold
 
 Bold is used for introducing important terms. Packt's Word template has a style named `CS - Keyword` that should be applied.
 
@@ -130,7 +133,7 @@ After introduction, the term is written normally.
 
 ---
 
-## Italics
+### Italics
 
 Italics are used for direct quotes, emphasis, and for book, chapter, and section titles. Packt's Word template has a style named `CS - Italic` that should be applied.
 
@@ -154,7 +157,7 @@ You will learn about memory allocation in *Chapter 3*, *Memory Management with C
 
 ---
 
-## Key Distinction
+### Key Distinction
 
 Quotation marks and italics serve different purposes and should not be used interchangeably.
 
@@ -168,7 +171,7 @@ Compare:
 
 ---
 
-## Consistency Guidelines
+### Consistency Guidelines
 
 * Do not use italics to replace quotation marks for ironic or informal usage.
 * Avoid overusing italics for emphasis; use them sparingly.

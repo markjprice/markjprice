@@ -8,9 +8,9 @@
 
 # Programming languages and human languages
 
-Let’s start this section with a January 24, 2023, tweet from Andrej Karpathy, as shown in *Figure 11.1*:
+Let’s start this section with a January 24, 2023, tweet from [Andrej Karpathy](karpathy.md), as shown in *Figure 1*:
 ![Andrej Karpathy’s tweet from January 24, 2023](languages.png)
-*Figure 11.1: Andrej Karpathy’s tweet from January 24, 2023*
+*Figure 1: Andrej Karpathy’s tweet from January 24, 2023*
 
 Andrej Karpathy is one of the most credible voices in modern artificial intelligence, particularly in deep learning and neural networks. When he makes a technical claim about AI, it is taken seriously because he has repeatedly been at the center of building the systems everyone else later talks about.
 

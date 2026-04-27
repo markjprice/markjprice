@@ -1,4 +1,4 @@
-**Programming languages and human languages**
+**Programming languages versus human languages**
 
 - [Programming languages and human languages](#programming-languages-and-human-languages)
 - [A major shift in how programmers work](#a-major-shift-in-how-programmers-work)

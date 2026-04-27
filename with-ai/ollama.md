@@ -2,6 +2,8 @@
 
 - [Running local models with Ollama](#running-local-models-with-ollama)
   - [What is Ollama?](#what-is-ollama)
+  - [Use MLX Models on Apple Silicon Macs](#use-mlx-models-on-apple-silicon-macs)
+  - [How to Identify MLX Models](#how-to-identify-mlx-models)
   - [Downloading and running Ollama models](#downloading-and-running-ollama-models)
   - [Ollama CLI](#ollama-cli)
   - [Integrating Ollama with VS Code](#integrating-ollama-with-vs-code)
@@ -17,6 +19,43 @@ Developers and researchers can use Ollama to experiment with and fine-tune LLMs 
 To run LLMs locally, users need powerful hardware, typically including high-end CPUs, significant RAM, and often graphics processing units (GPUs) to handle the intensive computation. Running models locally reduces latency, which is critical for applications requiring immediate responses. LLMs are resource-intensive, and not all users may have the necessary hardware to run them efficiently.
 
 Ollama aims to simplify the installation and setup process, providing tools and documentation to help users get started with minimal friction.
+
+## Use MLX Models on Apple Silicon Macs
+
+When running Ollama on Apple Silicon Macs (M1-M5), it is important to choose models optimized for MLX.
+
+MLX is Apple’s native machine learning framework, designed to take full advantage of the unified memory architecture and integrated CPU and GPU. Models built for MLX run significantly more efficiently than generic formats such as GGUF, which often rely more heavily on the CPU.
+
+In practice, MLX models deliver faster response times, smoother token generation, and better overall system efficiency. They also make better use of available memory, allowing larger models to run more reliably without slowdowns or excessive swapping.
+
+Using non-MLX models on a Mac will still work, but performance is noticeably worse and does not reflect the true capability of the hardware.
+
+For best results on macOS with Apple Silicon, always prefer MLX-optimized models where available.
+
+## How to Identify MLX Models
+
+On Apple Silicon Macs, the easiest way to spot an MLX model is by how it is labeled and distributed.
+
+MLX models typically:
+- Explicitly mention `MLX` in the name or description
+- Are hosted in repositories that reference Apple Silicon or MLX
+- Use formats associated with MLX rather than GGUF
+
+Non-MLX models (the default most people use):
+- Are usually in `GGUF` format
+- Come from the `llama.cpp` ecosystem
+- Do not mention MLX at all
+
+MLX example: Llama 3
+- Often labeled like: `Llama-3-8B-Instruct-MLX`
+- Typical source: MLX community repos such as mlx-community on Hugging Face
+
+Non-MLX example: Llama 3 GGUF (used by Ollama by default)
+- Often labeled like: `Llama-3-8B-Instruct.Q4_K_M.gguf`
+- Runs via llama.cpp, works everywhere, including Mac, but not optimized for it
+- This is what most users end up running without realizing there’s a better option for macOS.
+
+> Good practice: If you see `MLX` in the model name then it’s optimized for Mac. If you see `.gguf` then it’s not MLX
 
 ## Downloading and running Ollama models
 

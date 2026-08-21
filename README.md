@@ -1,7 +1,13 @@
 ## Hi there 👋, I am Mark J. Price. Author. Programmer. Teacher.
 
 - 📖 You can get my books from [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/) or my publisher [Packt](https://subscription.packtpub.com/search?query=mark+j.+price) or any good book store.
-- 🤔 I’m currently working on the .NET 10 editions of my quartet of .NET books, scheduled to publish starting in November 2025 through to February 2026.
+- 🤔 My Amazon author profile: https://www.amazon.com/stores/author/B071DW3QGN/about.
+- 📚 I’m currently working on AI books for professionals in my *Visual Bible* series:
+   - 📗 *ChatGPT Visual Bible*: https://www.amazon.com/dp/180865515X/
+   - 📗 *ChatGPT Codex Visual Bible*: coming Q4 2026.
+   - 📕 *Claude Visual Bible*: https://www.amazon.com/dp/1808658396/
+   - 📕 *Claude Code Visual Bible*: coming Q4 2026.
+   - 📘 *Siri AI Visual Bible*: coming Q4 2026.
 - 🌱 You can read a [Q&A](q-and-a.md) with me.
 - 💬 Ask me about any issues that you might be having with the code from my books in the [Packt Discord server channels](https://discordapp.com/channels/963343534323269662/1304404936355872788).
 - 📫 How to reach me: `markjprice` is also my Gmail account name.

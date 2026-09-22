@@ -8,6 +8,8 @@
    - 📕 *Claude Visual Bible* September 29, 2026: https://www.amazon.com/dp/1808658396/
    - 📕 *Claude Code Visual Bible* coming soon: https://www.amazon.com/dp/B0HK3TCHMT/
    - 📘 *Siri AI Visual Bible* coming soon: https://www.amazon.com/dp/1807427056/
+   - 📘 *Microsoft 365 Copilot Visual Bible* coming soon: 
+   - 📘 *Gemini Visual Bible* coming soon: 
 - 🌱 You can read a [Q&A](q-and-a.md) with me.
 - 💬 Ask me about any issues that you might be having with the code from my books in the [Packt Discord server channels](https://discordapp.com/channels/963343534323269662/1304404936355872788).
 - 📫 How to reach me: `markjprice` is also my Gmail account name.

@@ -3,11 +3,11 @@
 - 📖 You can get my books from [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/) or my publisher [Packt](https://subscription.packtpub.com/search?query=mark+j.+price) or any good book store.
 - 🤔 My Amazon author profile: https://www.amazon.com/stores/author/B071DW3QGN/about.
 - 📚 I’m currently working on AI books for professionals in my *Visual Bible* series:
-   - 📗 *ChatGPT Visual Bible*: https://www.amazon.com/dp/180865515X/
-   - 📗 *ChatGPT Codex Visual Bible*: coming Q4 2026.
-   - 📕 *Claude Visual Bible*: https://www.amazon.com/dp/1808658396/
-   - 📕 *Claude Code Visual Bible*: coming Q4 2026.
-   - 📘 *Siri AI Visual Bible*: coming Q4 2026.
+   - 📗 *ChatGPT Visual Bible* September 9, 2026: https://www.amazon.com/dp/180865515X/
+   - 📗 *ChatGPT Codex Visual Bible* coming soon: https://www.amazon.com/dp/B0HKD6Q5SS/
+   - 📕 *Claude Visual Bible* September 29, 2026: https://www.amazon.com/dp/1808658396/
+   - 📕 *Claude Code Visual Bible* coming soon: https://www.amazon.com/dp/B0HK3TCHMT/
+   - 📘 *Siri AI Visual Bible* coming soon: https://www.amazon.com/dp/1807427056/
 - 🌱 You can read a [Q&A](q-and-a.md) with me.
 - 💬 Ask me about any issues that you might be having with the code from my books in the [Packt Discord server channels](https://discordapp.com/channels/963343534323269662/1304404936355872788).
 - 📫 How to reach me: `markjprice` is also my Gmail account name.
@@ -34,8 +34,12 @@ I am eager to lead programming students, both experienced and new, into the chal
 - I'm adaptable and deal well with ambiguity in organizations of varying sizes and cultures.
 - I hold an Honours Bachelor’s Degree in Computer Science.
 
+I am writing a programming with AI book series for beginners:
+- *[Web Dev with an AI Sidekick](https://www.amazon.com/dp/180611125X/)*: published May 2026
+- *C, C++, and C# with an AI Sidekick*: coming in November 2026
+
 I have written a quartet of guided learning books about C# and .NET. Each has a GitHub repository with code solutions and extra materials:
-- [C# 14 and .NET 10 - Modern Cross-Platform Development Fundamentals](https://github.com/markjprice/cs14net10/blob/main/README.md)
+- [C# 14 and .NET 10 - Modern Cross-Platform Development Fundamentals](https://github.com/markjprice/cs14net10/blob/main/README.md) (and an updated edition coming in November for C# 15 and .NET 11)
 - [Real-World Web Development with .NET 10](https://github.com/markjprice/web-dev-net10/blob/main/README.md)
 - [Apps and Services with .NET 10](https://github.com/markjprice/apps-services-net10/blob/main/README.md)
 - [Tools and Skills for .NET 10](https://github.com/markjprice/tools-skills-net10/blob/main/README.md)

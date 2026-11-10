@@ -1,9 +1,12 @@
 **FAQs**
 
 - [Questions about book content](#questions-about-book-content)
+  - [Is there a roadmap that shows what order to learn AI?](#is-there-a-roadmap-that-shows-what-order-to-learn-ai)
+    - [Links to *AI Visual Bible* product pages on Amazon US](#links-to-ai-visual-bible-product-pages-on-amazon-us)
+    - [AI books by other Packt authors](#ai-books-by-other-packt-authors)
   - [Is there a roadmap that shows what order to learn .NET technologies?](#is-there-a-roadmap-that-shows-what-order-to-learn-net-technologies)
-  - [What order should I read your books?](#what-order-should-i-read-your-books)
-  - [What's New in your .NET 10 books?](#whats-new-in-your-net-10-books)
+  - [What order should I read your .NET books?](#what-order-should-i-read-your-net-books)
+  - [What's New in your .NET books?](#whats-new-in-your-net-books)
   - [Do your books work with Linux?](#do-your-books-work-with-linux)
   - [A link is broken in one of your books. What could be the cause?](#a-link-is-broken-in-one-of-your-books-what-could-be-the-cause)
   - [Will there be editions of your books for future versions of .NET?](#will-there-be-editions-of-your-books-for-future-versions-of-net)
@@ -20,7 +23,33 @@
 
 # Questions about book content
 
-I can answer questions about the content of my books because I am the author.
+I can answer questions about the *content* of my books because I am the author. For questions about prices, distribution, and so on, please contact either my publisher: customercare@packt.com, or your local book retailer.
+
+## Is there a roadmap that shows what order to learn AI?
+
+I've created one for my *AI Visual Bible* series:
+
+![AI Visual Bible pathways](assets/ai-visual-bible-pathways.png)
+
+### Links to *AI Visual Bible* product pages on Amazon US
+
+So you can get information like title, author, and ISBN:
+
+- Claude Visual Bible: https://www.amazon.com/dp/1808658396/
+- Claude Code Visual Bible: https://www.amazon.com/dp/180865367X/
+- ChatGPT Visual Bible: https://www.amazon.com/dp/180865515X/
+- OpenAI Codex Visual Bible: https://www.amazon.com/dp/1808651294/
+- Siri AI Visual Bible: https://www.amazon.com/dp/1807427056/
+- Everything AI Visual Bible: coming December 2026
+- Microsoft Copilot Visual Bible: coming December 2026
+- Google Gemini Visual Bible: coming January 2027
+- AI Agents Visual Bible: coming February 2027
+- Build AI Agents Visual Bible: coming March 2027
+
+### AI books by other Packt authors
+
+- Agentic Coding with OpenAI Codex CLI: https://www.amazon.com/dp/1808348893/
+- Agentic Coding with Claude Code: https://www.amazon.com/dp/1806022591/
 
 ## Is there a roadmap that shows what order to learn .NET technologies?
 
@@ -29,15 +58,18 @@ Some decent .NET road maps include:
 - https://github.com/MoienTajik/AspNetCore-Developer-Roadmap/blob/master/aspnetcore-developer-roadmap.png
 - https://github.com/milanm/DotNet-Developer-Roadmap?tab=readme-ov-file#roadmap
 
-## What order should I read your books?
+## What order should I read your .NET books?
 
 I have written articles to answer this here: 
-- [What order should I read your .NET 10 books?](articles/book-sequence-net10.md)
+- [What order should I read your .NET 10 and later books?](articles/book-sequence-net10.md)
 - [What order should I read your .NET 8 and .NET 9 books?](articles/book-sequence.md)
 
-## What's New in your .NET 10 books?
+## What's New in your .NET books?
 
 I have written an article about this here: [What's New in your .NET 10 books?](articles/whats-new-in-net10-books.md).
+
+For the 11th edition: 
+https://github.com/markjprice/cs15net11/blob/main/docs/whats-new-in-book.md
 
 ## Do your books work with Linux?
 
@@ -79,7 +111,7 @@ Since February 17, 2026, all four .NET books have been updated for .NET 10, as s
 3.	The third book covers how to build graphical user interfaces for websites, desktop, and mobile apps with Blazor, Avalonia, and .NET MAUI respectively. Then you will learn more specialized library topics like internationalization and popular third-party packages including Serilog and NodaTime. You will learn how to build native AOT-compiled services with ASP.NET Core Minimal API and how to improve performance, scalability, and reliability using caching, queues, and background services. You will implement more services using GraphQL, gRPC, and SignalR, as well as learn how to integrate LLMs to add intelligence to your solutions. 
 4.	The fourth book covers important tools and skills for a professional .NET developer. These include design patterns and solution architecture, debugging, memory analysis, all the important types of testing whether unit, performance, or web and mobile, and then containerization for deployment topics like Docker and Aspire. Finally, the book looks at how to prepare for an interview to get the .NET developer career that you want.
 
-I plan to update the first book for .NET 11 but not the other three. So you can expect *C# 15 and .NET 11 – Modern Cross-Platform Development Fundamentals* to be published in November 2026. It's repository is here: https://github.com/markjprice/cs15net11
+I have updated the first book for .NET 11 but not the other three. It's repository is here: https://github.com/markjprice/cs15net11
 
 ## Are there slide decks for your books for educational use?
 
@@ -115,28 +147,15 @@ I am surprised when readers contact me about issues that I have no control over.
 
 ## How to get a Packt book you have purchased as a PDF
 
-> **.NET 10 and later**: Newer editions can visit https://packtpub.com/unlock, then use the search bar to find this book by name. Double-check the edition shown to make sure you get the right one.
+> You can visit https://packtpub.com/unlock, then use the search bar to find this book by name. Double-check the edition shown to make sure you get the right one.
 
-My .NET 10 books on Packt's website:
-- [C# 14 and .NET 10 – Modern Cross-Platform Development Fundamentals](https://www.packtpub.com/en-us/product/c-14-and-net-10-modern-cross-platform-development-fundamentals-9781836206637)
-- [Real-World Web Development with .NET 10](https://www.packtpub.com/en-us/product/real-world-web-development-with-net-10-9781835888926)
-- [Apps and Services with .NET 10](https://www.packtpub.com/en-us/product/apps-and-services-with-net-10-9781835462201)
-- [Tools and Skills for .NET 10](https://www.packtpub.com/en-us/product/tools-and-skills-for-net-10-9781835882504)
-
-For older editions, you have two options to get a Packt book in PDF format:
-
-1. If you purchase any other format of the book from anywhere else then you can get the PDF edition by completing a form on Packt's website with proof of purchase: https://www.packtpub.com/page/free-ebook. For example, you might buy the paperback from your local independent bookstore, or you might buy the Kindle edition from Amazon.
-
-2. If you purchase an ebook from Packt's website then you get it in PDF and EPUB formats as well as their online reader. 
-
-My .NET 9 books on Packt's website:
-- [C# 13 and .NET 9 – Modern Cross-Platform Development Fundamentals](https://www.packtpub.com/en-us/product/c-13-and-net-9-modern-cross-platform-development-fundamentals-9781835881224)
-- [Real-World Web Development with .NET 9](https://www.packtpub.com/en-us/product/real-world-web-development-with-net-9-9781835880395)
-
-My .NET 8 books on Packt's website:
-- [C# 12 and .NET 8 – Modern Cross-Platform Development Fundamentals](https://www.packtpub.com/en-us/product/c-12-and-net-8-modern-cross-platform-development-fundamentals-9781837635870)
-- [Apps and Services with .NET 8](https://www.packtpub.com/en-us/product/apps-and-services-with-net-8-9781837637133)
-- [Tools and Skills for .NET 8](https://www.packtpub.com/en-us/product/tools-and-skills-for-net-8-9781837635207)
+My .NET books on Packt's website:
+- [C# 15 and .NET 11 – Modern Cross-Platform Development Fundamentals](https://www.packtpub.com/en-us/product/c-15-and-net-11-modern-cross-platform-development-fundamentals-9781807306687) November 2026
+- [C, C++, and C# Programming for Beginners](https://www.packtpub.com/en-us/product/c-c-and-c-programming-for-beginners-9781806021284) November 2026
+- [C# 14 and .NET 10 – Modern Cross-Platform Development Fundamentals](https://www.packtpub.com/en-us/product/c-14-and-net-10-modern-cross-platform-development-fundamentals-9781836206637) November 2025
+- [Real-World Web Development with .NET 10](https://www.packtpub.com/en-us/product/real-world-web-development-with-net-10-9781835888926) December 2025
+- [Apps and Services with .NET 10](https://www.packtpub.com/en-us/product/apps-and-services-with-net-10-9781835462201) February 2026
+- [Tools and Skills for .NET 10](https://www.packtpub.com/en-us/product/tools-and-skills-for-net-10-9781835882504) January 2026
 
 ## Will I be able to download a newer copy or will I have to pay anything for the newer edition?
 

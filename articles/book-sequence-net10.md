@@ -1,21 +1,24 @@
-**What order should I read your .NET 10 books?**
+**What order should I read your .NET 10 and later books?**
 
 - [What are my .NET books?](#what-are-my-net-books)
 - [Read the C# and .NET fundamentals first](#read-the-c-and-net-fundamentals-first)
 - [What are your goals?](#what-are-your-goals)
-- [Table of topics in my .NET 10 and other Packt books](#table-of-topics-in-my-net-10-and-other-packt-books)
 - [Summary](#summary)
 
-> **TLDR**; If you are new to .NET then read *C# 14 and .NET 10 - Modern Cross-Platform Development Fundamentals* first. After that, you can read any of the other books in any order.
+> **TLDR**; If you are new to .NET then read [*C# 15 and .NET 11 - Modern Cross-Platform Development Fundamentals*](https://www.amazon.com/dp/1836206631/) first. After that, you can read the other books in any order.
 
 # What are my .NET books?
 
-I have published four books about .NET 10:
+I have published two books about C# 15 and .NET 11:
+- *C# 15 and .NET 11 - Modern Cross-Platform Development Fundamentals, 11th edition*: [Amazon US product page](https://www.amazon.com/dp/1836206631/)
+- *C, C++, and C# Programming for Beginners, 1st edition*: [Amazon US product page](https://www.amazon.com/dp/1806021293/)
 
-1. *C# 14 and .NET 10 - Modern Cross-Platform Development Fundamentals* [Amazon US](https://www.amazon.com/dp/1836206631/)
-2. *Real-World Web Development with .NET 10* [Amazon US](https://www.amazon.com/dp/1835888925/)
-3. *Apps and Services with .NET 10* [Amazon US](https://www.amazon.com/dp/1835462200/)
-4. *Tools and Skills for .NET 10* [Amazon US](https://www.amazon.com/dp/1835882501/)
+I have published four books about C# 14 and .NET 10:
+
+1. *C# 14 and .NET 10 - Modern Cross-Platform Development Fundamentals, 10th edition* [Amazon US product page](https://www.amazon.com/dp/1836206631/): After November 10, 2026, I recommend the 11th edition instead since it is more up-to-date for C#.
+2. *Real-World Web Development with .NET 10* [Amazon US product page](https://www.amazon.com/dp/1835888925/)
+3. *Apps and Services with .NET 10* [Amazon US product page](https://www.amazon.com/dp/1835462200/)
+4. *Tools and Skills for .NET 10* [Amazon US product page](https://www.amazon.com/dp/1835882501/)
 
 # Read the C# and .NET fundamentals first
 
@@ -41,10 +44,8 @@ Which book should you read next? It depends on your goals:
   - [.NET MAUI Cross-Platform Application Development](https://www.amazon.com/dp/1835080596/)
   - [Web Development with Blazor](https://www.amazon.com/dp/1835465919/)
 
-# Table of topics in my .NET 10 and other Packt books
-
-![Table of topics](assets/topic-table.png)
-
 # Summary
 
-![Read my books in this order](assets/book-order.png)
+Table of topics in my .NET 10 books (and related books from Packt):
+
+![Table of topics](assets/topic-table.png)

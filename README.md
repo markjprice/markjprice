@@ -3,7 +3,7 @@
 - 📖 You can get my books from [Amazon](https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/), my publisher [Packt](https://subscription.packtpub.com/search?query=mark+j.+price), or any good book store.
 - 🤔 My Amazon author profile: https://www.amazon.com/stores/author/B071DW3QGN/about
 - 📚 My Amazon book list: https://www.amazon.com/stores/author/B071DW3QGN/
-- 📚 My *AI Visual Bible* series for non-technical knowledge workers:
+- 📚 My [*AI Visual Bible* series](https://www.amazon.com/stores/page/A90E1828-D22A-49EC-BACE-9BDFA7057EB3) for non-technical knowledge workers:
    - 📗 *ChatGPT Visual Bible* September 9, 2026: https://www.amazon.com/dp/180865515X/
    - 📗 *OpenAI Codex Visual Bible* coming December 2026: https://www.amazon.com/dp/B0HKD6Q5SS/
    - 📕 *Claude Visual Bible* September 29, 2026: https://www.amazon.com/dp/1808658396/

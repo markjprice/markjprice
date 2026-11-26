@@ -20,6 +20,12 @@
 - 📫 How to reach me: `markjprice` is also my Gmail and MSN account names.
 - ⚡ Michelle McNamara: "It’s chaos. Be kind."
 
+---
+
+# Ten of my most popular books on Amazon
+
+![Ten of my most popular books on Amazon](assets/ten-books-on-amazon.png)
+
 # FAQs and other articles
 - [Frequently Asked Questions](FAQs.md)
 - [Articles](articles/README.md)

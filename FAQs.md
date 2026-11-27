@@ -1,6 +1,7 @@
 **FAQs**
 
 - [Questions about book content](#questions-about-book-content)
+  - [Is it still worth studying C# now that AI can write code?](#is-it-still-worth-studying-c-now-that-ai-can-write-code)
   - [Is there a roadmap that shows what order to learn AI?](#is-there-a-roadmap-that-shows-what-order-to-learn-ai)
     - [Links to *AI Visual Bible* product pages on Amazon US](#links-to-ai-visual-bible-product-pages-on-amazon-us)
     - [AI books by other Packt authors](#ai-books-by-other-packt-authors)
@@ -24,6 +25,10 @@
 # Questions about book content
 
 I can answer questions about the *content* of my books because I am the author. For questions about prices, distribution, and so on, please contact either my publisher: customercare@packt.com, or your local book retailer.
+
+## Is it still worth studying C# now that AI can write code?
+
+I've written an [article to answer this question](articles/ai-age-cs.md).
 
 ## Is there a roadmap that shows what order to learn AI?
 
